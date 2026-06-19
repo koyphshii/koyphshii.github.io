@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=32781&amp;path=livereload" data-no-instant defer></script>
+    <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>XORSA - Koyphshi</title><meta name="description" content="Exploiting RSA with leaked XOR bits"><meta property="og:url" content="http://localhost:32781/posts/umass/">
-  <meta property="og:site_name" content="Koyphshi">
-  <meta property="og:title" content="XORSA">
-  <meta property="og:description" content="Exploiting RSA with leaked XOR bits">
-  <meta property="og:locale" content="en">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2025-04-21T00:00:00+00:00">
-    <meta property="article:modified_time" content="2025-04-21T00:00:00+00:00">
-    <meta property="article:tag" content="Rsa">
-    <meta property="article:tag" content="Xor-Leak">
-    <meta property="article:tag" content="Coppersmith">
-    <meta property="article:tag" content="Prime-Factorization">
-    <meta property="article:tag" content="Lattice-Reduction">
-    <meta property="og:image" content="http://localhost:32781/posts/umass/featured-image-preview.webp">
+        <title>XORSA - Koyphshi</title><meta name="description" content="Exploiting RSA with leaked XOR bits"><meta property="og:url" content="https://lanaceryasser.github.io/posts/umass/">
+	<meta property="og:site_name" content="Koyphshi">
+	<meta property="og:title" content="XORSA">
+	<meta property="og:description" content="Exploiting RSA with leaked XOR bits">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="posts">
+		<meta property="article:published_time" content="2025-04-21T00:00:00+00:00">
+		<meta property="article:modified_time" content="2025-04-21T00:00:00+00:00">
+		<meta property="article:tag" content="Rsa">
+		<meta property="article:tag" content="Xor-Leak">
+		<meta property="article:tag" content="Coppersmith">
+		<meta property="article:tag" content="Prime-Factorization">
+		<meta property="article:tag" content="Lattice-Reduction">
+		<meta property="og:image" content="https://lanaceryasser.github.io/posts/umass/featured-image-preview.webp">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="http://localhost:32781/posts/umass/featured-image-preview.webp">
-  <meta name="twitter:title" content="XORSA">
-  <meta name="twitter:description" content="Exploiting RSA with leaked XOR bits">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="https://lanaceryasser.github.io/posts/umass/featured-image-preview.webp">
+	<meta name="twitter:title" content="XORSA">
+	<meta name="twitter:description" content="Exploiting RSA with leaked XOR bits">
 <meta name="application-name" content="Koyphshi">
 <meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:32781/posts/umass/" /><link rel="prev" href="http://localhost:32781/posts/black-hat/" /><link rel="next" href="http://localhost:32781/posts/ingeneer/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lanaceryasser.github.io/posts/umass/" /><link rel="prev" href="https://lanaceryasser.github.io/posts/black-hat/" /><link rel="next" href="https://lanaceryasser.github.io/posts/ingeneer/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,9 +35,9 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/localhost:32781\/posts\/umass\/"
-        },"image": ["http:\/\/localhost:32781\/images\/avatar.jpeg"],"genre": "posts","keywords": "rsa, xor-leak, coppersmith, prime-factorization, lattice-reduction","wordcount":  1652 ,
-        "url": "http:\/\/localhost:32781\/posts\/umass\/","datePublished": "2025-04-21T00:00:00+00:00","dateModified": "2025-04-21T00:00:00+00:00","publisher": {
+            "@id": "https:\/\/lanaceryasser.github.io\/posts\/umass\/"
+        },"image": ["https:\/\/lanaceryasser.github.io\/images\/avatar.jpeg"],"genre": "posts","keywords": "rsa, xor-leak, coppersmith, prime-factorization, lattice-reduction","wordcount":  1588 ,
+        "url": "https:\/\/lanaceryasser.github.io\/posts\/umass\/","datePublished": "2025-04-21T00:00:00+00:00","dateModified": "2025-04-21T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "Koyphshi"},"author": {
                 "@type": "Person",
@@ -125,7 +125,7 @@
         alt="/avatar/peak.jpeg"
         title="/avatar/peak.jpeg" /><span class="post-author-name">Koyphshi&nbsp;</span>
                             </a></span><span class="post-category">published in <a href="/categories/cryptography/"><i class="fa-regular fa-folder fa-fw"></i>Cryptography</a></span></div>
-                <div class="post-meta-line"><span><i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-04-21">2025-04-21</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;1652 words</span>&nbsp;
+                <div class="post-meta-line"><span><i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-04-21">2025-04-21</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;1588 words</span>&nbsp;
                     <span><i class="fa-regular fa-clock fa-fw"></i>&nbsp;8 minutes</span>&nbsp;</div>
             </div>
             
@@ -243,49 +243,49 @@
 <h2 id="task-analysis">Task Analysis</h2>
 <p>What do we know?</p>
 <table>
-  <thead>
-      <tr>
-          <th>Known</th>
-          <th>Unknown</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>MSBs of \( p \oplus q \) (575 bits)</td>
-          <td>LSBs of \( p \oplus q \) (449 bits)</td>
-      </tr>
-      <tr>
-          <td>\( n = p \cdot q \)</td>
-          <td>\( p \) and \( q \) individually</td>
-      </tr>
-      <tr>
-          <td>Public key \( (n, e) \)</td>
-          <td>Private key \( d \)</td>
-      </tr>
-      <tr>
-          <td>Ciphertext \( c \)</td>
-          <td>Plaintext \( m \)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Known</th>
+					<th>Unknown</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>MSBs of \( p \oplus q \) (575 bits)</td>
+					<td>LSBs of \( p \oplus q \) (449 bits)</td>
+			</tr>
+			<tr>
+					<td>\( n = p \cdot q \)</td>
+					<td>\( p \) and \( q \) individually</td>
+			</tr>
+			<tr>
+					<td>Public key \( (n, e) \)</td>
+					<td>Private key \( d \)</td>
+			</tr>
+			<tr>
+					<td>Ciphertext \( c \)</td>
+					<td>Plaintext \( m \)</td>
+			</tr>
+	</tbody>
 </table>
 <p><strong>Key Insight</strong>: The XOR constraint dramatically reduces the search space. For each bit position, if we know \( p_i \oplus q_i \), we only have <strong>2 possibilities</strong> instead of 4:</p>
 <table>
-  <thead>
-      <tr>
-          <th>\( p_i \oplus q_i \)</th>
-          <th>Valid \( (p_i, q_i) \) pairs</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>0</td>
-          <td>(0, 0) or (1, 1)</td>
-      </tr>
-      <tr>
-          <td>1</td>
-          <td>(0, 1) or (1, 0)</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>\( p_i \oplus q_i \)</th>
+					<th>Valid \( (p_i, q_i) \) pairs</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>0</td>
+					<td>(0, 0) or (1, 1)</td>
+			</tr>
+			<tr>
+					<td>1</td>
+					<td>(0, 1) or (1, 0)</td>
+			</tr>
+	</tbody>
 </table>
 <p>This is much better than trying all 4 combinations!</p>
 <div class="details admonition note open">
@@ -397,12 +397,6 @@ $$p_{\max} \cdot q_{\max} = ((p_{\text{high}} &laquo; m) + 2^m - 1) \cdot ((q_{\
 </span><span class="lnt">62
 </span><span class="lnt">63
 </span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span><span class="lnt">67
-</span><span class="lnt">68
-</span><span class="lnt">69
-</span><span class="lnt">70
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
@@ -411,23 +405,22 @@ $$p_{\max} \cdot q_{\max} = ((p_{\text{high}} &laquo; m) + 2^m - 1) \cdot ((q_{\
 </span></span><span class="line"><span class="cl"><span class="n">load</span><span class="p">(</span><span class="s1">&#39;coppersmith.sage&#39;</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="n">b</span> <span class="o">=</span> <span class="mi">1024</span>
-</span></span><span class="line"><span class="cl"><span class="n">xor</span> <span class="o">=</span> <span class="mh">0x64</span><span class="o">...</span>        <span class="c1"># Leaked XOR of p and q (MSBs)</span>
-</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mh">0x46</span><span class="o">...</span>          <span class="c1"># RSA modulus</span>
-</span></span><span class="line"><span class="cl"><span class="n">e</span> <span class="o">=</span> <span class="mh">0x10001</span>          <span class="c1"># Public exponent</span>
-</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="mh">0x38</span><span class="o">...</span>          <span class="c1"># Ciphertext</span>
+</span></span><span class="line"><span class="cl"><span class="n">xor</span> <span class="o">=</span> <span class="mh">0x64</span><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">n</span> <span class="o">=</span> <span class="mh">0x46</span><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="n">e</span> <span class="o">=</span> <span class="mh">0x10001</span>
+</span></span><span class="line"><span class="cl"><span class="n">c</span> <span class="o">=</span> <span class="mh">0x38</span><span class="o">...</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">p_high</span><span class="p">,</span> <span class="n">q_high</span><span class="p">):</span>
 </span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
 </span></span></span><span class="line"><span class="cl"><span class="s2">    Recursively recover p and q bit by bit from MSB to LSB
-</span></span></span><span class="line"><span class="cl"><span class="s2">    
+</span></span></span><span class="line"><span class="cl"><span class="s2">
 </span></span></span><span class="line"><span class="cl"><span class="s2">    Args:
 </span></span></span><span class="line"><span class="cl"><span class="s2">        k: Current bit position (starts at NBITS-1, decreases)
 </span></span></span><span class="line"><span class="cl"><span class="s2">        p_high: Recovered bits of p so far
 </span></span></span><span class="line"><span class="cl"><span class="s2">        q_high: Recovered bits of q so far
 </span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">l</span> <span class="o">=</span> <span class="n">p_high</span><span class="o">.</span><span class="n">bit_length</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1"># Switch to Coppersmith once we&#39;ve used all leaked XOR bits</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">b</span><span class="o">//</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">75</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">        <span class="n">l</span> <span class="o">=</span> <span class="mi">512</span> <span class="o">-</span> <span class="mi">75</span>
 </span></span><span class="line"><span class="cl">        <span class="n">R</span> <span class="o">=</span> <span class="mi">2</span><span class="o">**</span><span class="n">l</span>
@@ -451,25 +444,20 @@ $$p_{\max} \cdot q_{\max} = ((p_{\text{high}} &laquo; m) + 2^m - 1) \cdot ((q_{\
 </span></span><span class="line"><span class="cl">            <span class="k">pass</span>
 </span></span><span class="line"><span class="cl">        <span class="k">return</span>
 </span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="c1"># Extract the XOR bit at position k</span>
 </span></span><span class="line"><span class="cl">    <span class="n">xor_k</span> <span class="o">=</span> <span class="p">(</span><span class="n">xor</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="n">b</span><span class="o">//</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">75</span><span class="p">))</span> <span class="o">&amp;</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    
-</span></span><span class="line"><span class="cl">    <span class="c1"># Determine valid bit pairs</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="n">possibilities</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span> <span class="k">if</span> <span class="n">xor_k</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">p_k</span><span class="p">,</span> <span class="n">q_k</span> <span class="ow">in</span> <span class="n">possibilities</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="c1"># Extend with new bits</span>
 </span></span><span class="line"><span class="cl">        <span class="n">p_high_new</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_high</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">p_k</span>
 </span></span><span class="line"><span class="cl">        <span class="n">q_high_new</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_high</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|</span> <span class="n">q_k</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1"># Calculate bounds for remaining bits</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="n">m</span> <span class="o">=</span> <span class="n">NBITS</span> <span class="o">-</span> <span class="n">k</span>
 </span></span><span class="line"><span class="cl">        <span class="n">shift</span> <span class="o">=</span> <span class="n">NBITS</span> <span class="o">-</span> <span class="n">m</span>
 </span></span><span class="line"><span class="cl">        <span class="n">min_prod</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_high_new</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">q_high_new</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">max_prod</span> <span class="o">=</span> <span class="p">(((</span><span class="n">p_high_new</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> 
+</span></span><span class="line"><span class="cl">        <span class="n">max_prod</span> <span class="o">=</span> <span class="p">(((</span><span class="n">p_high_new</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span>
 </span></span><span class="line"><span class="cl">                    <span class="p">((</span><span class="n">q_high_new</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">shift</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">        
-</span></span><span class="line"><span class="cl">        <span class="c1"># Prune if n cannot be achieved</span>
+</span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">min_prod</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="n">max_prod</span><span class="p">:</span>
 </span></span><span class="line"><span class="cl">            <span class="n">find</span><span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p_high_new</span><span class="p">,</span> <span class="n">q_high_new</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl">
@@ -582,13 +570,13 @@ $$((p_{\text{high}} + 1) \cdot 2^m - 1) \cdot ((q_{\text{high}} + 1) \cdot 2^m -
                 <span>Updated on 2025-04-21</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="#" onclick="return false;" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:32781/posts/umass/" data-title="XORSA" data-hashtags="rsa,xor-leak,coppersmith,prime-factorization,lattice-reduction"><i class="fa-brands fa-square-x-twitter fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:32781/posts/umass/" data-hashtag="rsa"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:32781/posts/umass/"><i class="fa-brands fa-linkedin fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Reddit" data-sharer="reddit" data-url="http://localhost:32781/posts/umass/"><i class="fa-brands fa-reddit fa-fw"></i></a></span>
+            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="https://lanaceryasser.github.io/posts/umass/" data-hashtag="rsa"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lanaceryasser.github.io/posts/umass/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
         </div></div><div class="post-nav"><a href="/posts/black-hat/" class="prev" rel="prev" title="TDS"><i class="fa-solid fa-angle-left fa-fw"></i>Previous Post</a>
             <a href="/posts/ingeneer/" class="next" rel="next" title="Vrai Sahl">Next Post<i class="fa-solid fa-angle-right fa-fw"></i></a></div></div>
 </div></article></div>
             </main>
-            <footer class="footer"><div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.152.2 (6abdacad3f3fe944ea42177844469139e81feda6)">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a>
-        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/"></a></span></div>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.163.0 (4a9485336a3ff2cea07ab88e2a17ec34d5baaa6e)">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a>
+        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">Koyphshi</a></span></div>
 </div>
 </footer>
         </div>

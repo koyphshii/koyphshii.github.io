@@ -56,8 +56,8 @@
 
     {{- /* Meta */ -}}
     <div class="post-meta">
-        {{- $author := .Params.author | default .Site.Author.name | default (T "author") -}}
-        {{- $authorLink := .Params.authorlink | default .Site.Author.link | default .Site.Home.RelPermalink -}}
+        {{- $author := .Params.author | default .Site.Params.author.name | default (T "author") -}}
+        {{- $authorLink := .Params.authorlink | default .Site.Params.author.link | default .Site.Home.RelPermalink -}}
         <span class="post-author">
             {{- $avatar := "" -}}
             {{- with .Params.gravatarEmail -}}

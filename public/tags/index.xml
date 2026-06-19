@@ -1,159 +1,164 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tags on Koyphshi</title>
-    <link>http://localhost:32781/tags/</link>
-    <description>Recent content in Tags on Koyphshi</description>
-    <generator>Hugo</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 24 Dec 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:32781/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Assembly</title>
-      <link>http://localhost:32781/tags/assembly/</link>
-      <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/assembly/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blockchain</title>
-      <link>http://localhost:32781/tags/blockchain/</link>
-      <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/blockchain/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ecrecover</title>
-      <link>http://localhost:32781/tags/ecrecover/</link>
-      <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/ecrecover/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Evm</title>
-      <link>http://localhost:32781/tags/evm/</link>
-      <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/evm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Solidity</title>
-      <link>http://localhost:32781/tags/solidity/</link>
-      <pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/solidity/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Crypto</title>
-      <link>http://localhost:32781/tags/crypto/</link>
-      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/crypto/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Csidh</title>
-      <link>http://localhost:32781/tags/csidh/</link>
-      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/csidh/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Isogeny</title>
-      <link>http://localhost:32781/tags/isogeny/</link>
-      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/isogeny/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Weil-Pairing</title>
-      <link>http://localhost:32781/tags/weil-pairing/</link>
-      <pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/weil-pairing/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Coppersmith</title>
-      <link>http://localhost:32781/tags/coppersmith/</link>
-      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/coppersmith/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ecc</title>
-      <link>http://localhost:32781/tags/ecc/</link>
-      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/ecc/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Hybrid-Crypto</title>
-      <link>http://localhost:32781/tags/hybrid-crypto/</link>
-      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/hybrid-crypto/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Rsa</title>
-      <link>http://localhost:32781/tags/rsa/</link>
-      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/rsa/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Weak-Primes</title>
-      <link>http://localhost:32781/tags/weak-primes/</link>
-      <pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/weak-primes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Lattice-Reduction</title>
-      <link>http://localhost:32781/tags/lattice-reduction/</link>
-      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/lattice-reduction/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Prime-Factorization</title>
-      <link>http://localhost:32781/tags/prime-factorization/</link>
-      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/prime-factorization/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Xor-Leak</title>
-      <link>http://localhost:32781/tags/xor-leak/</link>
-      <pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/xor-leak/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Aes-Gcm</title>
-      <link>http://localhost:32781/tags/aes-gcm/</link>
-      <pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/aes-gcm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Blackhat-Finals</title>
-      <link>http://localhost:32781/tags/blackhat-finals/</link>
-      <pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/blackhat-finals/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Oracle</title>
-      <link>http://localhost:32781/tags/oracle/</link>
-      <pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/oracle/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Polynomial</title>
-      <link>http://localhost:32781/tags/polynomial/</link>
-      <pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:32781/tags/polynomial/</guid>
-      <description></description>
-    </item>
-  </channel>
+	<channel>
+		<title>Tags on Koyphshi</title>
+		<link>https://lanaceryasser.github.io/tags/</link>
+		<description>Recent content in Tags on Koyphshi</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Wed, 24 Dec 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://lanaceryasser.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Assembly</title>
+				<link>https://lanaceryasser.github.io/tags/assembly/</link>
+				<pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/assembly/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Blockchain</title>
+				<link>https://lanaceryasser.github.io/tags/blockchain/</link>
+				<pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/blockchain/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ecrecover</title>
+				<link>https://lanaceryasser.github.io/tags/ecrecover/</link>
+				<pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/ecrecover/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Evm</title>
+				<link>https://lanaceryasser.github.io/tags/evm/</link>
+				<pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/evm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Solidity</title>
+				<link>https://lanaceryasser.github.io/tags/solidity/</link>
+				<pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/solidity/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Crypto</title>
+				<link>https://lanaceryasser.github.io/tags/crypto/</link>
+				<pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/crypto/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Csidh</title>
+				<link>https://lanaceryasser.github.io/tags/csidh/</link>
+				<pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/csidh/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Isogeny</title>
+				<link>https://lanaceryasser.github.io/tags/isogeny/</link>
+				<pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/isogeny/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Weil-Pairing</title>
+				<link>https://lanaceryasser.github.io/tags/weil-pairing/</link>
+				<pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/weil-pairing/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Coppersmith</title>
+				<link>https://lanaceryasser.github.io/tags/coppersmith/</link>
+				<pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/coppersmith/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Ecc</title>
+				<link>https://lanaceryasser.github.io/tags/ecc/</link>
+				<pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/ecc/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Hybrid-Crypto</title>
+				<link>https://lanaceryasser.github.io/tags/hybrid-crypto/</link>
+				<pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/hybrid-crypto/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Rsa</title>
+				<link>https://lanaceryasser.github.io/tags/rsa/</link>
+				<pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/rsa/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Weak-Primes</title>
+				<link>https://lanaceryasser.github.io/tags/weak-primes/</link>
+				<pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/weak-primes/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Lattice-Reduction</title>
+				<link>https://lanaceryasser.github.io/tags/lattice-reduction/</link>
+				<pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/lattice-reduction/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Prime-Factorization</title>
+				<link>https://lanaceryasser.github.io/tags/prime-factorization/</link>
+				<pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/prime-factorization/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Xor-Leak</title>
+				<link>https://lanaceryasser.github.io/tags/xor-leak/</link>
+				<pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/xor-leak/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Aes-Gcm</title>
+				<link>https://lanaceryasser.github.io/tags/aes-gcm/</link>
+				<pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/aes-gcm/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Blackhat-Finals</title>
+				<link>https://lanaceryasser.github.io/tags/blackhat-finals/</link>
+				<pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/blackhat-finals/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Oracle</title>
+				<link>https://lanaceryasser.github.io/tags/oracle/</link>
+				<pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/oracle/</guid>
+				<description></description>
+			</item>
+			<item>
+				<title>Polynomial</title>
+				<link>https://lanaceryasser.github.io/tags/polynomial/</link>
+				<pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/tags/polynomial/</guid>
+				<description></description>
+			</item>
+	</channel>
 </rss>

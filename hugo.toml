@@ -1,19 +1,13 @@
 baseURL = "https://lanaceryasser.github.io/"
 title = "Koyphshi"
-languageCode = "en"
+locale = "en"
 defaultContentLanguage = "en"
 theme = "FeelIt"
 
-# Enable GitInfo for last modified dates
 enableGitInfo = false
-
-# Enable emoji support
 enableEmoji = true
-
-# Enable robots.txt generation
 enableRobotsTXT = true
 
-# Pagination configuration
 [pagination]
   pagerSize = 6
 
@@ -26,31 +20,22 @@ enableRobotsTXT = true
   version = "1.0.X"
   description = "Koyphshi - My Personal Blog"
   keywords = ["blog", "tech", "programming", "development"]
-  defaultTheme = "dark"  # auto, light, dark
+  defaultTheme = "dark"
   avatar = "peak.jpeg"
-  
-  # Fingerprint for cache busting
   fingerprint = ""
-  
-  # Date format
   dateFormat = "2006-01-02"
-  
-  # Website images for Open Graph and Twitter Cards
   images = ["/images/avatar.jpeg"]
-  
-  # Header configuration
+
   [params.header]
     desktopMode = "sticky"
     mobileMode = "auto"
-    
     [params.header.title]
       logo = ""
       name = "Koyphshi"
       pre = ""
       post = ""
       typeit = false
-  
-  # Footer configuration
+
   [params.footer]
     enable = true
     custom = ""
@@ -58,12 +43,9 @@ enableRobotsTXT = true
     copyright = true
     author = true
     since = 2024
-    
-  # Home page configuration
+
   [params.home]
-    # RSS
     rss = 10
-    
     [params.home.profile]
       enable = true
       avatarURL = "/avatar/peak.jpeg"
@@ -72,21 +54,18 @@ enableRobotsTXT = true
       typeit = true
       social = true
       disclaimer = ""
-      
     [params.home.posts]
       enable = true
       paginate = 6
       defaultHiddenFromHomePage = false
-  
-  # Social configuration
+
   [params.social]
-    GitHub = "LanacerYasser"
+    GitHub = "koyphshii"
     LinkedIn = "yasser-lanacer-1903442a8"
     Twitter = ""
     Email = ""
     RSS = true
-  
-  # Page configuration
+
   [params.page]
     hiddenFromHomePage = false
     hiddenFromSearch = false
@@ -97,12 +76,10 @@ enableRobotsTXT = true
     fontawesome = true
     linkToMarkdown = true
     rssFullText = false
-    
     [params.page.toc]
       enable = true
       keepStatic = false
       auto = true
-    
     [params.page.math]
       enable = true
       blockLeftDelimiter = ""
@@ -111,115 +88,91 @@ enableRobotsTXT = true
       inlineRightDelimiter = ""
       copyTex = true
       mhchem = true
-    
     [params.page.code]
       copy = true
       maxShownLines = 20
-    
     [params.page.share]
       enable = true
       Facebook = true
       Linkedin = true
-    
     [params.page.comment]
       enable = false
-      # Disqus, Gitalk, Valine, etc. can be configured here
-  
-  # SEO configuration
+    [params.page.library]
+      [params.page.library.css]
+        custom = "/css/custom.css"
+
   [params.seo]
     image = "/images/avatar.jpeg"
     thumbnailUrl = "/images/avatar.jpeg"
-  
-  # Analytics (optional)
+
   [params.analytics]
     enable = false
     [params.analytics.google]
       id = ""
-  
-  # Search configuration
+
   [params.search]
     enable = true
-    type = "lunr"  # algolia, fuse, lunr
+    type = "lunr"
     contentLength = 4000
     placeholder = ""
     maxResultLength = 10
     snippetLength = 30
     highlightTag = "em"
     absoluteURL = false
-    
     [params.search.algolia]
       index = ""
       appID = ""
       searchKey = ""
-  
-  # Custom CSS/JS
-  [params.page.library]
-    [params.page.library.css]
-      # Load custom CSS - place your custom.css in static/css/
-      custom = "/css/custom.css"
-    [params.page.library.js]
-      # Load custom JS if needed
-      # custom = "/js/custom.js"
 
-# Menu configuration
+  # Fix for .Site.Author error — theme reads author from here
+  [params.author]
+    name = "Koyphshi"
+    email = ""
+    link = ""
+
 [menu]
   [[menu.main]]
     identifier = "posts"
     name = "Posts"
     url = "/posts/"
     weight = 1
-    
   [[menu.main]]
     identifier = "categories"
     name = "Categories"
     url = "/categories/"
     weight = 2
-    
   [[menu.main]]
     identifier = "tags"
     name = "Tags"
     url = "/tags/"
     weight = 3
 
-# Markup configuration
 [markup]
   [markup.highlight]
     noClasses = false
     lineNos = true
     lineNumbersInTable = true
     style = "monokai"
-    
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-      
   [markup.tableOfContents]
     startLevel = 2
     endLevel = 6
 
-# Params Author configuration (replaces deprecated [author])
-[params.author]
-  name = "Koyphshi"
-  email = ""
-  link = ""
-
-# Sitemap configuration
 [sitemap]
   changefreq = "weekly"
   filename = "sitemap.xml"
   priority = 0.5
 
-# Permalinks configuration
 [Permalinks]
-  posts = "/posts/:filename/"
+  posts = "/posts/:contentbasename/"
 
-# Privacy configuration
 [privacy]
-  [privacy.twitter]
+  [privacy.x]
     enableDNT = true
   [privacy.youtube]
     privacyEnhanced = true
 
-# Output formats
 [outputs]
   home = ["HTML", "RSS", "JSON"]

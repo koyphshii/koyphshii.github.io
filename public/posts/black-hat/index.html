@@ -1,813 +1,491 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>TDS - Koyphshi</title><meta name="description" content="Koyphshi - My Personal Blog"><meta property="og:url" content="https://lanaceryasser.github.io/posts/black-hat/">
-	<meta property="og:site_name" content="Koyphshi">
-	<meta property="og:title" content="TDS">
-	<meta property="og:description" content="Koyphshi - My Personal Blog">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="posts">
-		<meta property="article:published_time" content="2025-01-16T00:00:00+00:00">
-		<meta property="article:modified_time" content="2025-01-16T00:00:00+00:00">
-		<meta property="article:tag" content="Blackhat-Finals">
-		<meta property="article:tag" content="Crypto">
-		<meta property="article:tag" content="Aes-Gcm">
-		<meta property="article:tag" content="Polynomial">
-		<meta property="article:tag" content="Oracle">
-		<meta property="og:image" content="https://lanaceryasser.github.io/posts/black-hat/featured-image-preview.webp">
-
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="https://lanaceryasser.github.io/posts/black-hat/featured-image-preview.webp">
-	<meta name="twitter:title" content="TDS">
-	<meta name="twitter:description" content="Koyphshi - My Personal Blog">
-<meta name="application-name" content="Koyphshi">
-<meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lanaceryasser.github.io/posts/black-hat/" /><link rel="next" href="https://lanaceryasser.github.io/posts/umass/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "headline": "TDS",
-        "inLanguage": "en",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https:\/\/lanaceryasser.github.io\/posts\/black-hat\/"
-        },"image": ["https:\/\/lanaceryasser.github.io\/images\/avatar.jpeg"],"genre": "posts","keywords": "blackhat-finals, crypto, aes-gcm, polynomial, oracle","wordcount":  2141 ,
-        "url": "https:\/\/lanaceryasser.github.io\/posts\/black-hat\/","datePublished": "2025-01-16T00:00:00+00:00","dateModified": "2025-01-16T00:00:00+00:00","publisher": {
-            "@type": "Organization",
-            "name": "Koyphshi"},"author": {
-                "@type": "Person",
-                "name": "Koyphshi"
-            },"description": ""
-    }
-    </script></head><body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="Koyphshi">Koyphshi</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/">
-                            Posts
-                        </a><a class="menu-item" href="/categories/">
-                            Categories
-                        </a><a class="menu-item" href="/tags/">
-                            Tags
-                        </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fa-solid fa-search fa-fw"></i>
-                        </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fa-solid fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fa-solid fa-adjust fa-fw"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="Koyphshi">Koyphshi</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fa-solid fa-search fa-fw"></i>
-                        </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fa-solid fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
-                        Cancel
-                    </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/tags/" title="">Tags</a><div class="menu-item"><a href="#" onclick="return false;" class="theme-switch" title="Switch Theme">
-                    <i class="fa-solid fa-adjust fa-fw"></i>
-                </a>
-            </div></div>
-    </div>
-</header><div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-                <div class="container"><div class="toc" id="toc-auto">
-            <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single" data-toc="enable"><div class="single-card" ><h2 class="single-title animated flipInX">TDS</h2><div class="post-meta">
-                <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><img
-        class="lazyload avatar"
-        src="/svg/loading.min.svg"
-        data-src="/avatar/peak.jpeg"
-        data-srcset="/avatar/peak.jpeg, /avatar/peak.jpeg 1.5x, /avatar/peak.jpeg 2x"
-        data-sizes="auto"
-        alt="/avatar/peak.jpeg"
-        title="/avatar/peak.jpeg" /><span class="post-author-name">Koyphshi&nbsp;</span>
-                            </a></span><span class="post-category">published in <a href="/categories/cryptography/"><i class="fa-regular fa-folder fa-fw"></i>Cryptography</a></span></div>
-                <div class="post-meta-line"><span><i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2025-01-16">2025-01-16</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;2141 words</span>&nbsp;
-                    <span><i class="fa-regular fa-clock fa-fw"></i>&nbsp;11 minutes</span>&nbsp;</div>
-            </div>
-            
-            <hr><div class="details toc" id="toc-static"  data-kept="">
-                    <div class="details-summary toc-title">
-                        <span>Contents</span>
-                        <span><i class="details-icon fa-solid fa-angle-right"></i></span>
-                    </div>
-                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
-  <ul>
-    <li><a href="#tldr">TL;DR</a></li>
-    <li><a href="#challenge-overview">Challenge Overview</a></li>
-    <li><a href="#understanding-gcm-authentication">Understanding GCM Authentication</a>
-      <ul>
-        <li><a href="#ghash-polynomial">GHASH Polynomial</a></li>
-      </ul>
-    </li>
-    <li><a href="#exploitation-strategy">Exploitation Strategy</a>
-      <ul>
-        <li><a href="#phase-1-recover-the-mask">Phase 1: Recover the Mask</a></li>
-        <li><a href="#phase-2-recover-authentication-key-h">Phase 2: Recover Authentication Key H</a></li>
-        <li><a href="#phase-3-keystream-recovery-via-oracle">Phase 3: Keystream Recovery via Oracle</a></li>
-      </ul>
-    </li>
-    <li><a href="#full-solution-script">Full Solution Script</a></li>
-    <li><a href="#attack-timeline">Attack Timeline</a></li>
-    <li><a href="#behind-the-math">Behind the Math</a>
-      <ul>
-        <li><a href="#why-gcm-authentication-is-vulnerable">Why GCM Authentication is Vulnerable</a></li>
-        <li><a href="#oracle-abuse-technique">Oracle Abuse Technique</a></li>
-        <li><a href="#gf2128-arithmetic">GF(2^128) Arithmetic</a></li>
-      </ul>
-    </li>
-    <li><a href="#mitigations">Mitigations</a></li>
-    <li><a href="#key-takeaways">Key Takeaways</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
-</nav></div>
-                </div><div class="content" id="content"><div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><ul>
-<li><strong>CTF</strong>: blackhat-finals</li>
-<li><strong>Challenge</strong>: TDS</li>
-<li><strong>Category</strong>: Crypto</li>
-<li><strong>Description</strong>: AES-GCM implementation with oracle access</li>
-</ul>
-</div>
-        </div>
-    </div>
-<h2 id="tldr">TL;DR</h2>
-<p>This challenge exploits weaknesses in AES-GCM authentication when given:</p>
-<ol>
-<li>A flag ciphertext and its authentication tag</li>
-<li>Two encryption oracle calls with the same key/nonce</li>
-<li>Unlimited verification oracle with controllable AAD and ciphertext length</li>
-</ol>
-<p>The solution:</p>
-<ol>
-<li>Recovers the GCM mask by encrypting an empty string</li>
-<li>Recovers the authentication key H by solving a polynomial equation</li>
-<li>Brute-forces the keystream byte-by-byte using the verification oracle</li>
-<li>XORs the recovered keystream with the flag ciphertext</li>
-</ol>
-<hr>
-<h2 id="challenge-overview">Challenge Overview</h2>
-<p>The server implements AES-GCM encryption and provides several operations:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">flag_ciphertext</span><span class="p">,</span> <span class="n">flag_tag</span> <span class="o">=</span> <span class="n">encrypt</span><span class="p">(</span><span class="n">FLAG</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">nonce</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">user_plaintext</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;your_text1:&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">ciphertext</span><span class="p">,</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">encrypt</span><span class="p">(</span><span class="n">user_plaintext</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">key</span><span class="p">,</span> <span class="n">nonce</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">user_plaintext</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&#34;your_text2:&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">ciphertext</span><span class="p">,</span> <span class="n">tag</span> <span class="o">=</span> <span class="n">encrypt</span><span class="p">(</span><span class="n">user_plaintext</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">key</span><span class="p">,</span> <span class="n">nonce</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">length</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;length:&#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="n">aad</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&#34;aad: &#34;</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="n">query</span><span class="p">(</span><span class="n">ciphertext</span><span class="p">[:</span><span class="n">length</span><span class="p">],</span> <span class="n">aad</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">tag</span><span class="p">,</span> <span class="n">nonce</span><span class="p">))</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="details admonition warning open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-exclamation-triangle fa-fw"></i>The Vulnerability<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>The critical flaws:</p>
-<ol>
-<li><strong>Nonce reuse</strong>: Same nonce used for all encryptions</li>
-<li><strong>Verification oracle</strong>: We can verify arbitrary (AAD, ciphertext_prefix, tag) tuples</li>
-<li><strong>Controllable AAD</strong>: The oracle lets us control additional authenticated data</li>
-</ol>
-<p>This breaks the security model of AES-GCM completely!</p>
-</div>
-        </div>
-    </div>
-<hr>
-<h2 id="understanding-gcm-authentication">Understanding GCM Authentication</h2>
-<div class="details admonition note open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-pencil-alt fa-fw"></i>GCM Authentication Mechanism<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>AES-GCM authentication is based on <strong>GHASH</strong>, a polynomial hash over GF(2^128). Understanding this is crucial to solving the challenge.</p>
-<p>For a comprehensive explanation, see: <a href="https://frereit.de/aes_gcm/" target="_blank" rel="noopener noreffer"><strong>AES-GCM Deep Dive</strong></a></p>
-<p>This resource provides all the mathematical details needed to understand the attack.</p>
-</div>
-        </div>
-    </div>
-<h3 id="ghash-polynomial">GHASH Polynomial</h3>
-<p>The authentication tag in GCM is computed as:</p>
-<p>$$\text{tag} = \text{GHASH}(H, A, C) \oplus E_K(N \mathbin\Vert 0^{31} \mathbin\Vert 1)$$</p>
-<p>Where:</p>
-<ul>
-<li>$H = E_K(0^{128})$ is the authentication key</li>
-<li>$A$ is the additional authenticated data (AAD)</li>
-<li>$C$ is the ciphertext</li>
-<li>$E_K(N \mathbin\Vert 0^{31} \mathbin\Vert 1)$ is the mask (keystream at counter 0)</li>
-</ul>
-<p>The GHASH function computes:</p>
-<p>$$\text{GHASH}(H, A, C) = \sum_{i=1}^{m} A_i \cdot H^{m+n+1-i+1} + \sum_{j=1}^{n} C_j \cdot H^{n+1-j+1} + L \cdot H$$</p>
-<p>Where:</p>
-<ul>
-<li>$A_i$ are 128-bit blocks of AAD</li>
-<li>$C_j$ are 128-bit blocks of ciphertext</li>
-<li>$L = (\text{len}(A) \mathbin\Vert \text{len}(C))$ is the length block</li>
-<li>All operations are in $\text{GF}(2^{128})$</li>
-</ul>
-<p><strong>Key insight</strong>: If we know the tag and all blocks except H, we can solve for H as a polynomial root!</p>
-<hr>
-<h2 id="exploitation-strategy">Exploitation Strategy</h2>
-<h3 id="phase-1-recover-the-mask">Phase 1: Recover the Mask</h3>
-<p>The mask is $E_K(N \mathbin\Vert 0^{31} \mathbin\Vert 1)$. When we encrypt an empty string with no AAD:</p>
-<p>$$\text{tag}_\emptyset = \text{GHASH}(H, \emptyset, \emptyset) \oplus \text{mask} = (0 \oplus 0 \oplus L \cdot H) \oplus \text{mask}$$</p>
-<p>But since both AAD and ciphertext are empty, $L = 0$, so:</p>
-<p>$$\text{tag}_\emptyset = 0 \oplus \text{mask} = \text{mask}$$</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;your_text1:&#34;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;tag1: &#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">mask</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><h3 id="phase-2-recover-authentication-key-h">Phase 2: Recover Authentication Key H</h3>
-<p>Now we have:</p>
-<ul>
-<li>Flag ciphertext blocks: $C_1, C_2, \ldots, C_n$</li>
-<li>Flag tag: $\text{tag}_{\text{flag}}$</li>
-<li>Mask value</li>
-</ul>
-<p>We can compute:</p>
-<p>$$\text{GHASH}<em>{\text{flag}} = \text{tag}</em>{\text{flag}} \oplus \text{mask}$$</p>
-<p>The GHASH equation becomes:</p>
-<p>$$\text{GHASH}_{\text{flag}} = C_1 \cdot H^{n+1} + C_2 \cdot H^n + \cdots + C_n \cdot H^2 + L \cdot H$$</p>
-<p>This is a <strong>polynomial equation in H</strong> over $\text{GF}(2^{128})$:</p>
-<p>$$C_1 \cdot H^{n+1} + C_2 \cdot H^n + \cdots + C_n \cdot H^2 + L \cdot H - \text{GHASH}_{\text{flag}} = 0$$</p>
-<p>We solve this using SageMath&rsquo;s polynomial root finding:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">recover_h</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">target_val</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s2">    Solve: coeffs[0]*H^n + coeffs[1]*H^(n-1) + ... + coeffs[n-1]*H - target_val = 0
-</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">F</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">irr_poly</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">128</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">7</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    <span class="n">GFghash</span><span class="o">.&lt;</span><span class="n">y</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="mi">128</span><span class="p">,</span> <span class="n">modulus</span><span class="o">=</span><span class="n">irr_poly</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">poly_terms</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coeffs</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">power</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span>
-</span></span><span class="line"><span class="cl">        <span class="n">poly_terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">to_field</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="o">^</span><span class="n">power</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">poly</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">poly_terms</span><span class="p">)</span> <span class="o">-</span> <span class="n">to_field</span><span class="p">(</span><span class="n">target_val</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">roots</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">roots</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">from_field</span><span class="p">(</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">target_val</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">flag_tag</span><span class="p">)</span> <span class="o">^</span> <span class="n">mask</span>
-</span></span><span class="line"><span class="cl"><span class="n">pad_len</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span>
-</span></span><span class="line"><span class="cl"><span class="n">ct_padded</span> <span class="o">=</span> <span class="n">flag_ct</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="n">pad_len</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">coeffs</span> <span class="o">=</span> <span class="p">[</span><span class="n">bytes_to_long</span><span class="p">(</span><span class="n">ct_padded</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">16</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ct_padded</span><span class="p">),</span> <span class="mi">16</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl"><span class="n">coeffs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="mi">64</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">H</span> <span class="o">=</span> <span class="n">recover_h</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">target_val</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] Recovered H: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">H</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><div class="details admonition tip open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-lightbulb fa-fw"></i>Why This Works<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content">The polynomial has degree at most $n+1$ (number of ciphertext blocks + 1). Since we know all coefficients and the target value, there&rsquo;s typically only one valid root in $\text{GF}(2^{128})$ that corresponds to the actual H value.</div>
-        </div>
-    </div>
-<h3 id="phase-3-keystream-recovery-via-oracle">Phase 3: Keystream Recovery via Oracle</h3>
-<p>With H recovered, we can now abuse the verification oracle. The key observation:</p>
-<p><strong>For any partial ciphertext and AAD, we can compute the required AAD value that makes verification succeed!</strong></p>
-<p>Strategy: Encrypt $\texttt{0x00} \times \text{len(flag)}$ to get a reference tag, then brute-force the keystream byte-by-byte.</p>
-<p>First, get a reference tag:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;your_text2:&#34;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;</span><span class="se">\x00</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl"><span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;tag2: &#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="n">tag2</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="n">keystream</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="n">target_tag</span> <span class="o">=</span> <span class="n">tag2</span> <span class="o">^</span> <span class="n">mask</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>For each byte position $i$:</p>
-<ol>
-<li><strong>Guess the keystream byte</strong> (0-255)</li>
-<li><strong>Calculate partial GHASH</strong> of guessed ciphertext + length block</li>
-<li><strong>Solve for required AAD</strong> that makes the tag verify</li>
-<li><strong>Query oracle</strong> with this AAD</li>
-</ol>
-<p>The math for step 3:</p>
-<p>$$\text{GHASH}(H, A, C) = A \cdot H^{n+2} + C_1 \cdot H^{n+1} + \cdots + C_n \cdot H^2 + L \cdot H$$</p>
-<p>Rearranging to solve for $A$:</p>
-<p>$$A = \frac{\text{target} \oplus (C_1 \cdot H^{n+1} + \cdots + L \cdot H)}{H^{n+2}}$$</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">curr_len</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    <span class="n">n_blocks</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_len</span> <span class="o">+</span> <span class="mi">15</span><span class="p">)</span> <span class="o">//</span> <span class="mi">16</span>
-</span></span><span class="line"><span class="cl">    <span class="n">len_bits_val</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span> <span class="o">&lt;&lt;</span> <span class="mi">64</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">curr_len</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">h_inv</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">gcm</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">n_blocks</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">guess_ks</span> <span class="o">=</span> <span class="n">keystream</span> <span class="o">+</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">b</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">c_padded</span> <span class="o">=</span> <span class="n">guess_ks</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="p">((</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">guess_ks</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">c_padded</span><span class="p">),</span> <span class="mi">16</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">            <span class="n">blk</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">c_padded</span><span class="p">[</span><span class="n">k</span><span class="p">:</span><span class="n">k</span><span class="o">+</span><span class="mi">16</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">            <span class="n">y</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span> <span class="o">^</span> <span class="n">blk</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">y</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span> <span class="o">^</span> <span class="n">len_bits_val</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1"># Calculate required AAD: A = (target ⊕ y) * H^(-(n_blocks+2))</span>
-</span></span><span class="line"><span class="cl">        <span class="n">aad_val</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">target_tag</span> <span class="o">^</span> <span class="n">y</span><span class="p">,</span> <span class="n">h_inv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">aad_bytes</span> <span class="o">=</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">aad_val</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">curr_len</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">        <span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">aad_bytes</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="sa">b</span><span class="s2">&#34;True&#34;</span> <span class="ow">in</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">            <span class="n">keystream</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">b</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\r</span><span class="s2">[+] Progress: </span><span class="si">{</span><span class="n">keystream</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="k">break</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>Finally, decrypt the flag:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="n">flag</span> <span class="o">=</span> <span class="n">strxor</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">,</span> <span class="n">keystream</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[+] FLAG: </span><span class="si">{</span><span class="n">flag</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<h2 id="full-solution-script">Full Solution Script</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">  1
-</span><span class="lnt">  2
-</span><span class="lnt">  3
-</span><span class="lnt">  4
-</span><span class="lnt">  5
-</span><span class="lnt">  6
-</span><span class="lnt">  7
-</span><span class="lnt">  8
-</span><span class="lnt">  9
-</span><span class="lnt"> 10
-</span><span class="lnt"> 11
-</span><span class="lnt"> 12
-</span><span class="lnt"> 13
-</span><span class="lnt"> 14
-</span><span class="lnt"> 15
-</span><span class="lnt"> 16
-</span><span class="lnt"> 17
-</span><span class="lnt"> 18
-</span><span class="lnt"> 19
-</span><span class="lnt"> 20
-</span><span class="lnt"> 21
-</span><span class="lnt"> 22
-</span><span class="lnt"> 23
-</span><span class="lnt"> 24
-</span><span class="lnt"> 25
-</span><span class="lnt"> 26
-</span><span class="lnt"> 27
-</span><span class="lnt"> 28
-</span><span class="lnt"> 29
-</span><span class="lnt"> 30
-</span><span class="lnt"> 31
-</span><span class="lnt"> 32
-</span><span class="lnt"> 33
-</span><span class="lnt"> 34
-</span><span class="lnt"> 35
-</span><span class="lnt"> 36
-</span><span class="lnt"> 37
-</span><span class="lnt"> 38
-</span><span class="lnt"> 39
-</span><span class="lnt"> 40
-</span><span class="lnt"> 41
-</span><span class="lnt"> 42
-</span><span class="lnt"> 43
-</span><span class="lnt"> 44
-</span><span class="lnt"> 45
-</span><span class="lnt"> 46
-</span><span class="lnt"> 47
-</span><span class="lnt"> 48
-</span><span class="lnt"> 49
-</span><span class="lnt"> 50
-</span><span class="lnt"> 51
-</span><span class="lnt"> 52
-</span><span class="lnt"> 53
-</span><span class="lnt"> 54
-</span><span class="lnt"> 55
-</span><span class="lnt"> 56
-</span><span class="lnt"> 57
-</span><span class="lnt"> 58
-</span><span class="lnt"> 59
-</span><span class="lnt"> 60
-</span><span class="lnt"> 61
-</span><span class="lnt"> 62
-</span><span class="lnt"> 63
-</span><span class="lnt"> 64
-</span><span class="lnt"> 65
-</span><span class="lnt"> 66
-</span><span class="lnt"> 67
-</span><span class="lnt"> 68
-</span><span class="lnt"> 69
-</span><span class="lnt"> 70
-</span><span class="lnt"> 71
-</span><span class="lnt"> 72
-</span><span class="lnt"> 73
-</span><span class="lnt"> 74
-</span><span class="lnt"> 75
-</span><span class="lnt"> 76
-</span><span class="lnt"> 77
-</span><span class="lnt"> 78
-</span><span class="lnt"> 79
-</span><span class="lnt"> 80
-</span><span class="lnt"> 81
-</span><span class="lnt"> 82
-</span><span class="lnt"> 83
-</span><span class="lnt"> 84
-</span><span class="lnt"> 85
-</span><span class="lnt"> 86
-</span><span class="lnt"> 87
-</span><span class="lnt"> 88
-</span><span class="lnt"> 89
-</span><span class="lnt"> 90
-</span><span class="lnt"> 91
-</span><span class="lnt"> 92
-</span><span class="lnt"> 93
-</span><span class="lnt"> 94
-</span><span class="lnt"> 95
-</span><span class="lnt"> 96
-</span><span class="lnt"> 97
-</span><span class="lnt"> 98
-</span><span class="lnt"> 99
-</span><span class="lnt">100
-</span><span class="lnt">101
-</span><span class="lnt">102
-</span><span class="lnt">103
-</span><span class="lnt">104
-</span><span class="lnt">105
-</span><span class="lnt">106
-</span><span class="lnt">107
-</span><span class="lnt">108
-</span><span class="lnt">109
-</span><span class="lnt">110
-</span><span class="lnt">111
-</span><span class="lnt">112
-</span><span class="lnt">113
-</span><span class="lnt">114
-</span><span class="lnt">115
-</span><span class="lnt">116
-</span><span class="lnt">117
-</span><span class="lnt">118
-</span><span class="lnt">119
-</span><span class="lnt">120
-</span><span class="lnt">121
-</span><span class="lnt">122
-</span><span class="lnt">123
-</span><span class="lnt">124
-</span><span class="lnt">125
-</span><span class="lnt">126
-</span><span class="lnt">127
-</span><span class="lnt">128
-</span><span class="lnt">129
-</span><span class="lnt">130
-</span><span class="lnt">131
-</span><span class="lnt">132
-</span><span class="lnt">133
-</span><span class="lnt">134
-</span><span class="lnt">135
-</span><span class="lnt">136
-</span><span class="lnt">137
-</span><span class="lnt">138
-</span><span class="lnt">139
-</span><span class="lnt">140
-</span><span class="lnt">141
-</span><span class="lnt">142
-</span><span class="lnt">143
-</span><span class="lnt">144
-</span><span class="lnt">145
-</span><span class="lnt">146
-</span><span class="lnt">147
-</span><span class="lnt">148
-</span><span class="lnt">149
-</span><span class="lnt">150
-</span><span class="lnt">151
-</span><span class="lnt">152
-</span><span class="lnt">153
-</span><span class="lnt">154
-</span><span class="lnt">155
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">Crypto.Util.strxor</span> <span class="kn">import</span> <span class="n">strxor</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">base64</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">sys</span>
-</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">sage.all</span> <span class="kn">import</span> <span class="o">*</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">GCMHelper</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;Helper for GF(2^128) operations used in GCM&#34;&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">F</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">irr</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">128</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">7</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">        <span class="bp">self</span><span class="o">.</span><span class="n">GFghash</span><span class="o">.&lt;</span><span class="n">y</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="mi">128</span><span class="p">,</span> <span class="n">modulus</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">irr</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">to_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">bits</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">val</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">coeffs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">GFghash</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">from_field</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">elem</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">coeffs</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">polynomial</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coeffs</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_field</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_field</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_field</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">pow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base</span><span class="p">,</span> <span class="n">exp</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_field</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_field</span><span class="p">(</span><span class="n">base</span><span class="p">)</span> <span class="o">^</span> <span class="n">exp</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">inv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_field</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">to_field</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">to_field</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">F</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">irr_poly</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">128</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">7</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    <span class="n">GFghash</span><span class="o">.&lt;</span><span class="n">y</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="mi">128</span><span class="p">,</span> <span class="n">modulus</span><span class="o">=</span><span class="n">irr_poly</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">bits</span> <span class="o">=</span> <span class="nb">bin</span><span class="p">(</span><span class="n">val</span><span class="p">)[</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">zfill</span><span class="p">(</span><span class="mi">128</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">coeffs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">bits</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">GFghash</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">from_field</span><span class="p">(</span><span class="n">elem</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="n">coeffs</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="n">polynomial</span><span class="p">()</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coeffs</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">recover_h</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">target_val</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;
-</span></span></span><span class="line"><span class="cl"><span class="s2">    Solve polynomial: coeffs[0]*H^n + ... + coeffs[-1]*H - target_val = 0
-</span></span></span><span class="line"><span class="cl"><span class="s2">    over GF(2^128) to recover authentication key H
-</span></span></span><span class="line"><span class="cl"><span class="s2">    &#34;&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">F</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">P</span><span class="o">.&lt;</span><span class="n">x</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">PolynomialRing</span><span class="p">(</span><span class="n">F</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">irr_poly</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">128</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">7</span> <span class="o">+</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">    <span class="n">GFghash</span><span class="o">.&lt;</span><span class="n">y</span><span class="o">&gt;</span> <span class="o">=</span> <span class="n">GF</span><span class="p">(</span><span class="mi">2</span><span class="o">^</span><span class="mi">128</span><span class="p">,</span> <span class="n">modulus</span><span class="o">=</span><span class="n">irr_poly</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">poly_terms</span> <span class="o">=</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">coeffs</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">power</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">coeffs</span><span class="p">)</span> <span class="o">-</span> <span class="n">i</span>
-</span></span><span class="line"><span class="cl">        <span class="n">poly_terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">to_field</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">*</span> <span class="n">y</span><span class="o">^</span><span class="n">power</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">poly</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">poly_terms</span><span class="p">)</span> <span class="o">-</span> <span class="n">to_field</span><span class="p">(</span><span class="n">target_val</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">roots</span> <span class="o">=</span> <span class="n">poly</span><span class="o">.</span><span class="n">roots</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="ow">not</span> <span class="n">roots</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&#34;No roots found!&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">from_field</span><span class="p">(</span><span class="n">roots</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">solve</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;Usage: </span><span class="si">{</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> &lt;HOST&gt; &lt;PORT&gt;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">io</span> <span class="o">=</span> <span class="n">remote</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
-</span></span><span class="line"><span class="cl">    <span class="n">gcm</span> <span class="o">=</span> <span class="n">GCMHelper</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;flag ciphertext: &#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">flag_ct</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">    <span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;flag tag: &#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">flag_tag</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[*] Flag ciphertext length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)</span><span class="si">}</span><span class="s2"> bytes&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;your_text1:&#34;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;tag1: &#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">mask</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] Recovered mask: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">mask</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">target_val</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">flag_tag</span><span class="p">)</span> <span class="o">^</span> <span class="n">mask</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">pad_len</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span>
-</span></span><span class="line"><span class="cl">    <span class="n">ct_padded</span> <span class="o">=</span> <span class="n">flag_ct</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="n">pad_len</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">coeffs</span> <span class="o">=</span> <span class="p">[</span><span class="n">bytes_to_long</span><span class="p">(</span><span class="n">ct_padded</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">16</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ct_padded</span><span class="p">),</span> <span class="mi">16</span><span class="p">)]</span>
-</span></span><span class="line"><span class="cl">    <span class="n">coeffs</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="mi">64</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)</span> <span class="o">*</span> <span class="mi">8</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">H</span> <span class="o">=</span> <span class="n">recover_h</span><span class="p">(</span><span class="n">coeffs</span><span class="p">,</span> <span class="n">target_val</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] Recovered H: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">H</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">io</span><span class="o">.</span><span class="n">sendlineafter</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;your_text2:&#34;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&#34;</span><span class="se">\x00</span><span class="s2">&#34;</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="n">io</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&#34;tag2: &#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="n">tag2</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">keystream</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&#34;&#34;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">target_tag</span> <span class="o">=</span> <span class="n">tag2</span> <span class="o">^</span> <span class="n">mask</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;[*] Brute-forcing keystream byte-by-byte...&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)):</span>
-</span></span><span class="line"><span class="cl">        <span class="n">curr_len</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
-</span></span><span class="line"><span class="cl">        <span class="n">n_blocks</span> <span class="o">=</span> <span class="p">(</span><span class="n">curr_len</span> <span class="o">+</span> <span class="mi">15</span><span class="p">)</span> <span class="o">//</span> <span class="mi">16</span>
-</span></span><span class="line"><span class="cl">        <span class="n">len_bits_val</span> <span class="o">=</span> <span class="p">(</span><span class="mi">128</span> <span class="o">&lt;&lt;</span> <span class="mi">64</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">curr_len</span> <span class="o">*</span> <span class="mi">8</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">h_inv</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">gcm</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">n_blocks</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="n">found</span> <span class="o">=</span> <span class="kc">False</span>
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">256</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">            <span class="n">guess_ks</span> <span class="o">=</span> <span class="n">keystream</span> <span class="o">+</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">b</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="n">c_padded</span> <span class="o">=</span> <span class="n">guess_ks</span> <span class="o">+</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span> <span class="o">*</span> <span class="p">((</span><span class="mi">16</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">guess_ks</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">)</span> <span class="o">%</span> <span class="mi">16</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
-</span></span><span class="line"><span class="cl">            <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">c_padded</span><span class="p">),</span> <span class="mi">16</span><span class="p">):</span>
-</span></span><span class="line"><span class="cl">                <span class="n">blk</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">c_padded</span><span class="p">[</span><span class="n">k</span><span class="p">:</span><span class="n">k</span><span class="o">+</span><span class="mi">16</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">                <span class="n">y</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span> <span class="o">^</span> <span class="n">blk</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="n">y</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">y</span> <span class="o">^</span> <span class="n">len_bits_val</span><span class="p">,</span> <span class="n">H</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="n">aad_val</span> <span class="o">=</span> <span class="n">gcm</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">target_tag</span> <span class="o">^</span> <span class="n">y</span><span class="p">,</span> <span class="n">h_inv</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="n">aad_bytes</span> <span class="o">=</span> <span class="n">long_to_bytes</span><span class="p">(</span><span class="n">aad_val</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="sa">b</span><span class="s1">&#39;</span><span class="se">\0</span><span class="s1">&#39;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">curr_len</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
-</span></span><span class="line"><span class="cl">            <span class="n">io</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">aad_bytes</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="sa">b</span><span class="s2">&#34;True&#34;</span> <span class="ow">in</span> <span class="n">io</span><span class="o">.</span><span class="n">recvline</span><span class="p">():</span>
-</span></span><span class="line"><span class="cl">                <span class="n">keystream</span> <span class="o">+=</span> <span class="nb">bytes</span><span class="p">([</span><span class="n">b</span><span class="p">])</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\r</span><span class="s2">[+] Progress: </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">)</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">keystream</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">                <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">                <span class="n">found</span> <span class="o">=</span> <span class="kc">True</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="ow">not</span> <span class="n">found</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">[!] Failed to recover byte at position </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">            <span class="k">return</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">flag</span> <span class="o">=</span> <span class="n">strxor</span><span class="p">(</span><span class="n">flag_ct</span><span class="p">,</span> <span class="n">keystream</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;[+] FLAG: </span><span class="si">{</span><span class="n">flag</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">errors</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="n">io</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
-</span></span><span class="line"><span class="cl">    <span class="n">solve</span><span class="p">()</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><hr>
-<h2 id="attack-timeline">Attack Timeline</h2>
-<pre tabindex="0"><code>┌─────────────────────────┐
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>TDS - Koyphshi</title><meta name=description content="Koyphshi - My Personal Blog"><meta property="og:url" content="https://lanaceryasser.github.io/posts/black-hat/"><meta property="og:site_name" content="Koyphshi"><meta property="og:title" content="TDS"><meta property="og:description" content="Koyphshi - My Personal Blog"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="posts"><meta property="article:published_time" content="2025-01-16T00:00:00+00:00"><meta property="article:modified_time" content="2025-01-16T00:00:00+00:00"><meta property="article:tag" content="Blackhat-Finals"><meta property="article:tag" content="Crypto"><meta property="article:tag" content="Aes-Gcm"><meta property="article:tag" content="Polynomial"><meta property="article:tag" content="Oracle"><meta property="og:image" content="https://lanaceryasser.github.io/posts/black-hat/featured-image-preview.webp"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://lanaceryasser.github.io/posts/black-hat/featured-image-preview.webp"><meta name=twitter:title content="TDS"><meta name=twitter:description content="Koyphshi - My Personal Blog"><meta name=application-name content="Koyphshi"><meta name=apple-mobile-web-app-title content="Koyphshi"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://lanaceryasser.github.io/posts/black-hat/><link rel=next href=https://lanaceryasser.github.io/posts/umass/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"TDS","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/lanaceryasser.github.io\/posts\/black-hat\/"},"image":["https:\/\/lanaceryasser.github.io\/images\/avatar.jpeg"],"genre":"posts","keywords":"blackhat-finals, crypto, aes-gcm, polynomial, oracle","wordcount":2141,"url":"https:\/\/lanaceryasser.github.io\/posts\/black-hat\/","datePublished":"2025-01-16T00:00:00+00:00","dateModified":"2025-01-16T00:00:00+00:00","publisher":{"@type":"Organization","name":"Koyphshi"},"author":{"@type":"Person","name":"Koyphshi"},"description":""}</script></head><body data-header-desktop=sticky data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"dark"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"dark"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts
+</a><a class=menu-item href=/categories/>Categories
+</a><a class=menu-item href=/tags/>Tags
+</a><a class=menu-item href=/posts/ethernaut/>Ethernaut
+</a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=# class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fa-solid fa-search fa-fw"></i>
+</a><a href=# class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+</span></span><a href=# onclick=return!1 class="menu-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=# class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fa-solid fa-search fa-fw"></i>
+</a><a href=# class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/posts/ title>Posts</a><a class=menu-item href=/categories/ title>Categories</a><a class=menu-item href=/tags/ title>Tags</a><a class=menu-item href=/posts/ethernaut/ title>Ethernaut</a><div class=menu-item><a href=# onclick=return!1 class=theme-switch title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single" data-toc=enable><div class=single-card><h2 class="single-title animated flipInX">TDS</h2><div class=post-meta><div class=post-meta-line><span class=post-author><a href=/ title=Author rel=author class=author><img class="lazyload avatar" src=/svg/loading.min.svg data-src=/avatar/peak.jpeg data-srcset="/avatar/peak.jpeg, /avatar/peak.jpeg 1.5x, /avatar/peak.jpeg 2x" data-sizes=auto alt=/avatar/peak.jpeg title=/avatar/peak.jpeg><span class=post-author-name>Koyphshi&nbsp;</span>
+</a></span><span class=post-category>published in <a href=/categories/cryptography/><i class="fa-regular fa-folder fa-fw"></i>Cryptography</a></span></div><div class=post-meta-line><span><i class="fa-regular fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2025-01-16>2025-01-16</time></span>&nbsp;<span><i class="fa-solid fa-pencil-alt fa-fw"></i>&nbsp;2141 words</span>&nbsp;
+<span><i class="fa-regular fa-clock fa-fw"></i>&nbsp;11 minutes</span>&nbsp;</div></div><hr><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fa-solid fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#tldr>TL;DR</a></li><li><a href=#challenge-overview>Challenge Overview</a></li><li><a href=#understanding-gcm-authentication>Understanding GCM Authentication</a><ul><li><a href=#ghash-polynomial>GHASH Polynomial</a></li></ul></li><li><a href=#exploitation-strategy>Exploitation Strategy</a><ul><li><a href=#phase-1-recover-the-mask>Phase 1: Recover the Mask</a></li><li><a href=#phase-2-recover-authentication-key-h>Phase 2: Recover Authentication Key H</a></li><li><a href=#phase-3-keystream-recovery-via-oracle>Phase 3: Keystream Recovery via Oracle</a></li></ul></li><li><a href=#full-solution-script>Full Solution Script</a></li><li><a href=#attack-timeline>Attack Timeline</a></li><li><a href=#behind-the-math>Behind the Math</a><ul><li><a href=#why-gcm-authentication-is-vulnerable>Why GCM Authentication is Vulnerable</a></li><li><a href=#oracle-abuse-technique>Oracle Abuse Technique</a></li><li><a href=#gf2128-arithmetic>GF(2^128) Arithmetic</a></li></ul></li><li><a href=#mitigations>Mitigations</a></li><li><a href=#key-takeaways>Key Takeaways</a></li><li><a href=#references>References</a></li></ul></nav></div></div><div class=content id=content><div class="details admonition info open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><ul><li><strong>CTF</strong>: blackhat-finals</li><li><strong>Challenge</strong>: TDS</li><li><strong>Category</strong>: Crypto</li><li><strong>Description</strong>: AES-GCM implementation with oracle access</li></ul></div></div></div><h2 id=tldr>TL;DR</h2><p>This challenge exploits weaknesses in AES-GCM authentication when given:</p><ol><li>A flag ciphertext and its authentication tag</li><li>Two encryption oracle calls with the same key/nonce</li><li>Unlimited verification oracle with controllable AAD and ciphertext length</li></ol><p>The solution:</p><ol><li>Recovers the GCM mask by encrypting an empty string</li><li>Recovers the authentication key H by solving a polynomial equation</li><li>Brute-forces the keystream byte-by-byte using the verification oracle</li><li>XORs the recovered keystream with the flag ciphertext</li></ol><hr><h2 id=challenge-overview>Challenge Overview</h2><p>The server implements AES-GCM encryption and provides several operations:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>flag_ciphertext</span><span class=p>,</span> <span class=n>flag_tag</span> <span class=o>=</span> <span class=n>encrypt</span><span class=p>(</span><span class=n>FLAG</span><span class=p>,</span> <span class=n>key</span><span class=p>,</span> <span class=n>nonce</span><span class=p>,</span> <span class=sa>b</span><span class=s2>&#34;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>user_plaintext</span> <span class=o>=</span> <span class=nb>input</span><span class=p>(</span><span class=s2>&#34;your_text1:&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>ciphertext</span><span class=p>,</span> <span class=n>tag</span> <span class=o>=</span> <span class=n>encrypt</span><span class=p>(</span><span class=n>user_plaintext</span><span class=o>.</span><span class=n>encode</span><span class=p>(),</span> <span class=n>key</span><span class=p>,</span> <span class=n>nonce</span><span class=p>,</span> <span class=sa>b</span><span class=s2>&#34;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>user_plaintext</span> <span class=o>=</span> <span class=nb>input</span><span class=p>(</span><span class=s2>&#34;your_text2:&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>ciphertext</span><span class=p>,</span> <span class=n>tag</span> <span class=o>=</span> <span class=n>encrypt</span><span class=p>(</span><span class=n>user_plaintext</span><span class=o>.</span><span class=n>encode</span><span class=p>(),</span> <span class=n>key</span><span class=p>,</span> <span class=n>nonce</span><span class=p>,</span> <span class=sa>b</span><span class=s2>&#34;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>while</span> <span class=kc>True</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>length</span> <span class=o>=</span> <span class=nb>int</span><span class=p>(</span><span class=nb>input</span><span class=p>(</span><span class=s2>&#34;length:&#34;</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=n>aad</span> <span class=o>=</span> <span class=n>base64</span><span class=o>.</span><span class=n>b64decode</span><span class=p>(</span><span class=nb>input</span><span class=p>(</span><span class=s2>&#34;aad: &#34;</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=n>query</span><span class=p>(</span><span class=n>ciphertext</span><span class=p>[:</span><span class=n>length</span><span class=p>],</span> <span class=n>aad</span><span class=p>,</span> <span class=n>key</span><span class=p>,</span> <span class=n>tag</span><span class=p>,</span> <span class=n>nonce</span><span class=p>))</span>
+</span></span></code></pre></td></tr></table></div></div><div class="details admonition warning open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-exclamation-triangle fa-fw"></i>The Vulnerability<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><p>The critical flaws:</p><ol><li><strong>Nonce reuse</strong>: Same nonce used for all encryptions</li><li><strong>Verification oracle</strong>: We can verify arbitrary (AAD, ciphertext_prefix, tag) tuples</li><li><strong>Controllable AAD</strong>: The oracle lets us control additional authenticated data</li></ol><p>This breaks the security model of AES-GCM completely!</p></div></div></div><hr><h2 id=understanding-gcm-authentication>Understanding GCM Authentication</h2><div class="details admonition note open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-pencil-alt fa-fw"></i>GCM Authentication Mechanism<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><p>AES-GCM authentication is based on <strong>GHASH</strong>, a polynomial hash over GF(2^128). Understanding this is crucial to solving the challenge.</p><p>For a comprehensive explanation, see: <a href=https://frereit.de/aes_gcm/ target=_blank rel="noopener noreffer"><strong>AES-GCM Deep Dive</strong></a></p><p>This resource provides all the mathematical details needed to understand the attack.</p></div></div></div><h3 id=ghash-polynomial>GHASH Polynomial</h3><p>The authentication tag in GCM is computed as:</p><p>$$\text{tag} = \text{GHASH}(H, A, C) \oplus E_K(N \mathbin\Vert 0^{31} \mathbin\Vert 1)$$</p><p>Where:</p><ul><li>$H = E_K(0^{128})$ is the authentication key</li><li>$A$ is the additional authenticated data (AAD)</li><li>$C$ is the ciphertext</li><li>$E_K(N \mathbin\Vert 0^{31} \mathbin\Vert 1)$ is the mask (keystream at counter 0)</li></ul><p>The GHASH function computes:</p><p>$$\text{GHASH}(H, A, C) = \sum_{i=1}^{m} A_i \cdot H^{m+n+1-i+1} + \sum_{j=1}^{n} C_j \cdot H^{n+1-j+1} + L \cdot H$$</p><p>Where:</p><ul><li>$A_i$ are 128-bit blocks of AAD</li><li>$C_j$ are 128-bit blocks of ciphertext</li><li>$L = (\text{len}(A) \mathbin\Vert \text{len}(C))$ is the length block</li><li>All operations are in $\text{GF}(2^{128})$</li></ul><p><strong>Key insight</strong>: If we know the tag and all blocks except H, we can solve for H as a polynomial root!</p><hr><h2 id=exploitation-strategy>Exploitation Strategy</h2><h3 id=phase-1-recover-the-mask>Phase 1: Recover the Mask</h3><p>The mask is $E_K(N \mathbin\Vert 0^{31} \mathbin\Vert 1)$. When we encrypt an empty string with no AAD:</p><p>$$\text{tag}_\emptyset = \text{GHASH}(H, \emptyset, \emptyset) \oplus \text{mask} = (0 \oplus 0 \oplus L \cdot H) \oplus \text{mask}$$</p><p>But since both AAD and ciphertext are empty, $L = 0$, so:</p><p>$$\text{tag}_\emptyset = 0 \oplus \text{mask} = \text{mask}$$</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>io</span><span class=o>.</span><span class=n>sendlineafter</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;your_text1:&#34;</span><span class=p>,</span> <span class=sa>b</span><span class=s2>&#34;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>io</span><span class=o>.</span><span class=n>recvuntil</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;tag1: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>mask</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>base64</span><span class=o>.</span><span class=n>b64decode</span><span class=p>(</span><span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>()</span><span class=o>.</span><span class=n>strip</span><span class=p>()))</span>
+</span></span></code></pre></td></tr></table></div></div><h3 id=phase-2-recover-authentication-key-h>Phase 2: Recover Authentication Key H</h3><p>Now we have:</p><ul><li>Flag ciphertext blocks: $C_1, C_2, \ldots, C_n$</li><li>Flag tag: $\text{tag}_{\text{flag}}$</li><li>Mask value</li></ul><p>We can compute:</p><p>$$\text{GHASH}<em>{\text{flag}} = \text{tag}</em>{\text{flag}} \oplus \text{mask}$$</p><p>The GHASH equation becomes:</p><p>$$\text{GHASH}_{\text{flag}} = C_1 \cdot H^{n+1} + C_2 \cdot H^n + \cdots + C_n \cdot H^2 + L \cdot H$$</p><p>This is a <strong>polynomial equation in H</strong> over $\text{GF}(2^{128})$:</p><p>$$C_1 \cdot H^{n+1} + C_2 \cdot H^n + \cdots + C_n \cdot H^2 + L \cdot H - \text{GHASH}_{\text{flag}} = 0$$</p><p>We solve this using SageMath&rsquo;s polynomial root finding:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>def</span> <span class=nf>recover_h</span><span class=p>(</span><span class=n>coeffs</span><span class=p>,</span> <span class=n>target_val</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>    Solve: coeffs[0]*H^n + coeffs[1]*H^(n-1) + ... + coeffs[n-1]*H - target_val = 0
+</span></span></span><span class=line><span class=cl><span class=s2>    &#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>F</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>P</span><span class=o>.&lt;</span><span class=n>x</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>PolynomialRing</span><span class=p>(</span><span class=n>F</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>irr_poly</span> <span class=o>=</span> <span class=n>x</span><span class=o>^</span><span class=mi>128</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>7</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>2</span> <span class=o>+</span> <span class=n>x</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=n>GFghash</span><span class=o>.&lt;</span><span class=n>y</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=o>^</span><span class=mi>128</span><span class=p>,</span> <span class=n>modulus</span><span class=o>=</span><span class=n>irr_poly</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>poly_terms</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>i</span><span class=p>,</span> <span class=n>c</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=n>coeffs</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>power</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>coeffs</span><span class=p>)</span> <span class=o>-</span> <span class=n>i</span>
+</span></span><span class=line><span class=cl>        <span class=n>poly_terms</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>to_field</span><span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=o>*</span> <span class=n>y</span><span class=o>^</span><span class=n>power</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>poly</span> <span class=o>=</span> <span class=nb>sum</span><span class=p>(</span><span class=n>poly_terms</span><span class=p>)</span> <span class=o>-</span> <span class=n>to_field</span><span class=p>(</span><span class=n>target_val</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>roots</span> <span class=o>=</span> <span class=n>poly</span><span class=o>.</span><span class=n>roots</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>from_field</span><span class=p>(</span><span class=n>roots</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=mi>0</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>target_val</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>flag_tag</span><span class=p>)</span> <span class=o>^</span> <span class=n>mask</span>
+</span></span><span class=line><span class=cl><span class=n>pad_len</span> <span class=o>=</span> <span class=p>(</span><span class=mi>16</span> <span class=o>-</span> <span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span>
+</span></span><span class=line><span class=cl><span class=n>ct_padded</span> <span class=o>=</span> <span class=n>flag_ct</span> <span class=o>+</span> <span class=sa>b</span><span class=s1>&#39;</span><span class=se>\0</span><span class=s1>&#39;</span> <span class=o>*</span> <span class=n>pad_len</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>coeffs</span> <span class=o>=</span> <span class=p>[</span><span class=n>bytes_to_long</span><span class=p>(</span><span class=n>ct_padded</span><span class=p>[</span><span class=n>i</span><span class=p>:</span><span class=n>i</span><span class=o>+</span><span class=mi>16</span><span class=p>])</span> <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>ct_padded</span><span class=p>),</span> <span class=mi>16</span><span class=p>)]</span>
+</span></span><span class=line><span class=cl><span class=n>coeffs</span><span class=o>.</span><span class=n>append</span><span class=p>((</span><span class=mi>0</span> <span class=o>&lt;&lt;</span> <span class=mi>64</span><span class=p>)</span> <span class=o>|</span> <span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)</span> <span class=o>*</span> <span class=mi>8</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>H</span> <span class=o>=</span> <span class=n>recover_h</span><span class=p>(</span><span class=n>coeffs</span><span class=p>,</span> <span class=n>target_val</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;[+] Recovered H: </span><span class=si>{</span><span class=nb>hex</span><span class=p>(</span><span class=n>H</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><div class="details admonition tip open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-lightbulb fa-fw"></i>Why This Works<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content>The polynomial has degree at most $n+1$ (number of ciphertext blocks + 1). Since we know all coefficients and the target value, there&rsquo;s typically only one valid root in $\text{GF}(2^{128})$ that corresponds to the actual H value.</div></div></div><h3 id=phase-3-keystream-recovery-via-oracle>Phase 3: Keystream Recovery via Oracle</h3><p>With H recovered, we can now abuse the verification oracle. The key observation:</p><p><strong>For any partial ciphertext and AAD, we can compute the required AAD value that makes verification succeed!</strong></p><p>Strategy: Encrypt $\texttt{0x00} \times \text{len(flag)}$ to get a reference tag, then brute-force the keystream byte-by-byte.</p><p>First, get a reference tag:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>io</span><span class=o>.</span><span class=n>sendlineafter</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;your_text2:&#34;</span><span class=p>,</span> <span class=sa>b</span><span class=s2>&#34;</span><span class=se>\x00</span><span class=s2>&#34;</span> <span class=o>*</span> <span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>))</span>
+</span></span><span class=line><span class=cl><span class=n>io</span><span class=o>.</span><span class=n>recvuntil</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;tag2: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=n>tag2</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>base64</span><span class=o>.</span><span class=n>b64decode</span><span class=p>(</span><span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>()</span><span class=o>.</span><span class=n>strip</span><span class=p>()))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=n>keystream</span> <span class=o>=</span> <span class=sa>b</span><span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl><span class=n>target_tag</span> <span class=o>=</span> <span class=n>tag2</span> <span class=o>^</span> <span class=n>mask</span>
+</span></span></code></pre></td></tr></table></div></div><p>For each byte position $i$:</p><ol><li><strong>Guess the keystream byte</strong> (0-255)</li><li><strong>Calculate partial GHASH</strong> of guessed ciphertext + length block</li><li><strong>Solve for required AAD</strong> that makes the tag verify</li><li><strong>Query oracle</strong> with this AAD</li></ol><p>The math for step 3:</p><p>$$\text{GHASH}(H, A, C) = A \cdot H^{n+2} + C_1 \cdot H^{n+1} + \cdots + C_n \cdot H^2 + L \cdot H$$</p><p>Rearranging to solve for $A$:</p><p>$$A = \frac{\text{target} \oplus (C_1 \cdot H^{n+1} + \cdots + L \cdot H)}{H^{n+2}}$$</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)):</span>
+</span></span><span class=line><span class=cl>    <span class=n>curr_len</span> <span class=o>=</span> <span class=n>i</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=n>n_blocks</span> <span class=o>=</span> <span class=p>(</span><span class=n>curr_len</span> <span class=o>+</span> <span class=mi>15</span><span class=p>)</span> <span class=o>//</span> <span class=mi>16</span>
+</span></span><span class=line><span class=cl>    <span class=n>len_bits_val</span> <span class=o>=</span> <span class=p>(</span><span class=mi>128</span> <span class=o>&lt;&lt;</span> <span class=mi>64</span><span class=p>)</span> <span class=o>|</span> <span class=p>(</span><span class=n>curr_len</span> <span class=o>*</span> <span class=mi>8</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>h_inv</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>inv</span><span class=p>(</span><span class=n>gcm</span><span class=o>.</span><span class=n>pow</span><span class=p>(</span><span class=n>H</span><span class=p>,</span> <span class=n>n_blocks</span> <span class=o>+</span> <span class=mi>2</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>b</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>256</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>guess_ks</span> <span class=o>=</span> <span class=n>keystream</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>b</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>c_padded</span> <span class=o>=</span> <span class=n>guess_ks</span> <span class=o>+</span> <span class=sa>b</span><span class=s1>&#39;</span><span class=se>\0</span><span class=s1>&#39;</span> <span class=o>*</span> <span class=p>((</span><span class=mi>16</span> <span class=o>-</span> <span class=nb>len</span><span class=p>(</span><span class=n>guess_ks</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>k</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>c_padded</span><span class=p>),</span> <span class=mi>16</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>blk</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>c_padded</span><span class=p>[</span><span class=n>k</span><span class=p>:</span><span class=n>k</span><span class=o>+</span><span class=mi>16</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>            <span class=n>y</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>mul</span><span class=p>(</span><span class=n>y</span> <span class=o>^</span> <span class=n>blk</span><span class=p>,</span> <span class=n>H</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>y</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>mul</span><span class=p>(</span><span class=n>y</span> <span class=o>^</span> <span class=n>len_bits_val</span><span class=p>,</span> <span class=n>H</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1># Calculate required AAD: A = (target ⊕ y) * H^(-(n_blocks+2))</span>
+</span></span><span class=line><span class=cl>        <span class=n>aad_val</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>mul</span><span class=p>(</span><span class=n>target_tag</span> <span class=o>^</span> <span class=n>y</span><span class=p>,</span> <span class=n>h_inv</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>aad_bytes</span> <span class=o>=</span> <span class=n>long_to_bytes</span><span class=p>(</span><span class=n>aad_val</span><span class=p>,</span> <span class=mi>16</span><span class=p>)</span><span class=o>.</span><span class=n>rjust</span><span class=p>(</span><span class=mi>16</span><span class=p>,</span> <span class=sa>b</span><span class=s1>&#39;</span><span class=se>\0</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>io</span><span class=o>.</span><span class=n>sendline</span><span class=p>(</span><span class=nb>str</span><span class=p>(</span><span class=n>curr_len</span><span class=p>)</span><span class=o>.</span><span class=n>encode</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>        <span class=n>io</span><span class=o>.</span><span class=n>sendline</span><span class=p>(</span><span class=n>base64</span><span class=o>.</span><span class=n>b64encode</span><span class=p>(</span><span class=n>aad_bytes</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=sa>b</span><span class=s2>&#34;True&#34;</span> <span class=ow>in</span> <span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>            <span class=n>keystream</span> <span class=o>+=</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>b</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;</span><span class=se>\r</span><span class=s2>[+] Progress: </span><span class=si>{</span><span class=n>keystream</span><span class=o>.</span><span class=n>hex</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>,</span> <span class=n>end</span><span class=o>=</span><span class=s2>&#34;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>break</span>
+</span></span></code></pre></td></tr></table></div></div><p>Finally, decrypt the flag:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=n>flag</span> <span class=o>=</span> <span class=n>strxor</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>,</span> <span class=n>keystream</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;</span><span class=se>\n</span><span class=s2>[+] FLAG: </span><span class=si>{</span><span class=n>flag</span><span class=o>.</span><span class=n>decode</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=full-solution-script>Full Solution Script</h2><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span><span class=lnt>113
+</span><span class=lnt>114
+</span><span class=lnt>115
+</span><span class=lnt>116
+</span><span class=lnt>117
+</span><span class=lnt>118
+</span><span class=lnt>119
+</span><span class=lnt>120
+</span><span class=lnt>121
+</span><span class=lnt>122
+</span><span class=lnt>123
+</span><span class=lnt>124
+</span><span class=lnt>125
+</span><span class=lnt>126
+</span><span class=lnt>127
+</span><span class=lnt>128
+</span><span class=lnt>129
+</span><span class=lnt>130
+</span><span class=lnt>131
+</span><span class=lnt>132
+</span><span class=lnt>133
+</span><span class=lnt>134
+</span><span class=lnt>135
+</span><span class=lnt>136
+</span><span class=lnt>137
+</span><span class=lnt>138
+</span><span class=lnt>139
+</span><span class=lnt>140
+</span><span class=lnt>141
+</span><span class=lnt>142
+</span><span class=lnt>143
+</span><span class=lnt>144
+</span><span class=lnt>145
+</span><span class=lnt>146
+</span><span class=lnt>147
+</span><span class=lnt>148
+</span><span class=lnt>149
+</span><span class=lnt>150
+</span><span class=lnt>151
+</span><span class=lnt>152
+</span><span class=lnt>153
+</span><span class=lnt>154
+</span><span class=lnt>155
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=line><span class=cl><span class=kn>from</span> <span class=nn>pwn</span> <span class=kn>import</span> <span class=o>*</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>Crypto.Util.number</span> <span class=kn>import</span> <span class=o>*</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>Crypto.Util.strxor</span> <span class=kn>import</span> <span class=n>strxor</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>base64</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=nn>sys</span>
+</span></span><span class=line><span class=cl><span class=kn>from</span> <span class=nn>sage.all</span> <span class=kn>import</span> <span class=o>*</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>GCMHelper</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;Helper for GF(2^128) operations used in GCM&#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=fm>__init__</span><span class=p>(</span><span class=bp>self</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>F</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>P</span><span class=o>.&lt;</span><span class=n>x</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>PolynomialRing</span><span class=p>(</span><span class=n>F</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>irr</span> <span class=o>=</span> <span class=n>x</span><span class=o>^</span><span class=mi>128</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>7</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>2</span> <span class=o>+</span> <span class=n>x</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=bp>self</span><span class=o>.</span><span class=n>GFghash</span><span class=o>.&lt;</span><span class=n>y</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=o>^</span><span class=mi>128</span><span class=p>,</span> <span class=n>modulus</span><span class=o>=</span><span class=bp>self</span><span class=o>.</span><span class=n>irr</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>to_field</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>val</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>bits</span> <span class=o>=</span> <span class=nb>bin</span><span class=p>(</span><span class=n>val</span><span class=p>)[</span><span class=mi>2</span><span class=p>:]</span><span class=o>.</span><span class=n>zfill</span><span class=p>(</span><span class=mi>128</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>coeffs</span> <span class=o>=</span> <span class=p>[</span><span class=nb>int</span><span class=p>(</span><span class=n>b</span><span class=p>)</span> <span class=k>for</span> <span class=n>b</span> <span class=ow>in</span> <span class=n>bits</span><span class=p>[::</span><span class=o>-</span><span class=mi>1</span><span class=p>]]</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>GFghash</span><span class=p>(</span><span class=n>coeffs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>from_field</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>elem</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>coeffs</span> <span class=o>=</span> <span class=n>elem</span><span class=o>.</span><span class=n>polynomial</span><span class=p>()</span><span class=o>.</span><span class=n>list</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>int</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=nb>str</span><span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=k>for</span> <span class=n>c</span> <span class=ow>in</span> <span class=n>coeffs</span><span class=p>[::</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span> <span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>mul</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>from_field</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>to_field</span><span class=p>(</span><span class=n>a</span><span class=p>)</span> <span class=o>*</span> <span class=bp>self</span><span class=o>.</span><span class=n>to_field</span><span class=p>(</span><span class=n>b</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>pow</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>base</span><span class=p>,</span> <span class=n>exp</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>from_field</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>to_field</span><span class=p>(</span><span class=n>base</span><span class=p>)</span> <span class=o>^</span> <span class=n>exp</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>def</span> <span class=nf>inv</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>a</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=bp>self</span><span class=o>.</span><span class=n>from_field</span><span class=p>(</span><span class=bp>self</span><span class=o>.</span><span class=n>to_field</span><span class=p>(</span><span class=n>a</span><span class=p>)</span><span class=o>^</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>to_field</span><span class=p>(</span><span class=n>val</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>F</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>P</span><span class=o>.&lt;</span><span class=n>x</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>PolynomialRing</span><span class=p>(</span><span class=n>F</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>irr_poly</span> <span class=o>=</span> <span class=n>x</span><span class=o>^</span><span class=mi>128</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>7</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>2</span> <span class=o>+</span> <span class=n>x</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=n>GFghash</span><span class=o>.&lt;</span><span class=n>y</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=o>^</span><span class=mi>128</span><span class=p>,</span> <span class=n>modulus</span><span class=o>=</span><span class=n>irr_poly</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>bits</span> <span class=o>=</span> <span class=nb>bin</span><span class=p>(</span><span class=n>val</span><span class=p>)[</span><span class=mi>2</span><span class=p>:]</span><span class=o>.</span><span class=n>zfill</span><span class=p>(</span><span class=mi>128</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>coeffs</span> <span class=o>=</span> <span class=p>[</span><span class=nb>int</span><span class=p>(</span><span class=n>b</span><span class=p>)</span> <span class=k>for</span> <span class=n>b</span> <span class=ow>in</span> <span class=n>bits</span><span class=p>[::</span><span class=o>-</span><span class=mi>1</span><span class=p>]]</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>GFghash</span><span class=p>(</span><span class=n>coeffs</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>from_field</span><span class=p>(</span><span class=n>elem</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=n>coeffs</span> <span class=o>=</span> <span class=n>elem</span><span class=o>.</span><span class=n>polynomial</span><span class=p>()</span><span class=o>.</span><span class=n>list</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=nb>int</span><span class=p>(</span><span class=s1>&#39;&#39;</span><span class=o>.</span><span class=n>join</span><span class=p>(</span><span class=nb>str</span><span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=k>for</span> <span class=n>c</span> <span class=ow>in</span> <span class=n>coeffs</span><span class=p>[::</span><span class=o>-</span><span class=mi>1</span><span class=p>]),</span> <span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>recover_h</span><span class=p>(</span><span class=n>coeffs</span><span class=p>,</span> <span class=n>target_val</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>    <span class=s2>&#34;&#34;&#34;
+</span></span></span><span class=line><span class=cl><span class=s2>    Solve polynomial: coeffs[0]*H^n + ... + coeffs[-1]*H - target_val = 0
+</span></span></span><span class=line><span class=cl><span class=s2>    over GF(2^128) to recover authentication key H
+</span></span></span><span class=line><span class=cl><span class=s2>    &#34;&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>F</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>P</span><span class=o>.&lt;</span><span class=n>x</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>PolynomialRing</span><span class=p>(</span><span class=n>F</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>irr_poly</span> <span class=o>=</span> <span class=n>x</span><span class=o>^</span><span class=mi>128</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>7</span> <span class=o>+</span> <span class=n>x</span><span class=o>^</span><span class=mi>2</span> <span class=o>+</span> <span class=n>x</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>    <span class=n>GFghash</span><span class=o>.&lt;</span><span class=n>y</span><span class=o>&gt;</span> <span class=o>=</span> <span class=n>GF</span><span class=p>(</span><span class=mi>2</span><span class=o>^</span><span class=mi>128</span><span class=p>,</span> <span class=n>modulus</span><span class=o>=</span><span class=n>irr_poly</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>poly_terms</span> <span class=o>=</span> <span class=p>[]</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>i</span><span class=p>,</span> <span class=n>c</span> <span class=ow>in</span> <span class=nb>enumerate</span><span class=p>(</span><span class=n>coeffs</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>        <span class=n>power</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>coeffs</span><span class=p>)</span> <span class=o>-</span> <span class=n>i</span>
+</span></span><span class=line><span class=cl>        <span class=n>poly_terms</span><span class=o>.</span><span class=n>append</span><span class=p>(</span><span class=n>to_field</span><span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=o>*</span> <span class=n>y</span><span class=o>^</span><span class=n>power</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>poly</span> <span class=o>=</span> <span class=nb>sum</span><span class=p>(</span><span class=n>poly_terms</span><span class=p>)</span> <span class=o>-</span> <span class=n>to_field</span><span class=p>(</span><span class=n>target_val</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>roots</span> <span class=o>=</span> <span class=n>poly</span><span class=o>.</span><span class=n>roots</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=ow>not</span> <span class=n>roots</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=k>raise</span> <span class=ne>ValueError</span><span class=p>(</span><span class=s2>&#34;No roots found!&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=n>from_field</span><span class=p>(</span><span class=n>roots</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=mi>0</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>def</span> <span class=nf>solve</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=nb>len</span><span class=p>(</span><span class=n>sys</span><span class=o>.</span><span class=n>argv</span><span class=p>)</span> <span class=o>&lt;</span> <span class=mi>3</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>        <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;Usage: </span><span class=si>{</span><span class=n>sys</span><span class=o>.</span><span class=n>argv</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=si>}</span><span class=s2> &lt;HOST&gt; &lt;PORT&gt;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>sys</span><span class=o>.</span><span class=n>exit</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>io</span> <span class=o>=</span> <span class=n>remote</span><span class=p>(</span><span class=n>sys</span><span class=o>.</span><span class=n>argv</span><span class=p>[</span><span class=mi>1</span><span class=p>],</span> <span class=nb>int</span><span class=p>(</span><span class=n>sys</span><span class=o>.</span><span class=n>argv</span><span class=p>[</span><span class=mi>2</span><span class=p>]))</span>
+</span></span><span class=line><span class=cl>    <span class=n>gcm</span> <span class=o>=</span> <span class=n>GCMHelper</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>io</span><span class=o>.</span><span class=n>recvuntil</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;flag ciphertext: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>flag_ct</span> <span class=o>=</span> <span class=n>base64</span><span class=o>.</span><span class=n>b64decode</span><span class=p>(</span><span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>()</span><span class=o>.</span><span class=n>strip</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>    <span class=n>io</span><span class=o>.</span><span class=n>recvuntil</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;flag tag: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>flag_tag</span> <span class=o>=</span> <span class=n>base64</span><span class=o>.</span><span class=n>b64decode</span><span class=p>(</span><span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>()</span><span class=o>.</span><span class=n>strip</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;[*] Flag ciphertext length: </span><span class=si>{</span><span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)</span><span class=si>}</span><span class=s2> bytes&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>io</span><span class=o>.</span><span class=n>sendlineafter</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;your_text1:&#34;</span><span class=p>,</span> <span class=sa>b</span><span class=s2>&#34;&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>io</span><span class=o>.</span><span class=n>recvuntil</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;tag1: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>mask</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>base64</span><span class=o>.</span><span class=n>b64decode</span><span class=p>(</span><span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>()</span><span class=o>.</span><span class=n>strip</span><span class=p>()))</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;[+] Recovered mask: </span><span class=si>{</span><span class=nb>hex</span><span class=p>(</span><span class=n>mask</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>target_val</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>flag_tag</span><span class=p>)</span> <span class=o>^</span> <span class=n>mask</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>pad_len</span> <span class=o>=</span> <span class=p>(</span><span class=mi>16</span> <span class=o>-</span> <span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span>
+</span></span><span class=line><span class=cl>    <span class=n>ct_padded</span> <span class=o>=</span> <span class=n>flag_ct</span> <span class=o>+</span> <span class=sa>b</span><span class=s1>&#39;</span><span class=se>\0</span><span class=s1>&#39;</span> <span class=o>*</span> <span class=n>pad_len</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>coeffs</span> <span class=o>=</span> <span class=p>[</span><span class=n>bytes_to_long</span><span class=p>(</span><span class=n>ct_padded</span><span class=p>[</span><span class=n>i</span><span class=p>:</span><span class=n>i</span><span class=o>+</span><span class=mi>16</span><span class=p>])</span> <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>ct_padded</span><span class=p>),</span> <span class=mi>16</span><span class=p>)]</span>
+</span></span><span class=line><span class=cl>    <span class=n>coeffs</span><span class=o>.</span><span class=n>append</span><span class=p>((</span><span class=mi>0</span> <span class=o>&lt;&lt;</span> <span class=mi>64</span><span class=p>)</span> <span class=o>|</span> <span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)</span> <span class=o>*</span> <span class=mi>8</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>H</span> <span class=o>=</span> <span class=n>recover_h</span><span class=p>(</span><span class=n>coeffs</span><span class=p>,</span> <span class=n>target_val</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;[+] Recovered H: </span><span class=si>{</span><span class=nb>hex</span><span class=p>(</span><span class=n>H</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>io</span><span class=o>.</span><span class=n>sendlineafter</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;your_text2:&#34;</span><span class=p>,</span> <span class=sa>b</span><span class=s2>&#34;</span><span class=se>\x00</span><span class=s2>&#34;</span> <span class=o>*</span> <span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=n>io</span><span class=o>.</span><span class=n>recvuntil</span><span class=p>(</span><span class=sa>b</span><span class=s2>&#34;tag2: &#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=n>tag2</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>base64</span><span class=o>.</span><span class=n>b64decode</span><span class=p>(</span><span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>()</span><span class=o>.</span><span class=n>strip</span><span class=p>()))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>keystream</span> <span class=o>=</span> <span class=sa>b</span><span class=s2>&#34;&#34;</span>
+</span></span><span class=line><span class=cl>    <span class=n>target_tag</span> <span class=o>=</span> <span class=n>tag2</span> <span class=o>^</span> <span class=n>mask</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;[*] Brute-forcing keystream byte-by-byte...&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)):</span>
+</span></span><span class=line><span class=cl>        <span class=n>curr_len</span> <span class=o>=</span> <span class=n>i</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>        <span class=n>n_blocks</span> <span class=o>=</span> <span class=p>(</span><span class=n>curr_len</span> <span class=o>+</span> <span class=mi>15</span><span class=p>)</span> <span class=o>//</span> <span class=mi>16</span>
+</span></span><span class=line><span class=cl>        <span class=n>len_bits_val</span> <span class=o>=</span> <span class=p>(</span><span class=mi>128</span> <span class=o>&lt;&lt;</span> <span class=mi>64</span><span class=p>)</span> <span class=o>|</span> <span class=p>(</span><span class=n>curr_len</span> <span class=o>*</span> <span class=mi>8</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>h_inv</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>inv</span><span class=p>(</span><span class=n>gcm</span><span class=o>.</span><span class=n>pow</span><span class=p>(</span><span class=n>H</span><span class=p>,</span> <span class=n>n_blocks</span> <span class=o>+</span> <span class=mi>2</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=n>found</span> <span class=o>=</span> <span class=kc>False</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=n>b</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>256</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>            <span class=n>guess_ks</span> <span class=o>=</span> <span class=n>keystream</span> <span class=o>+</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>b</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=n>c_padded</span> <span class=o>=</span> <span class=n>guess_ks</span> <span class=o>+</span> <span class=sa>b</span><span class=s1>&#39;</span><span class=se>\0</span><span class=s1>&#39;</span> <span class=o>*</span> <span class=p>((</span><span class=mi>16</span> <span class=o>-</span> <span class=nb>len</span><span class=p>(</span><span class=n>guess_ks</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span><span class=p>)</span> <span class=o>%</span> <span class=mi>16</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=n>y</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=n>k</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=nb>len</span><span class=p>(</span><span class=n>c_padded</span><span class=p>),</span> <span class=mi>16</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>                <span class=n>blk</span> <span class=o>=</span> <span class=n>bytes_to_long</span><span class=p>(</span><span class=n>c_padded</span><span class=p>[</span><span class=n>k</span><span class=p>:</span><span class=n>k</span><span class=o>+</span><span class=mi>16</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>                <span class=n>y</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>mul</span><span class=p>(</span><span class=n>y</span> <span class=o>^</span> <span class=n>blk</span><span class=p>,</span> <span class=n>H</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=n>y</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>mul</span><span class=p>(</span><span class=n>y</span> <span class=o>^</span> <span class=n>len_bits_val</span><span class=p>,</span> <span class=n>H</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=n>aad_val</span> <span class=o>=</span> <span class=n>gcm</span><span class=o>.</span><span class=n>mul</span><span class=p>(</span><span class=n>target_tag</span> <span class=o>^</span> <span class=n>y</span><span class=p>,</span> <span class=n>h_inv</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=n>aad_bytes</span> <span class=o>=</span> <span class=n>long_to_bytes</span><span class=p>(</span><span class=n>aad_val</span><span class=p>,</span> <span class=mi>16</span><span class=p>)</span><span class=o>.</span><span class=n>rjust</span><span class=p>(</span><span class=mi>16</span><span class=p>,</span> <span class=sa>b</span><span class=s1>&#39;</span><span class=se>\0</span><span class=s1>&#39;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=n>io</span><span class=o>.</span><span class=n>sendline</span><span class=p>(</span><span class=nb>str</span><span class=p>(</span><span class=n>curr_len</span><span class=p>)</span><span class=o>.</span><span class=n>encode</span><span class=p>())</span>
+</span></span><span class=line><span class=cl>            <span class=n>io</span><span class=o>.</span><span class=n>sendline</span><span class=p>(</span><span class=n>base64</span><span class=o>.</span><span class=n>b64encode</span><span class=p>(</span><span class=n>aad_bytes</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=sa>b</span><span class=s2>&#34;True&#34;</span> <span class=ow>in</span> <span class=n>io</span><span class=o>.</span><span class=n>recvline</span><span class=p>():</span>
+</span></span><span class=line><span class=cl>                <span class=n>keystream</span> <span class=o>+=</span> <span class=nb>bytes</span><span class=p>([</span><span class=n>b</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>                <span class=n>sys</span><span class=o>.</span><span class=n>stdout</span><span class=o>.</span><span class=n>write</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;</span><span class=se>\r</span><span class=s2>[+] Progress: </span><span class=si>{</span><span class=n>i</span><span class=o>+</span><span class=mi>1</span><span class=si>}</span><span class=s2>/</span><span class=si>{</span><span class=nb>len</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>)</span><span class=si>}</span><span class=s2> - </span><span class=si>{</span><span class=n>keystream</span><span class=o>.</span><span class=n>hex</span><span class=p>()</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>                <span class=n>sys</span><span class=o>.</span><span class=n>stdout</span><span class=o>.</span><span class=n>flush</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>                <span class=n>found</span> <span class=o>=</span> <span class=kc>True</span>
+</span></span><span class=line><span class=cl>                <span class=k>break</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=ow>not</span> <span class=n>found</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>            <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;</span><span class=se>\n</span><span class=s2>[!] Failed to recover byte at position </span><span class=si>{</span><span class=n>i</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=s2>&#34;</span><span class=se>\n</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>flag</span> <span class=o>=</span> <span class=n>strxor</span><span class=p>(</span><span class=n>flag_ct</span><span class=p>,</span> <span class=n>keystream</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;[+] FLAG: </span><span class=si>{</span><span class=n>flag</span><span class=o>.</span><span class=n>decode</span><span class=p>(</span><span class=n>errors</span><span class=o>=</span><span class=s1>&#39;ignore&#39;</span><span class=p>)</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>io</span><span class=o>.</span><span class=n>close</span><span class=p>()</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=vm>__name__</span> <span class=o>==</span> <span class=s2>&#34;__main__&#34;</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>solve</span><span class=p>()</span>
+</span></span></code></pre></td></tr></table></div></div><hr><h2 id=attack-timeline>Attack Timeline</h2><pre tabindex=0><code>┌─────────────────────────┐
 │   Phase 1: Mask         │
 ├─────────────────────────┤
 │ Encrypt(&#34;&#34;)             │
@@ -838,107 +516,8 @@
 ├─────────────────────────┤
 │ flag = ct ⊕ keystream   │
 └─────────────────────────┘
-</code></pre><p><strong>Runtime</strong>: ~2-5 minutes (256 queries per byte worst case)</p>
-<hr>
-<h2 id="behind-the-math">Behind the Math</h2>
-<h3 id="why-gcm-authentication-is-vulnerable">Why GCM Authentication is Vulnerable</h3>
-<p>GCM&rsquo;s authentication relies on the <strong>secrecy of H</strong>. Once H is known:</p>
-<ol>
-<li><strong>Forgery</strong>: Craft arbitrary (ciphertext, AAD, tag) tuples that verify</li>
-<li><strong>Plaintext recovery</strong>: Use oracle to leak information bit by bit</li>
-</ol>
-<p>The polynomial structure means:</p>
-<p>$$\text{tag} = \text{poly}(H) \oplus \text{mask}$$</p>
-<p>If we can:</p>
-<ul>
-<li>Remove the mask (by encrypting empty string)</li>
-<li>Know all coefficients of poly(H) except H itself</li>
-<li>Know the result poly(H)</li>
-</ul>
-<p>Then we can <strong>solve for H algebraically</strong>!</p>
-<h3 id="oracle-abuse-technique">Oracle Abuse Technique</h3>
-<p>The verification oracle checks:</p>
-<p>$$\text{GHASH}(H, \text{AAD}, C) \stackrel{?}{=} \text{tag} \oplus \text{mask}$$</p>
-<p>By controlling AAD and partial ciphertext, we can:</p>
-<ol>
-<li>Fix all terms except the AAD term</li>
-<li>Solve for the AAD value that makes the equation true</li>
-<li>Query the oracle with this AAD</li>
-</ol>
-<p>This is a <strong>chosen-AAD attack</strong> that leaks one keystream byte per 256 queries (worst case).</p>
-<h3 id="gf2128-arithmetic">GF(2^128) Arithmetic</h3>
-<p>All operations in GHASH are performed in $\text{GF}(2^{128})$ with irreducible polynomial:</p>
-<p>$$f(x) = x^{128} + x^7 + x^2 + x + 1$$</p>
-<p>This means:</p>
-<ul>
-<li>Addition is XOR: $a + b = a \oplus b$</li>
-<li>Multiplication is polynomial multiplication modulo $f(x)$</li>
-<li>Every non-zero element has a multiplicative inverse</li>
-</ul>
-<hr>
-<h2 id="mitigations">Mitigations</h2>
-<div class="details admonition success open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-check-circle fa-fw"></i>How to Prevent This Attack<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><ol>
-<li><strong>Never reuse nonces</strong>: Each (key, nonce) pair must be used for at most one encryption</li>
-<li><strong>No verification oracle</strong>: Don&rsquo;t expose tag verification as an oracle to attackers</li>
-<li><strong>Limit encryption queries</strong>: Bound the number of encryptions with the same key</li>
-<li><strong>Use AES-GCM-SIV</strong>: Nonce-misuse resistant variant that derives nonce from plaintext</li>
-<li><strong>Proper key rotation</strong>: Regularly rotate encryption keys</li>
-</ol>
-<p>In this challenge, all these rules were violated simultaneously!</p></div>
-        </div>
-    </div>
-<hr>
-<h2 id="key-takeaways">Key Takeaways</h2>
-<ol>
-<li><strong>GCM is fragile</strong>: Nonce reuse + oracle access = complete break</li>
-<li><strong>Polynomial algebra is powerful</strong>: Knowing coefficients lets us solve for unknowns</li>
-<li><strong>Oracle abuse is subtle</strong>: Even a simple True/False oracle can leak full plaintexts</li>
-<li><strong>Understanding crypto internals matters</strong>: Knowing how GHASH works made this challenge straightforward</li>
-</ol>
-<hr>
-<h2 id="references">References</h2>
-<ul>
-<li><a href="https://frereit.de/aes_gcm/" target="_blank" rel="noopener noreffer"><strong>AES-GCM Deep Dive by Frederik Reitemeyer</strong></a> - Comprehensive explanation of GCM internals</li>
-<li><a href="https://eprint.iacr.org/2016/475.pdf" target="_blank" rel="noopener noreffer">Forbidden Attack: Nonce reuse in AES-GCM</a></li>
-<li><a href="https://csrc.nist.gov/publications/detail/sp/800-38d/final" target="_blank" rel="noopener noreffer">NIST SP 800-38D: GCM Specification</a></li>
-<li>McGrew, D. A., &amp; Viega, J. (2004). &ldquo;The Galois/Counter Mode of Operation (GCM)&rdquo;</li>
-</ul>
-<hr>
-<div class="details admonition quote open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-quote-right fa-fw"></i>Challenge Reflection<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><p>This challenge demonstrates that <strong>implementation flaws can completely bypass cryptographic security</strong>. AES-GCM is provably secure under proper usage, but violating its assumptions (unique nonces, no oracle access) turns a secure primitive into a trivial break.</p>
-<p>The lesson: <strong>Security proofs have assumptions. Violate them at your peril.</strong></p>
-</div>
-        </div>
-    </div></div><div class="post-footer" id="post-footer">
-    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/blackhat-finals/">Blackhat-Finals</a>
-                </span><span><a href="/tags/crypto/">Crypto</a>
-                </span><span><a href="/tags/aes-gcm/">Aes-Gcm</a>
-                </span><span><a href="/tags/polynomial/">Polynomial</a>
-                </span><span><a href="/tags/oracle/">Oracle</a>
-                </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 2025-01-16</span>
-            </div><div class="post-info-mod"></div>
-        </div><div class="post-info-share">
-            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="https://lanaceryasser.github.io/posts/black-hat/" data-hashtag="blackhat-finals"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lanaceryasser.github.io/posts/black-hat/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
-        </div></div><div class="post-nav">
-            <a href="/posts/umass/" class="next" rel="next" title="XORSA">Next Post<i class="fa-solid fa-angle-right fa-fw"></i></a></div></div>
-</div></article></div>
-            </main>
-            <footer class="footer"><div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.163.0 (4a9485336a3ff2cea07ab88e2a17ec34d5baaa6e)">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a>
-        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">Koyphshi</a></span></div>
-</div>
-</footer>
-        </div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fa-solid fa-chevron-up fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/css/custom.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":20},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js"></script></body></html>
+</code></pre><p><strong>Runtime</strong>: ~2-5 minutes (256 queries per byte worst case)</p><hr><h2 id=behind-the-math>Behind the Math</h2><h3 id=why-gcm-authentication-is-vulnerable>Why GCM Authentication is Vulnerable</h3><p>GCM&rsquo;s authentication relies on the <strong>secrecy of H</strong>. Once H is known:</p><ol><li><strong>Forgery</strong>: Craft arbitrary (ciphertext, AAD, tag) tuples that verify</li><li><strong>Plaintext recovery</strong>: Use oracle to leak information bit by bit</li></ol><p>The polynomial structure means:</p><p>$$\text{tag} = \text{poly}(H) \oplus \text{mask}$$</p><p>If we can:</p><ul><li>Remove the mask (by encrypting empty string)</li><li>Know all coefficients of poly(H) except H itself</li><li>Know the result poly(H)</li></ul><p>Then we can <strong>solve for H algebraically</strong>!</p><h3 id=oracle-abuse-technique>Oracle Abuse Technique</h3><p>The verification oracle checks:</p><p>$$\text{GHASH}(H, \text{AAD}, C) \stackrel{?}{=} \text{tag} \oplus \text{mask}$$</p><p>By controlling AAD and partial ciphertext, we can:</p><ol><li>Fix all terms except the AAD term</li><li>Solve for the AAD value that makes the equation true</li><li>Query the oracle with this AAD</li></ol><p>This is a <strong>chosen-AAD attack</strong> that leaks one keystream byte per 256 queries (worst case).</p><h3 id=gf2128-arithmetic>GF(2^128) Arithmetic</h3><p>All operations in GHASH are performed in $\text{GF}(2^{128})$ with irreducible polynomial:</p><p>$$f(x) = x^{128} + x^7 + x^2 + x + 1$$</p><p>This means:</p><ul><li>Addition is XOR: $a + b = a \oplus b$</li><li>Multiplication is polynomial multiplication modulo $f(x)$</li><li>Every non-zero element has a multiplicative inverse</li></ul><hr><h2 id=mitigations>Mitigations</h2><div class="details admonition success open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-check-circle fa-fw"></i>How to Prevent This Attack<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><ol><li><strong>Never reuse nonces</strong>: Each (key, nonce) pair must be used for at most one encryption</li><li><strong>No verification oracle</strong>: Don&rsquo;t expose tag verification as an oracle to attackers</li><li><strong>Limit encryption queries</strong>: Bound the number of encryptions with the same key</li><li><strong>Use AES-GCM-SIV</strong>: Nonce-misuse resistant variant that derives nonce from plaintext</li><li><strong>Proper key rotation</strong>: Regularly rotate encryption keys</li></ol><p>In this challenge, all these rules were violated simultaneously!</p></div></div></div><hr><h2 id=key-takeaways>Key Takeaways</h2><ol><li><strong>GCM is fragile</strong>: Nonce reuse + oracle access = complete break</li><li><strong>Polynomial algebra is powerful</strong>: Knowing coefficients lets us solve for unknowns</li><li><strong>Oracle abuse is subtle</strong>: Even a simple True/False oracle can leak full plaintexts</li><li><strong>Understanding crypto internals matters</strong>: Knowing how GHASH works made this challenge straightforward</li></ol><hr><h2 id=references>References</h2><ul><li><a href=https://frereit.de/aes_gcm/ target=_blank rel="noopener noreffer"><strong>AES-GCM Deep Dive by Frederik Reitemeyer</strong></a> - Comprehensive explanation of GCM internals</li><li><a href=https://eprint.iacr.org/2016/475.pdf target=_blank rel="noopener noreffer">Forbidden Attack: Nonce reuse in AES-GCM</a></li><li><a href=https://csrc.nist.gov/publications/detail/sp/800-38d/final target=_blank rel="noopener noreffer">NIST SP 800-38D: GCM Specification</a></li><li>McGrew, D. A., & Viega, J. (2004). &ldquo;The Galois/Counter Mode of Operation (GCM)&rdquo;</li></ul><hr><div class="details admonition quote open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-quote-right fa-fw"></i>Challenge Reflection<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><p>This challenge demonstrates that <strong>implementation flaws can completely bypass cryptographic security</strong>. AES-GCM is provably secure under proper usage, but violating its assumptions (unique nonces, no oracle access) turns a secure primitive into a trivial break.</p><p>The lesson: <strong>Security proofs have assumptions. Violate them at your peril.</strong></p></div></div></div></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/blackhat-finals/>Blackhat-Finals</a>
+</span><span><a href=/tags/crypto/>Crypto</a>
+</span><span><a href=/tags/aes-gcm/>Aes-Gcm</a>
+</span><span><a href=/tags/polynomial/>Polynomial</a>
+</span><span><a href=/tags/oracle/>Oracle</a></span></div><div class=post-info-line><div class=post-info-mod><span>Updated on 2025-01-16</span></div><div class=post-info-mod></div></div><div class=post-info-share><span><a href=# onclick=return!1 title="Share on Facebook" data-sharer=facebook data-url=https://lanaceryasser.github.io/posts/black-hat/ data-hashtag=blackhat-finals><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href=# onclick=return!1 title="Share on Linkedin" data-sharer=linkedin data-url=https://lanaceryasser.github.io/posts/black-hat/><i class="fa-brands fa-linkedin fa-fw"></i></a></span></div></div><div class=post-nav><a href=/posts/umass/ class=next rel=next title=XORSA>Next Post<i class="fa-solid fa-angle-right fa-fw"></i></a></div></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>Powered by <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.163.3 (4d22555aebf458d5d150500c9ac4bee5b24cf0d3)">Hugo</a> | Theme - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw"></i><span itemprop=copyrightYear>2024 - 2026</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>Koyphshi</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fa-solid fa-chevron-up fa-fw"></i></a></div><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><link rel=stylesheet href=/css/custom.css><script src=/lib/autocomplete/autocomplete.min.js></script><script src=/lib/lunr/lunr.min.js></script><script src=/lib/lazysizes/lazysizes.min.js></script><script src=/lib/clipboard/clipboard.min.js></script><script src=/lib/sharer/sharer.min.js></script><script src=/lib/katex/katex.min.js></script><script src=/lib/katex/auto-render.min.js></script><script src=/lib/katex/copy-tex.min.js></script><script src=/lib/katex/mhchem.min.js></script><script>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:20},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",maxResultLength:10,noResultsFound:"No results found",snippetLength:30,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>

@@ -1,0 +1,17 @@
+{{- define "content" -}}
+<article class="page single">
+    <div class="single-card" style="background:none;box-shadow:none;">
+        {{- with .Description -}}
+        <div class="content" style="text-align:center;margin-bottom:2rem;color:#a0a0c0;">
+            {{- . | safeHTML -}}
+        </div>
+        {{- end -}}
+        <div class="summary-card">
+            {{- $pages := where .Site.RegularPages "Section" "ethernaut" -}}
+            {{- range $pages.ByDate -}}
+                {{- .Render "summary" -}}
+            {{- end -}}
+        </div>
+    </div>
+</article>
+{{- end -}}

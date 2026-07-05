@@ -146,6 +146,11 @@ enableRobotsTXT = true
     name = "Tags"
     url = "/tags/"
     weight = 3
+  [[menu.main]]
+    identifier = "ethernaut"
+    name = "Ethernaut"
+    url = "/posts/ethernaut/"
+    weight = 4
 
 [markup]
   [markup.highlight]

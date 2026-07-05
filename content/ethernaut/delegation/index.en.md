@@ -22,7 +22,6 @@ in this challenge we are given the code for 2 contracts and our goal is to claim
 - **Platform**: Ethernaut
 - **Challenge**: Delegation
 - **Category**: Blockchain
-- **Description**: Claim ownership of the Delegation contract using delegatecall
 {{< /admonition >}}
 
 ```solidity

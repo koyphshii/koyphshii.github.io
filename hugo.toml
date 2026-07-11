@@ -141,11 +141,11 @@ enableRobotsTXT = true
     name = "Posts"
     url = "/"
     weight = 2
-  [[menu.main]]
-    identifier = "categories"
-    name = "Categories"
-    url = "/categories/"
-    weight = 3
+  # [[menu.main]]
+  #   identifier = "categories"
+  #   name = "Categories"
+  #   url = "/categories/"
+  #   weight = 3
 
 [markup]
   [markup.highlight]

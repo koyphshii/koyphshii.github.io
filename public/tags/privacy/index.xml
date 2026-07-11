@@ -1,1 +1,13 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Privacy - Tag - Koyphshi</title><link>https://lanaceryasser.github.io/tags/privacy/</link><description>Privacy - Tag - Koyphshi</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/privacy/" rel="self" type="application/rss+xml"/><item><title>Vault</title><link>https://lanaceryasser.github.io/ethernaut/vault/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/vault/</guid><description><![CDATA[<p>we are given this contract instance and our task is to set <code>locked</code> to <code>false</code></p>]]></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Privacy - Tag - Koyphshi</title>
+        <link>https://lanaceryasser.github.io/tags/privacy/</link>
+        <description>Privacy - Tag - Koyphshi</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/privacy/" rel="self" type="application/rss+xml" /><item>
+    <title>Vault</title>
+    <link>https://lanaceryasser.github.io/ethernaut/vault/</link>
+    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/vault/</guid>
+    <description><![CDATA[<p>we are given this contract instance and our task is to set <code>locked</code> to <code>false</code></p>]]></description>
+</item>
+</channel>
+</rss>

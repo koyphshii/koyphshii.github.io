@@ -1,1 +1,80 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ethernauts on Koyphshi</title><link>https://lanaceryasser.github.io/ethernaut/</link><description>Recent content in Ethernauts on Koyphshi</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 04 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/ethernaut/index.xml" rel="self" type="application/rss+xml"/><item><title>EllipticToken</title><link>https://lanaceryasser.github.io/ethernaut/elliptictoken/</link><pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/elliptictoken/</guid><description>&lt;p&gt;our goal is to steal the tokens that Alice just redeemed by using the fact that Bob skipped parts of the ECDSA algorithm&lt;/p&gt;</description></item><item><title>Elevator</title><link>https://lanaceryasser.github.io/ethernaut/elevator/</link><pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/elevator/</guid><description>&lt;p&gt;in this challenge our goal is to set &lt;code&gt;top = True&lt;/code&gt;&lt;/p&gt;</description></item><item><title>Delegation</title><link>https://lanaceryasser.github.io/ethernaut/delegation/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/delegation/</guid><description>&lt;p&gt;in this challenge we are given the code for 2 contracts and our goal is to claim ownership for the given contract instance&lt;/p&gt;</description></item><item><title>Force</title><link>https://lanaceryasser.github.io/ethernaut/force/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/force/</guid><description>&lt;p&gt;in this challenge we are given this contract and our goal is to increase the balance of this contract, this might be weird because this contract is empty!&lt;/p&gt;</description></item><item><title>Gatekeeper One</title><link>https://lanaceryasser.github.io/ethernaut/gatekeeper-one/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/gatekeeper-one/</guid><description>&lt;p&gt;in this challenge our goal is to pass the three gates we have&lt;/p&gt;</description></item><item><title>King</title><link>https://lanaceryasser.github.io/ethernaut/king/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/king/</guid><description>&lt;p&gt;in this challenge we are given this contract and our goal is to not let the level reclaim kingship after we submit the instance&lt;/p&gt;</description></item><item><title>Magic Number</title><link>https://lanaceryasser.github.io/ethernaut/magic-number/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/magic-number/</guid><description>&lt;p&gt;this challenge is about calling the &lt;code&gt;setSolver&lt;/code&gt; function and we give it an address of a contract that responds to &lt;code&gt;whatIsTheMeaningOfLife()&lt;/code&gt; with the number &lt;strong&gt;42&lt;/strong&gt;&lt;/p&gt;</description></item><item><title>Token</title><link>https://lanaceryasser.github.io/ethernaut/token/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/token/</guid><description>&lt;p&gt;in this challenge we are given a simple token contract, we start with 20 tokens and our goal is to find a bug that allows us to get a large amount of tokens&lt;/p&gt;</description></item><item><title>Vault</title><link>https://lanaceryasser.github.io/ethernaut/vault/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/vault/</guid><description>&lt;p&gt;we are given this contract instance and our task is to set &lt;code&gt;locked&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Ethernauts on Koyphshi</title>
+		<link>https://lanaceryasser.github.io/ethernaut/</link>
+		<description>Recent content in Ethernauts on Koyphshi</description>
+		<generator>Hugo</generator>
+		<language>en</language>
+		
+		
+		
+		
+			<lastBuildDate>Sat, 04 Jul 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://lanaceryasser.github.io/ethernaut/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>EllipticToken</title>
+				<link>https://lanaceryasser.github.io/ethernaut/elliptictoken/</link>
+				<pubDate>Sat, 04 Jul 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/elliptictoken/</guid>
+				<description>&lt;p&gt;our goal is to steal the tokens that Alice just redeemed by using the fact that Bob skipped parts of the ECDSA algorithm&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Elevator</title>
+				<link>https://lanaceryasser.github.io/ethernaut/elevator/</link>
+				<pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/elevator/</guid>
+				<description>&lt;p&gt;in this challenge our goal is to set &lt;code&gt;top = True&lt;/code&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Delegation</title>
+				<link>https://lanaceryasser.github.io/ethernaut/delegation/</link>
+				<pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/delegation/</guid>
+				<description>&lt;p&gt;in this challenge we are given the code for 2 contracts and our goal is to claim ownership for the given contract instance&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Force</title>
+				<link>https://lanaceryasser.github.io/ethernaut/force/</link>
+				<pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/force/</guid>
+				<description>&lt;p&gt;in this challenge we are given this contract and our goal is to increase the balance of this contract, this might be weird because this contract is empty!&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Gatekeeper One</title>
+				<link>https://lanaceryasser.github.io/ethernaut/gatekeeper-one/</link>
+				<pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/gatekeeper-one/</guid>
+				<description>&lt;p&gt;in this challenge our goal is to pass the three gates we have&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>King</title>
+				<link>https://lanaceryasser.github.io/ethernaut/king/</link>
+				<pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/king/</guid>
+				<description>&lt;p&gt;in this challenge we are given this contract and our goal is to not let the level reclaim kingship after we submit the instance&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Magic Number</title>
+				<link>https://lanaceryasser.github.io/ethernaut/magic-number/</link>
+				<pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/magic-number/</guid>
+				<description>&lt;p&gt;this challenge is about calling the &lt;code&gt;setSolver&lt;/code&gt; function and we give it an address of a contract that responds to &lt;code&gt;whatIsTheMeaningOfLife()&lt;/code&gt; with the number &lt;strong&gt;42&lt;/strong&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Token</title>
+				<link>https://lanaceryasser.github.io/ethernaut/token/</link>
+				<pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/token/</guid>
+				<description>&lt;p&gt;in this challenge we are given a simple token contract, we start with 20 tokens and our goal is to find a bug that allows us to get a large amount of tokens&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Vault</title>
+				<link>https://lanaceryasser.github.io/ethernaut/vault/</link>
+				<pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
+				<guid>https://lanaceryasser.github.io/ethernaut/vault/</guid>
+				<description>&lt;p&gt;we are given this contract instance and our task is to set &lt;code&gt;locked&lt;/code&gt; to &lt;code&gt;false&lt;/code&gt;&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

@@ -783,3 +783,23 @@ code, pre, .highlight table, .highlight tr, .highlight td {
 .theme-switch {
   display: none !important;
 }
+
+/* Globally hide the right-side TOC sidebar and inline static TOC */
+#toc-auto,
+#toc-static {
+  display: none !important;
+}
+
+/* Hide the auto-generated "About Me" page title (only set on the About page) */
+.single-title[data-about="true"] {
+  display: none !important;
+}
+
+/* Expand main content on wide screens after TOC removal */
+@media only screen and (min-width: 1201px) {
+  .single {
+    width: 80%;
+  }
+}
+
+

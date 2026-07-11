@@ -1,1 +1,13 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Blockchain - Tag - Koyphshi</title><link>https://lanaceryasser.github.io/tags/blockchain/</link><description>Blockchain - Tag - Koyphshi</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 24 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/blockchain/" rel="self" type="application/rss+xml"/><item><title>Only-invited party</title><link>https://lanaceryasser.github.io/posts/indit/</link><pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/indit/</guid><description>Exploiting unchecked ecrecover return values and dirty memory in inline assembly to bypass signature verification and steal golden tickets.</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Blockchain - Tag - Koyphshi</title>
+        <link>http://localhost:1313/tags/blockchain/</link>
+        <description>Blockchain - Tag - Koyphshi</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 24 Dec 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/blockchain/" rel="self" type="application/rss+xml" /><item>
+    <title>Only-invited party</title>
+    <link>http://localhost:1313/posts/indit/</link>
+    <pubDate>Wed, 24 Dec 2025 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/indit/</guid>
+    <description><![CDATA[Exploiting unchecked ecrecover return values and dirty memory in inline assembly to bypass signature verification and steal golden tickets.]]></description>
+</item>
+</channel>
+</rss>

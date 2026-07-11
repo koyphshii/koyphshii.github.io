@@ -271,6 +271,10 @@ footer a:hover {
   box-shadow: 0 0 10px var(--crimson-glow) !important;
 }
 
+.summary:has(.pin-icon) {
+  border-left: 3px solid var(--crimson) !important;
+}
+
 .summary .pin-icon i {
   color: white !important;
   font-size: 0.7rem !important;

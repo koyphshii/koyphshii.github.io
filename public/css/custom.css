@@ -779,3 +779,7 @@ code, pre, .highlight table, .highlight tr, .highlight td {
     padding: 1.25rem !important;
   }
 }
+
+.theme-switch {
+  display: none !important;
+}

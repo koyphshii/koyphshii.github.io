@@ -1,7 +1,6 @@
 ---
 title: "EllipticToken"
 date: 2026-07-04T00:00:00+00:00
-pin: true
 draft: false
 author: "Koyphshi"
 description: "Stealing tokens by exploiting an unhashed ECDSA verification"

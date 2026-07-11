@@ -8,7 +8,10 @@
         {{- end -}}
         <div class="summary-card">
             {{- $pages := where .Site.RegularPages "Section" "ethernaut" -}}
-            {{- range $pages.ByDate -}}
+            {{- $pinnedPages := where $pages "Params.pin" true -}}
+            {{- $regularPages := where $pages "Params.pin" "ne" true -}}
+            {{- $allPages := $pinnedPages.ByDate | append $regularPages.ByDate -}}
+            {{- range $allPages -}}
                 {{- .Render "summary" -}}
             {{- end -}}
         </div>

@@ -6,8 +6,8 @@
   --crimson-bright: #e60000;
   --crimson-glow: rgba(188, 0, 0, 0.4);
   --crimson-soft: rgba(188, 0, 0, 0.15);
-  --bg-glass: rgba(8, 8, 12, 0.82);
-  --bg-glass-light: rgba(12, 12, 18, 0.75);
+  --bg-glass: rgba(8, 8, 12, 0.6);
+  --bg-glass-light: rgba(12, 12, 18, 0.55);
   --text-primary: #f0f0f0;
   --text-secondary: #a0a0b0;
   --text-muted: #707080;
@@ -21,7 +21,12 @@ html {
 }
 
 body {
-  background: #050508 url('/images/1268862.png') no-repeat fixed center / cover !important;
+  background-color: #000000 !important;
+  background-image: url('/images/1268862.png') !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-position: 40% center !important;
+  background-size: cover !important;
   color: var(--text-primary) !important;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
@@ -38,8 +43,8 @@ header,
 #header-desktop,
 #header-mobile {
   background: var(--bg-glass) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   border-bottom: var(--border-red) !important;
   box-shadow: var(--glow-crimson) !important;
 }
@@ -74,8 +79,8 @@ header .header-title-post {
 
 footer {
   background: var(--bg-glass) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
   border-top: var(--border-red) !important;
   color: var(--text-secondary) !important;
 }
@@ -95,8 +100,8 @@ footer a:hover {
 
 .home .home-profile {
   background: var(--bg-glass-light) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-radius: 16px !important;
   padding: 2rem !important;
   border: var(--border-subtle) !important;
@@ -136,12 +141,13 @@ footer a:hover {
   max-width: 1000px !important;
   width: 95% !important;
   margin: 0 auto;
+  padding-top: 4rem !important;
 }
 
 .summary {
   background: var(--bg-glass) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-radius: 16px !important;
   border: var(--border-subtle) !important;
   box-shadow: var(--glow-crimson) !important;
@@ -273,8 +279,8 @@ footer a:hover {
 /* Single Post Page */
 .single-card {
   background: var(--bg-glass) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-radius: 16px !important;
   border: var(--border-subtle) !important;
   box-shadow: var(--glow-crimson) !important;
@@ -545,8 +551,8 @@ code, pre, .highlight table, .highlight tr, .highlight td {
 /* About Page */
 .profile {
   background: var(--bg-glass) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-radius: 16px !important;
   border: var(--border-subtle) !important;
   padding: 2rem !important;
@@ -586,8 +592,8 @@ code, pre, .highlight table, .highlight tr, .highlight td {
 .categories-card,
 .tags-card {
   background: var(--bg-glass) !important;
-  backdrop-filter: blur(8px) !important;
-  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border-radius: 16px !important;
   border: var(--border-subtle) !important;
   padding: 2rem !important;

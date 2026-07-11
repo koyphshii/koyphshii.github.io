@@ -47,7 +47,7 @@ enableRobotsTXT = true
   [params.home]
     rss = 10
     [params.home.profile]
-      enable = true
+      enable = false
       avatarURL = "/avatar/avatar.gif"
       title = "Koyphshi"
       subtitle = "have fun :3"
@@ -151,6 +151,11 @@ enableRobotsTXT = true
     name = "Ethernaut"
     url = "/posts/ethernaut/"
     weight = 4
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 5
 
 [markup]
   [markup.highlight]

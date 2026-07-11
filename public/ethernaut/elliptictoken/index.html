@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>EllipticToken - Koyphshi</title><meta name="description" content="Stealing tokens by exploiting an unhashed ECDSA verification"><meta property="og:url" content="https://lanaceryasser.github.io/ethernaut/elliptictoken/">
+        <title>EllipticToken - Koyphshi</title><meta name="description" content="Stealing tokens by exploiting an unhashed ECDSA verification"><meta property="og:url" content="http://localhost:1313/ethernaut/elliptictoken/">
 	<meta property="og:site_name" content="Koyphshi">
 	<meta property="og:title" content="EllipticToken">
 	<meta property="og:description" content="Stealing tokens by exploiting an unhashed ECDSA verification">
@@ -18,16 +18,16 @@
 		<meta property="article:tag" content="Ecdsa">
 		<meta property="article:tag" content="Elliptic-Curves">
 		<meta property="article:tag" content="Signature-Forgery">
-		<meta property="og:image" content="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png">
+		<meta property="og:image" content="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png">
 
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png">
+	<meta name="twitter:image" content="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png">
 	<meta name="twitter:title" content="EllipticToken">
 	<meta name="twitter:description" content="Stealing tokens by exploiting an unhashed ECDSA verification">
 <meta name="application-name" content="Koyphshi">
 <meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lanaceryasser.github.io/ethernaut/elliptictoken/" /><link rel="prev" href="https://lanaceryasser.github.io/ethernaut/elevator/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ethernaut/elliptictoken/" /><link rel="prev" href="http://localhost:1313/ethernaut/elevator/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,9 +35,9 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/lanaceryasser.github.io\/ethernaut\/elliptictoken\/"
-        },"image": ["https:\/\/lanaceryasser.github.io\/images\/og-preview.webp"],"genre": "ethernaut","keywords": "ethernaut, solidity, ecdsa, elliptic-curves, signature-forgery","wordcount":  2059 ,
-        "url": "https:\/\/lanaceryasser.github.io\/ethernaut\/elliptictoken\/","datePublished": "2026-07-04T00:00:00+00:00","dateModified": "2026-07-04T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:1313\/ethernaut\/elliptictoken\/"
+        },"image": ["http:\/\/localhost:1313\/images\/og-preview.webp"],"genre": "ethernaut","keywords": "ethernaut, solidity, ecdsa, elliptic-curves, signature-forgery","wordcount":  2059 ,
+        "url": "http:\/\/localhost:1313\/ethernaut\/elliptictoken\/","datePublished": "2026-07-04T00:00:00+00:00","dateModified": "2026-07-04T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "Koyphshi"},"author": {
                 "@type": "Person",
@@ -246,60 +246,60 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png, http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png" /></p>
 <p>now by our previous assumption, there should be a transaction that called the redeem function, but where is it ??</p>
 <p>well the explanation for this is that the initial transaction that started the challenge instance is the one that called the redeem function, so the call we are looking for will be found inside an internal transaction</p>
 <p>so we check the internal transactions :</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png, http://localhost:1313/ethernaut/elliptictoken/internal-txns.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/internal-txns.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png" /></p>
 <p>we go more deep and click on the parent transaction hash :</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png, http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png" /></p>
 <p>the call type for the function should be <code>call</code>, by checking the calls <code>calldata</code> the 4th is the one we are looking for</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png, http://localhost:1313/ethernaut/elliptictoken/calldata-call.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/calldata-call.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png" /></p>
 <p>this is the bytecode</p>
 <p>now to get the values of the parameters we execute this commend :</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/decode-command.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/decode-command.png, http://localhost:1313/ethernaut/elliptictoken/decode-command.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/decode-command.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/decode-command.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/decode-command.png" /></p>
 <p>this will match each argument with the input value</p>
 <p>the output will be :</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png, http://localhost:1313/ethernaut/elliptictoken/decoded-output.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/decoded-output.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png" /></p>
 <p>this is actually a good advancement, we now have the value of :</p>
 <ul>
 <li>amount in the voucher</li>
@@ -316,30 +316,30 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png, http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png" /></p>
 <p>without digging into all the code details, all we need to know is that this line is the one responsible for recovering the signer address (Alice&rsquo;s public address)</p>
 <p><code>ecrecover</code> is a built-in solidity function that implements the <code>ecdsa</code> verification algorithm, the curve used is <code>secp256k1</code> :</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png, http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png" /></p>
 <p>lets go one step deeper and look at how the recovery is done (this is my favorite part ^-^) :</p>
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png, http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png" /></p>
 <p>so this some of my writing while i was solving the challenge (sorry for the ugly drawing haha)</p>
 <p>as we can see this is how the public point of the verifier is computed (and then from it they compute the address)</p>
 <p>notice that i wrote <code>m*r^-1</code>, generally it is <code>z*r^-1</code> where z is the hash message, but since they are not hashing in the challenge, i will use <code>m</code></p>
@@ -356,11 +356,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png 2x"
+        data-src="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png"
+        data-srcset="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png, http://localhost:1313/ethernaut/elliptictoken/overflow-error.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/overflow-error.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png"
-        title="https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png" /></p>
+        alt="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png"
+        title="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png" /></p>
 <p><em><strong>3- i found another solution</strong></em></p>
 <p>remember the previous verification equation, we will use that.</p>
 <p>lets forget about trying to use the same signature of Alice, and forge a different signature that recovers Alice&rsquo;s public address (public point)</p>
@@ -552,7 +552,7 @@ assembly (&#34;memory-safe&#34;) {
                 <span>Updated on 2026-07-04</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="https://lanaceryasser.github.io/ethernaut/elliptictoken/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lanaceryasser.github.io/ethernaut/elliptictoken/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
+            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/ethernaut/elliptictoken/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ethernaut/elliptictoken/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
         </div></div><div class="related-content">
             <h3 class="related-title">See Also</h3>
             <div class="related-posts"><a class="related-post" href="/ethernaut/elevator/"><div class="related-post-image-placeholder">

@@ -305,7 +305,7 @@ footer a:hover {
 }
 
 .single .post-meta a {
-  color: var(--crimson) !important;
+  color: #d0d0d8 !important;
 }
 
 .single .post-meta a:hover {
@@ -324,17 +324,17 @@ footer a:hover {
 .single .content h4,
 .single .content h5,
 .single .content h6 {
-  color: var(--crimson-bright) !important;
-  border-bottom: 1px solid rgba(188, 0, 0, 0.2) !important;
+  color: #f5f5f7 !important;
+  border-bottom: 1px solid rgba(188, 0, 0, 0.25) !important;
   padding-bottom: 0.4rem !important;
   margin-top: 2rem !important;
 }
 
 .single .content a {
-  color: var(--crimson) !important;
+  color: #f0f0f0 !important;
   text-decoration: underline !important;
   text-underline-offset: 2px !important;
-  text-decoration-color: rgba(188, 0, 0, 0.3) !important;
+  text-decoration-color: rgba(188, 0, 0, 0.35) !important;
   transition: all 0.2s ease !important;
 }
 
@@ -344,7 +344,7 @@ footer a:hover {
 }
 
 .single .content strong {
-  color: var(--text-primary) !important;
+  color: #ffffff !important;
 }
 
 .single .content blockquote {
@@ -352,7 +352,7 @@ footer a:hover {
   background: rgba(188, 0, 0, 0.06) !important;
   padding: 0.75rem 1rem !important;
   margin: 1rem 0 !important;
-  color: var(--text-secondary) !important;
+  color: #c0c0c8 !important;
 }
 
 /* Code Blocks - Ultra Dark with High Contrast */

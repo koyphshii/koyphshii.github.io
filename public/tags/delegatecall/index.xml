@@ -1,12 +1,12 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Delegatecall - Tag - Koyphshi</title>
-        <link>https://lanaceryasser.github.io/tags/delegatecall/</link>
+        <link>http://localhost:1313/tags/delegatecall/</link>
         <description>Delegatecall - Tag - Koyphshi</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/delegatecall/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/delegatecall/" rel="self" type="application/rss+xml" /><item>
     <title>Delegation</title>
-    <link>https://lanaceryasser.github.io/ethernaut/delegation/</link>
-    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/delegation/</guid>
+    <link>http://localhost:1313/ethernaut/delegation/</link>
+    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/ethernaut/delegation/</guid>
     <description><![CDATA[<p>in this challenge we are given the code for 2 contracts and our goal is to claim ownership for the given contract instance</p>]]></description>
 </item>
 </channel>

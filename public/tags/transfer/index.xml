@@ -1,12 +1,12 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Transfer - Tag - Koyphshi</title>
-        <link>https://lanaceryasser.github.io/tags/transfer/</link>
+        <link>http://localhost:1313/tags/transfer/</link>
         <description>Transfer - Tag - Koyphshi</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/transfer/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/transfer/" rel="self" type="application/rss+xml" /><item>
     <title>King</title>
-    <link>https://lanaceryasser.github.io/ethernaut/king/</link>
-    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/king/</guid>
+    <link>http://localhost:1313/ethernaut/king/</link>
+    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/ethernaut/king/</guid>
     <description><![CDATA[<p>in this challenge we are given this contract and our goal is to not let the level reclaim kingship after we submit the instance</p>]]></description>
 </item>
 </channel>

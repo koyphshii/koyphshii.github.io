@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Token - Koyphshi</title><meta name="description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"><meta property="og:url" content="https://lanaceryasser.github.io/ethernaut/token/">
+        <title>Token - Koyphshi</title><meta name="description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"><meta property="og:url" content="http://localhost:1313/ethernaut/token/">
 	<meta property="og:site_name" content="Koyphshi">
 	<meta property="og:title" content="Token">
 	<meta property="og:description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens">
@@ -18,16 +18,16 @@
 		<meta property="article:tag" content="Underflow">
 		<meta property="article:tag" content="Overflow">
 		<meta property="article:tag" content="Evm">
-		<meta property="og:image" content="https://lanaceryasser.github.io/images/og-preview.webp">
+		<meta property="og:image" content="http://localhost:1313/images/og-preview.webp">
 
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="https://lanaceryasser.github.io/images/og-preview.webp">
+	<meta name="twitter:image" content="http://localhost:1313/images/og-preview.webp">
 	<meta name="twitter:title" content="Token">
 	<meta name="twitter:description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens">
 <meta name="application-name" content="Koyphshi">
 <meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lanaceryasser.github.io/ethernaut/token/" /><link rel="prev" href="https://lanaceryasser.github.io/ethernaut/vault/" /><link rel="next" href="https://lanaceryasser.github.io/ethernaut/magic-number/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ethernaut/token/" /><link rel="prev" href="http://localhost:1313/ethernaut/vault/" /><link rel="next" href="http://localhost:1313/ethernaut/magic-number/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,9 +35,9 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/lanaceryasser.github.io\/ethernaut\/token\/"
-        },"image": ["https:\/\/lanaceryasser.github.io\/images\/og-preview.webp"],"genre": "ethernaut","keywords": "ethernaut, solidity, underflow, overflow, evm","wordcount":  420 ,
-        "url": "https:\/\/lanaceryasser.github.io\/ethernaut\/token\/","datePublished": "2026-01-07T00:00:00+00:00","dateModified": "2026-01-07T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:1313\/ethernaut\/token\/"
+        },"image": ["http:\/\/localhost:1313\/images\/og-preview.webp"],"genre": "ethernaut","keywords": "ethernaut, solidity, underflow, overflow, evm","wordcount":  420 ,
+        "url": "http:\/\/localhost:1313\/ethernaut\/token\/","datePublished": "2026-01-07T00:00:00+00:00","dateModified": "2026-01-07T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "Koyphshi"},"author": {
                 "@type": "Person",
@@ -155,11 +155,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/token/balance-check.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/token/balance-check.png, https://lanaceryasser.github.io/ethernaut/token/balance-check.png 1.5x, https://lanaceryasser.github.io/ethernaut/token/balance-check.png 2x"
+        data-src="http://localhost:1313/ethernaut/token/balance-check.png"
+        data-srcset="http://localhost:1313/ethernaut/token/balance-check.png, http://localhost:1313/ethernaut/token/balance-check.png 1.5x, http://localhost:1313/ethernaut/token/balance-check.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/token/balance-check.png"
-        title="https://lanaceryasser.github.io/ethernaut/token/balance-check.png" /></p>
+        alt="http://localhost:1313/ethernaut/token/balance-check.png"
+        title="http://localhost:1313/ethernaut/token/balance-check.png" /></p>
 <p>what this command does is simply send an <code>eth_call</code> which allows us to execute the view function locally in the node without spending any gas</p>
 <p>now the description tells us to check <code>odometer</code> — the special thing about it is that it resets after reaching a certain max number, similar to overflows</p>
 <p>in solidity versions before 0.8.0, overflow/underflow did happen and developers had to add custom checks or use libraries like safemath; in versions 0.8.x new opcodes have been added to arithmetic operations to prevent this</p>
@@ -242,11 +242,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/token/exploit-result.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/token/exploit-result.png, https://lanaceryasser.github.io/ethernaut/token/exploit-result.png 1.5x, https://lanaceryasser.github.io/ethernaut/token/exploit-result.png 2x"
+        data-src="http://localhost:1313/ethernaut/token/exploit-result.png"
+        data-srcset="http://localhost:1313/ethernaut/token/exploit-result.png, http://localhost:1313/ethernaut/token/exploit-result.png 1.5x, http://localhost:1313/ethernaut/token/exploit-result.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/token/exploit-result.png"
-        title="https://lanaceryasser.github.io/ethernaut/token/exploit-result.png" /></p>
+        alt="http://localhost:1313/ethernaut/token/exploit-result.png"
+        title="http://localhost:1313/ethernaut/token/exploit-result.png" /></p>
 <p>the exploit works fine, we just add the <code>--broadcast</code> flag to execute it remotely and gg the challenge is solved</p></div><div class="post-footer" id="post-footer">
     <div class="post-info"><div class="post-info-tag"><span><a href="/tags/ethernaut/">Ethernaut</a>
                 </span><span><a href="/tags/solidity/">Solidity</a>
@@ -257,7 +257,7 @@
                 <span>Updated on 2026-01-07</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="https://lanaceryasser.github.io/ethernaut/token/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lanaceryasser.github.io/ethernaut/token/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
+            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/ethernaut/token/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ethernaut/token/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
         </div></div><div class="related-content">
             <h3 class="related-title">See Also</h3>
             <div class="related-posts"><a class="related-post" href="/ethernaut/delegation/"><div class="related-post-image-placeholder">

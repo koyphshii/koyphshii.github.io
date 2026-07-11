@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Delegation - Koyphshi</title><meta name="description" content="Exploiting delegatecall to claim ownership of a Delegation contract"><meta property="og:url" content="https://lanaceryasser.github.io/ethernaut/delegation/">
+        <title>Delegation - Koyphshi</title><meta name="description" content="Exploiting delegatecall to claim ownership of a Delegation contract"><meta property="og:url" content="http://localhost:1313/ethernaut/delegation/">
 	<meta property="og:site_name" content="Koyphshi">
 	<meta property="og:title" content="Delegation">
 	<meta property="og:description" content="Exploiting delegatecall to claim ownership of a Delegation contract">
@@ -18,16 +18,16 @@
 		<meta property="article:tag" content="Delegatecall">
 		<meta property="article:tag" content="Evm">
 		<meta property="article:tag" content="Storage-Slots">
-		<meta property="og:image" content="https://lanaceryasser.github.io/images/og-preview.webp">
+		<meta property="og:image" content="http://localhost:1313/images/og-preview.webp">
 
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="https://lanaceryasser.github.io/images/og-preview.webp">
+	<meta name="twitter:image" content="http://localhost:1313/images/og-preview.webp">
 	<meta name="twitter:title" content="Delegation">
 	<meta name="twitter:description" content="Exploiting delegatecall to claim ownership of a Delegation contract">
 <meta name="application-name" content="Koyphshi">
 <meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://lanaceryasser.github.io/ethernaut/delegation/" /><link rel="prev" href="https://lanaceryasser.github.io/ethernaut/force/" /><link rel="next" href="https://lanaceryasser.github.io/ethernaut/elevator/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ethernaut/delegation/" /><link rel="prev" href="http://localhost:1313/ethernaut/force/" /><link rel="next" href="http://localhost:1313/ethernaut/elevator/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -35,9 +35,9 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/lanaceryasser.github.io\/ethernaut\/delegation\/"
-        },"image": ["https:\/\/lanaceryasser.github.io\/images\/og-preview.webp"],"genre": "ethernaut","keywords": "ethernaut, solidity, delegatecall, evm, storage-slots","wordcount":  731 ,
-        "url": "https:\/\/lanaceryasser.github.io\/ethernaut\/delegation\/","datePublished": "2026-01-07T00:00:00+00:00","dateModified": "2026-01-07T00:00:00+00:00","publisher": {
+            "@id": "http:\/\/localhost:1313\/ethernaut\/delegation\/"
+        },"image": ["http:\/\/localhost:1313\/images\/og-preview.webp"],"genre": "ethernaut","keywords": "ethernaut, solidity, delegatecall, evm, storage-slots","wordcount":  731 ,
+        "url": "http:\/\/localhost:1313\/ethernaut\/delegation\/","datePublished": "2026-01-07T00:00:00+00:00","dateModified": "2026-01-07T00:00:00+00:00","publisher": {
             "@type": "Organization",
             "name": "Koyphshi"},"author": {
                 "@type": "Person",
@@ -179,11 +179,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png, https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png 2x"
+        data-src="http://localhost:1313/ethernaut/delegation/bytecode.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/bytecode.png, http://localhost:1313/ethernaut/delegation/bytecode.png 1.5x, http://localhost:1313/ethernaut/delegation/bytecode.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png"
-        title="https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png" /></p>
+        alt="http://localhost:1313/ethernaut/delegation/bytecode.png"
+        title="http://localhost:1313/ethernaut/delegation/bytecode.png" /></p>
 <p>now we check if the function selector for the function <code>pwn()</code> is in it or not</p>
 <p>1- if the selector is in the code then we are given the address for <code>Delegate</code>
 2- otherwise we are given the address for <code>Delegation</code></p>
@@ -191,11 +191,11 @@
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png, https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png 2x"
+        data-src="http://localhost:1313/ethernaut/delegation/selector-check.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/selector-check.png, http://localhost:1313/ethernaut/delegation/selector-check.png 1.5x, http://localhost:1313/ethernaut/delegation/selector-check.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png"
-        title="https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png" /></p>
+        alt="http://localhost:1313/ethernaut/delegation/selector-check.png"
+        title="http://localhost:1313/ethernaut/delegation/selector-check.png" /></p>
 <p>since it returned False we can confirm that we have the address for the Delegation contract and we should claim ownership of this contract</p>
 <p>In solidity state variables are laid in slots, each slot is 32 bytes</p>
 <p>when contract A delegates to contract B, B code will run but treats A storage as its own</p>
@@ -226,11 +226,11 @@ this way the function pwn will get executed in context of contract A, so the val
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png, https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png 2x"
+        data-src="http://localhost:1313/ethernaut/delegation/fallback-flow.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/fallback-flow.png, http://localhost:1313/ethernaut/delegation/fallback-flow.png 1.5x, http://localhost:1313/ethernaut/delegation/fallback-flow.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png"
-        title="https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png" /></p>
+        alt="http://localhost:1313/ethernaut/delegation/fallback-flow.png"
+        title="http://localhost:1313/ethernaut/delegation/fallback-flow.png" /></p>
 <p>just add a note that in the case where <code>msg.data</code> is not empty
 fallback get executed only if the given selector don&rsquo;t match any function signature that exists in the contract code</p>
 <p>so if we pass <code>msg.data = selector of pwn()</code> since this matches no function in contract A, fallback will get executed, and it will delegate calls the function <code>pwn()</code> of contract B because of this line :</p>
@@ -289,11 +289,11 @@ fallback get executed only if the given selector don&rsquo;t match any function 
 <p><img
         class="lazyload"
         src="/svg/loading.min.svg"
-        data-src="https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png"
-        data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png, https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png 2x"
+        data-src="http://localhost:1313/ethernaut/delegation/solution-success.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/solution-success.png, http://localhost:1313/ethernaut/delegation/solution-success.png 1.5x, http://localhost:1313/ethernaut/delegation/solution-success.png 2x"
         data-sizes="auto"
-        alt="https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png"
-        title="https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png" /></p>
+        alt="http://localhost:1313/ethernaut/delegation/solution-success.png"
+        title="http://localhost:1313/ethernaut/delegation/solution-success.png" /></p>
 <p>we can see that we claimed ownership successfully so GG! the challenge is solved</p></div><div class="post-footer" id="post-footer">
     <div class="post-info"><div class="post-info-tag"><span><a href="/tags/ethernaut/">Ethernaut</a>
                 </span><span><a href="/tags/solidity/">Solidity</a>
@@ -304,7 +304,7 @@ fallback get executed only if the given selector don&rsquo;t match any function 
                 <span>Updated on 2026-01-07</span>
             </div><div class="post-info-mod"></div>
         </div><div class="post-info-share">
-            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="https://lanaceryasser.github.io/ethernaut/delegation/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="https://lanaceryasser.github.io/ethernaut/delegation/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
+            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/ethernaut/delegation/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ethernaut/delegation/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
         </div></div><div class="related-content">
             <h3 class="related-title">See Also</h3>
             <div class="related-posts"><a class="related-post" href="/posts/ethernaut/"><div class="related-post-image-placeholder">

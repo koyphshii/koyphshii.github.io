@@ -7,7 +7,7 @@ slug: "about"
 
 ![Avatar](/avatar/avatar.gif)
 
-**Koyphshi**: CS student, CTF player, applied cryptography enthusiast.
+Hello ^-^
 
 I'm a third year computer science student focusing on applied cryptography and blockchain security. I write technical writeups on smart contract exploitation and cryptographic attacks. Currently, I'm learning about zero knowledge proof systems.
 

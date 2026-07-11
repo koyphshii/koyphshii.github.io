@@ -2,6 +2,7 @@
 title: "About Me"
 date: 2026-07-11T14:10:00+01:00
 slug: "about"
+images: ["/images/og-about.webp"]
 ---
 <!--more-->
 

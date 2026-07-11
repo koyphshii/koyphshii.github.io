@@ -24,7 +24,7 @@ enableRobotsTXT = true
   avatar = "avatar.gif"
   fingerprint = ""
   dateFormat = "2006-01-02"
-  images = ["/images/og-preview.jpg"]
+  images = ["/images/og-preview.webp"]
 
   [params.header]
     desktopMode = "sticky"
@@ -102,8 +102,8 @@ enableRobotsTXT = true
         custom = "/css/custom.css"
 
   [params.seo]
-    image = "/images/og-preview.jpg"
-    thumbnailUrl = "/images/og-preview.jpg"
+    image = "/images/og-preview.webp"
+    thumbnailUrl = "/images/og-preview.webp"
 
   [params.analytics]
     enable = false

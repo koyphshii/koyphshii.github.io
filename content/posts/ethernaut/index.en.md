@@ -7,5 +7,4 @@ description: "Collection of Ethernaut challenge writeups"
 categories: ["Blockchain"]
 tags: ["ethernaut", "solidity", "evm"]
 layout: "challenge-series"
-pin: true
 ---

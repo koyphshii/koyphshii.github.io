@@ -208,6 +208,29 @@ body,
 }
 
 /* ============================================
+   Code Blocks - Horizontal Scroll for Long Lines
+   ============================================ */
+.content pre,
+.content pre code,
+.highlight pre,
+.highlight td.lntd pre,
+.chroma pre,
+.chroma code {
+    overflow-x: auto !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
+    white-space: pre !important;
+    max-width: 100% !important;
+}
+
+.highlight,
+.chroma,
+.content .highlight {
+    overflow-x: auto !important;
+    max-width: 100% !important;
+}
+
+/* ============================================
    Pagination
    ============================================ */
 .pagination .page-item .page-link {

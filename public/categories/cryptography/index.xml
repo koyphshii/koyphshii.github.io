@@ -1,1 +1,31 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Cryptography - Category - Koyphshi</title><link>https://lanaceryasser.github.io/categories/cryptography/</link><description>Cryptography - Category - Koyphshi</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/categories/cryptography/" rel="self" type="application/rss+xml"/><item><title>Geni</title><link>https://lanaceryasser.github.io/posts/geni/</link><pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/geni/</guid><description>Exploiting a CSI-FiSh variant by tracking torsion points through a sequence of leaked generator images.</description></item><item><title>Vrai Sahl</title><link>https://lanaceryasser.github.io/posts/ingeneer/</link><pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/ingeneer/</guid><description>&lt;p>Breaking a hybrid RSA-ECC cryptosystem through weak prime generation.&lt;/p></description></item><item><title>XORSA</title><link>https://lanaceryasser.github.io/posts/umass/</link><pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/umass/</guid><description>Exploiting RSA with leaked XOR bits</description></item><item><title>TDS</title><link>https://lanaceryasser.github.io/posts/black-hat/</link><pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/black-hat/</guid><description></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Cryptography - Category - Koyphshi</title>
+        <link>https://lanaceryasser.github.io/categories/cryptography/</link>
+        <description>Cryptography - Category - Koyphshi</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 22 Dec 2025 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/categories/cryptography/" rel="self" type="application/rss+xml" /><item>
+    <title>Geni</title>
+    <link>https://lanaceryasser.github.io/posts/geni/</link>
+    <pubDate>Mon, 22 Dec 2025 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/posts/geni/</guid>
+    <description><![CDATA[Exploiting a CSI-FiSh variant by tracking torsion points through a sequence of leaked generator images.]]></description>
+</item>
+<item>
+    <title>Vrai Sahl</title>
+    <link>https://lanaceryasser.github.io/posts/ingeneer/</link>
+    <pubDate>Mon, 26 May 2025 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/posts/ingeneer/</guid>
+    <description><![CDATA[<p>Breaking a hybrid RSA-ECC cryptosystem through weak prime generation.</p>]]></description>
+</item>
+<item>
+    <title>XORSA</title>
+    <link>https://lanaceryasser.github.io/posts/umass/</link>
+    <pubDate>Mon, 21 Apr 2025 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/posts/umass/</guid>
+    <description><![CDATA[Exploiting RSA with leaked XOR bits]]></description>
+</item>
+<item>
+    <title>TDS</title>
+    <link>https://lanaceryasser.github.io/posts/black-hat/</link>
+    <pubDate>Thu, 16 Jan 2025 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/posts/black-hat/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

@@ -21,10 +21,10 @@ enableRobotsTXT = true
   description = "Koyphshi - My Personal Blog"
   keywords = ["blog", "tech", "programming", "development"]
   defaultTheme = "dark"
-  avatar = "peak.jpeg"
+  avatar = "avatar.gif"
   fingerprint = ""
   dateFormat = "2006-01-02"
-  images = ["/images/avatar.jpeg"]
+  images = ["/avatar/avatar.gif"]
 
   [params.header]
     desktopMode = "sticky"
@@ -48,7 +48,7 @@ enableRobotsTXT = true
     rss = 10
     [params.home.profile]
       enable = true
-      avatarURL = "/avatar/peak.jpeg"
+      avatarURL = "/avatar/avatar.gif"
       title = "Koyphshi"
       subtitle = "have fun :3"
       typeit = true
@@ -102,8 +102,8 @@ enableRobotsTXT = true
         custom = "/css/custom.css"
 
   [params.seo]
-    image = "/images/avatar.jpeg"
-    thumbnailUrl = "/images/avatar.jpeg"
+    image = "/avatar/avatar.gif"
+    thumbnailUrl = "/avatar/avatar.gif"
 
   [params.analytics]
     enable = false

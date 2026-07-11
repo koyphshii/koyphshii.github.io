@@ -1,1 +1,19 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Assembly - Tag - Koyphshi</title><link>https://lanaceryasser.github.io/tags/assembly/</link><description>Assembly - Tag - Koyphshi</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 24 Dec 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/assembly/" rel="self" type="application/rss+xml"/><item><title>Only-invited party</title><link>https://lanaceryasser.github.io/posts/indit/</link><pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/indit/</guid><description>Exploiting unchecked ecrecover return values and dirty memory in inline assembly to bypass signature verification and steal golden tickets.</description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Assembly - Tag - Koyphshi</title>
+        <link>https://lanaceryasser.github.io/tags/assembly/</link>
+        <description>Assembly - Tag - Koyphshi</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/assembly/" rel="self" type="application/rss+xml" /><item>
+    <title>Magic Number</title>
+    <link>https://lanaceryasser.github.io/ethernaut/magic-number/</link>
+    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/magic-number/</guid>
+    <description><![CDATA[<p>this challenge is about calling the <code>setSolver</code> function and we give it an address of a contract that responds to <code>whatIsTheMeaningOfLife()</code> with the number <strong>42</strong></p>]]></description>
+</item>
+<item>
+    <title>Only-invited party</title>
+    <link>https://lanaceryasser.github.io/posts/indit/</link>
+    <pubDate>Wed, 24 Dec 2025 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/posts/indit/</guid>
+    <description><![CDATA[Exploiting unchecked ecrecover return values and dirty memory in inline assembly to bypass signature verification and steal golden tickets.]]></description>
+</item>
+</channel>
+</rss>

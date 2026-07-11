@@ -1,1 +1,13 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>View-Purity - Tag - Koyphshi</title><link>https://lanaceryasser.github.io/tags/view-purity/</link><description>View-Purity - Tag - Koyphshi</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 08 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/view-purity/" rel="self" type="application/rss+xml"/><item><title>Elevator</title><link>https://lanaceryasser.github.io/ethernaut/elevator/</link><pubDate>Thu, 08 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/elevator/</guid><description>&lt;p>in this challenge our goal is to set &lt;code>top = True&lt;/code>&lt;/p></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>View-Purity - Tag - Koyphshi</title>
+        <link>https://lanaceryasser.github.io/tags/view-purity/</link>
+        <description>View-Purity - Tag - Koyphshi</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 08 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/view-purity/" rel="self" type="application/rss+xml" /><item>
+    <title>Elevator</title>
+    <link>https://lanaceryasser.github.io/ethernaut/elevator/</link>
+    <pubDate>Thu, 08 Jan 2026 00:00:00 &#43;0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/elevator/</guid>
+    <description><![CDATA[<p>in this challenge our goal is to set <code>top = True</code></p>]]></description>
+</item>
+</channel>
+</rss>

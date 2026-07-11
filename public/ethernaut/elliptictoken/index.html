@@ -1,415 +1,141 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>EllipticToken - Koyphshi</title><meta name="description" content="Stealing tokens by exploiting an unhashed ECDSA verification"><meta property="og:url" content="http://localhost:1313/ethernaut/elliptictoken/">
-	<meta property="og:site_name" content="Koyphshi">
-	<meta property="og:title" content="EllipticToken">
-	<meta property="og:description" content="Stealing tokens by exploiting an unhashed ECDSA verification">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="ethernaut">
-		<meta property="article:published_time" content="2026-07-04T00:00:00+00:00">
-		<meta property="article:modified_time" content="2026-07-04T00:00:00+00:00">
-		<meta property="article:tag" content="Ethernaut">
-		<meta property="article:tag" content="Solidity">
-		<meta property="article:tag" content="Ecdsa">
-		<meta property="article:tag" content="Elliptic-Curves">
-		<meta property="article:tag" content="Signature-Forgery">
-		<meta property="og:image" content="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png">
-
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png">
-	<meta name="twitter:title" content="EllipticToken">
-	<meta name="twitter:description" content="Stealing tokens by exploiting an unhashed ECDSA verification">
-<meta name="application-name" content="Koyphshi">
-<meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ethernaut/elliptictoken/" /><link rel="prev" href="http://localhost:1313/ethernaut/elevator/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "headline": "EllipticToken",
-        "inLanguage": "en",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/ethernaut\/elliptictoken\/"
-        },"image": ["http:\/\/localhost:1313\/avatar\/avatar.gif"],"genre": "ethernaut","keywords": "ethernaut, solidity, ecdsa, elliptic-curves, signature-forgery","wordcount":  2059 ,
-        "url": "http:\/\/localhost:1313\/ethernaut\/elliptictoken\/","datePublished": "2026-07-04T00:00:00+00:00","dateModified": "2026-07-04T00:00:00+00:00","publisher": {
-            "@type": "Organization",
-            "name": "Koyphshi"},"author": {
-                "@type": "Person",
-                "name": "Koyphshi"
-            },"description": "Stealing tokens by exploiting an unhashed ECDSA verification"
-    }
-    </script></head><body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="Koyphshi">Koyphshi</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/about/">
-                            About
-                        </a><a class="menu-item" href="/posts/">
-                            Posts
-                        </a><a class="menu-item" href="/categories/">
-                            Categories
-                        </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fa-solid fa-search fa-fw"></i>
-                        </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fa-solid fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fa-solid fa-adjust fa-fw"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="Koyphshi">Koyphshi</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fa-solid fa-search fa-fw"></i>
-                        </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fa-solid fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
-                        Cancel
-                    </a>
-                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><div class="menu-item"><a href="#" onclick="return false;" class="theme-switch" title="Switch Theme">
-                    <i class="fa-solid fa-adjust fa-fw"></i>
-                </a>
-            </div></div>
-    </div>
-</header><div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-                <div class="container"><div class="toc" id="toc-auto" style="top:8rem;">
-            <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single special" data-toc="enable"><h2 class="single-title animated fadeInDown faster">EllipticToken</h2><div class="single-card" ><div class="details toc" id="toc-static"  data-kept="">
-                    <div class="details-summary toc-title">
-                        <span>Contents</span>
-                        <span><i class="details-icon fa-solid fa-angle-right"></i></span>
-                    </div>
-                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-                </div><div class="content" id="content"><p>our goal is to steal the tokens that Alice just redeemed by using the fact that Bob skipped parts of the ECDSA algorithm</p>
-<div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><ul>
-<li><strong>Platform</strong>: Ethernaut</li>
-<li><strong>Challenge</strong>: EllipticToken</li>
-<li><strong>Category</strong>: Blockchain</li>
-</ul>
-</div>
-        </div>
-    </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="c1">// SPDX-License-Identifier: MIT
-</span></span></span><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">28</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span><span class="n">Ownable</span><span class="p">}</span> <span class="k">from</span> <span class="s">&#34;openzeppelin-contracts-08/access/Ownable.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span><span class="n">ECDSA</span><span class="p">}</span> <span class="k">from</span> <span class="s">&#34;openzeppelin-contracts-08/utils/cryptography/ECDSA.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span><span class="n">ERC20</span><span class="p">}</span> <span class="k">from</span> <span class="s">&#34;openzeppelin-contracts-08/token/ERC20/ERC20.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">EllipticToken</span> <span class="k">is</span> <span class="n">Ownable</span><span class="p">,</span> <span class="n">ERC20</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">error</span> <span class="n">HashAlreadyUsed</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">error</span> <span class="n">InvalidOwner</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">error</span> <span class="n">InvalidReceiver</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">    <span class="n">error</span> <span class="n">InvalidSpender</span><span class="p">();</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">constructor</span><span class="p">()</span> <span class="n">ERC20</span><span class="p">(</span><span class="s">&#34;EllipticToken&#34;</span><span class="p">,</span> <span class="s">&#34;ETK&#34;</span><span class="p">)</span> <span class="p">{}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">mapping</span><span class="p">(</span><span class="kt">bytes32</span> <span class="o">=&gt;</span> <span class="kt">bool</span><span class="p">)</span> <span class="k">public</span> <span class="n">usedHashes</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nf">redeemVoucher</span><span class="p">(</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">uint256</span> <span class="n">amount</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">address</span> <span class="n">receiver</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">bytes32</span> <span class="n">salt</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">ownerSignature</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">receiverSignature</span>
-</span></span><span class="line"><span class="cl">    <span class="p">)</span> <span class="k">external</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">bytes32</span> <span class="n">voucherHash</span> <span class="o">=</span> <span class="nb">keccak256</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">salt</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">require</span><span class="p">(</span><span class="o">!</span><span class="n">usedHashes</span><span class="p">[</span><span class="n">voucherHash</span><span class="p">],</span> <span class="n">HashAlreadyUsed</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Verify that the owner emitted the voucher
-</span></span></span><span class="line"><span class="cl">        <span class="nb">require</span><span class="p">(</span><span class="n">ECDSA</span><span class="p">.</span><span class="n">recover</span><span class="p">(</span><span class="n">voucherHash</span><span class="p">,</span> <span class="n">ownerSignature</span><span class="p">)</span> <span class="o">==</span> <span class="n">owner</span><span class="p">(),</span> <span class="n">InvalidOwner</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Verify that the receiver accepted the voucher
-</span></span></span><span class="line"><span class="cl">        <span class="nb">require</span><span class="p">(</span><span class="n">ECDSA</span><span class="p">.</span><span class="n">recover</span><span class="p">(</span><span class="n">voucherHash</span><span class="p">,</span> <span class="n">receiverSignature</span><span class="p">)</span> <span class="o">==</span> <span class="n">receiver</span><span class="p">,</span> <span class="n">InvalidReceiver</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Nullify the voucher
-</span></span></span><span class="line"><span class="cl">        <span class="n">usedHashes</span><span class="p">[</span><span class="n">voucherHash</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Mint the tokens
-</span></span></span><span class="line"><span class="cl">        <span class="n">_mint</span><span class="p">(</span><span class="n">receiver</span><span class="p">,</span> <span class="n">amount</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nf">permit</span><span class="p">(</span><span class="kt">uint256</span> <span class="n">amount</span><span class="p">,</span> <span class="kt">address</span> <span class="n">spender</span><span class="p">,</span> <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">tokenOwnerSignature</span><span class="p">,</span> <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">spenderSignature</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">        <span class="k">external</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kt">bytes32</span> <span class="n">permitHash</span> <span class="o">=</span> <span class="nb">keccak256</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encode</span><span class="p">(</span><span class="n">amount</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">require</span><span class="p">(</span><span class="o">!</span><span class="n">usedHashes</span><span class="p">[</span><span class="n">permitHash</span><span class="p">],</span> <span class="n">HashAlreadyUsed</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">require</span><span class="p">(</span><span class="o">!</span><span class="n">usedHashes</span><span class="p">[</span><span class="kt">bytes32</span><span class="p">(</span><span class="n">amount</span><span class="p">)],</span> <span class="n">HashAlreadyUsed</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Recover the token owner that emitted the permit
-</span></span></span><span class="line"><span class="cl">        <span class="kt">address</span> <span class="n">tokenOwner</span> <span class="o">=</span> <span class="n">ECDSA</span><span class="p">.</span><span class="n">recover</span><span class="p">(</span><span class="kt">bytes32</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="n">tokenOwnerSignature</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Verify that the spender accepted the permit
-</span></span></span><span class="line"><span class="cl">        <span class="kt">bytes32</span> <span class="n">permitAcceptHash</span> <span class="o">=</span> <span class="nb">keccak256</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="n">tokenOwner</span><span class="p">,</span> <span class="n">spender</span><span class="p">,</span> <span class="n">amount</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">require</span><span class="p">(</span><span class="n">ECDSA</span><span class="p">.</span><span class="n">recover</span><span class="p">(</span><span class="n">permitAcceptHash</span><span class="p">,</span> <span class="n">spenderSignature</span><span class="p">)</span> <span class="o">==</span> <span class="n">spender</span><span class="p">,</span> <span class="n">InvalidSpender</span><span class="p">());</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Nullify the permit
-</span></span></span><span class="line"><span class="cl">        <span class="n">usedHashes</span><span class="p">[</span><span class="n">permitHash</span><span class="p">]</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="c1">// Approve the spender
-</span></span></span><span class="line"><span class="cl">        <span class="n">_approve</span><span class="p">(</span><span class="n">tokenOwner</span><span class="p">,</span> <span class="n">spender</span><span class="p">,</span> <span class="n">amount</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>so the first thing the challenge description tells us is that Bob creates vouchers off-chain for a receiver (Alice in this case) and then Alice redeems the voucher, by looking at the challenge code we notice that the function <code>redeemVoucher</code> is the one used for the redeeming process</p>
-<p>the challenge description tells us that our goal is to steal the tokens that Alice <strong>just redeemed</strong> by using the fact that Bob skipped parts of the <code>ECDSA algorithm</code></p>
-<p>to solve the challenge, lets start by looking in the contract for any logic that allows us to steal Alice&rsquo;s tokens. After analyzing the code we can notice that the only line that actually does that is <code>_approve(tokenOwner, spender, amount);</code> located at the end of the <code>permit</code> function, and this will only work if <code>tokenOwner</code> is Alice&rsquo;s address and <code>amount &gt; 0</code></p>
-<p>so <code>tokenOwner</code> is computed in this line :</p>
-<p><strong><code>address tokenOwner = ECDSA.recover(bytes32(amount), tokenOwnerSignature);</code></strong></p>
-<p>this means in order to make it equal to Alice&rsquo;s address we should craft a pair amount,signature that gets verified into Alice&rsquo;s address</p>
-<p>if you notice, recover is using the amount directly without hashing it, this is actually a vulnerability in <em>ecdsa</em> verification, the message should be hashed before verification, so we can say/assume that this is the missing step the challenge description talked about</p>
-<p>for now we have 2 useful information :
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>EllipticToken - Koyphshi</title><meta name=description content="Stealing tokens by exploiting an unhashed ECDSA verification"><meta property="og:url" content="https://lanaceryasser.github.io/ethernaut/elliptictoken/"><meta property="og:site_name" content="Koyphshi"><meta property="og:title" content="EllipticToken"><meta property="og:description" content="Stealing tokens by exploiting an unhashed ECDSA verification"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="ethernaut"><meta property="article:published_time" content="2026-07-04T00:00:00+00:00"><meta property="article:modified_time" content="2026-07-04T00:00:00+00:00"><meta property="article:tag" content="Ethernaut"><meta property="article:tag" content="Solidity"><meta property="article:tag" content="Ecdsa"><meta property="article:tag" content="Elliptic-Curves"><meta property="article:tag" content="Signature-Forgery"><meta property="og:image" content="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png"><meta name=twitter:title content="EllipticToken"><meta name=twitter:description content="Stealing tokens by exploiting an unhashed ECDSA verification"><meta name=application-name content="Koyphshi"><meta name=apple-mobile-web-app-title content="Koyphshi"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://lanaceryasser.github.io/ethernaut/elliptictoken/><link rel=prev href=https://lanaceryasser.github.io/ethernaut/elevator/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"EllipticToken","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/lanaceryasser.github.io\/ethernaut\/elliptictoken\/"},"image":["https:\/\/lanaceryasser.github.io\/avatar\/avatar.gif"],"genre":"ethernaut","keywords":"ethernaut, solidity, ecdsa, elliptic-curves, signature-forgery","wordcount":2059,"url":"https:\/\/lanaceryasser.github.io\/ethernaut\/elliptictoken\/","datePublished":"2026-07-04T00:00:00+00:00","dateModified":"2026-07-04T00:00:00+00:00","publisher":{"@type":"Organization","name":"Koyphshi"},"author":{"@type":"Person","name":"Koyphshi"},"description":"Stealing tokens by exploiting an unhashed ECDSA verification"}</script></head><body data-header-desktop=sticky data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"dark"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"dark"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/about/>About
+</a><a class=menu-item href=/posts/>Posts
+</a><a class=menu-item href=/categories/>Categories
+</a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=# class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fa-solid fa-search fa-fw"></i>
+</a><a href=# class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+</span></span><a href=# onclick=return!1 class="menu-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=# class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fa-solid fa-search fa-fw"></i>
+</a><a href=# class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/about/ title>About</a><a class=menu-item href=/posts/ title>Posts</a><a class=menu-item href=/categories/ title>Categories</a><div class=menu-item><a href=# onclick=return!1 class=theme-switch title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto style=top:8rem><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single special" data-toc=enable><h2 class="single-title animated fadeInDown faster">EllipticToken</h2><div class=single-card><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fa-solid fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents></nav></div></div><div class=content id=content><p>our goal is to steal the tokens that Alice just redeemed by using the fact that Bob skipped parts of the ECDSA algorithm</p><div class="details admonition info open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><ul><li><strong>Platform</strong>: Ethernaut</li><li><strong>Challenge</strong>: EllipticToken</li><li><strong>Category</strong>: Blockchain</li></ul></div></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=c1>// SPDX-License-Identifier: MIT
+</span></span></span><span class=line><span class=cl><span class=k>pragma solidity</span> <span class=mi>0</span><span class=p>.</span><span class=mi>8</span><span class=p>.</span><span class=mi>28</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>{</span><span class=n>Ownable</span><span class=p>}</span> <span class=k>from</span> <span class=s>&#34;openzeppelin-contracts-08/access/Ownable.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>{</span><span class=n>ECDSA</span><span class=p>}</span> <span class=k>from</span> <span class=s>&#34;openzeppelin-contracts-08/utils/cryptography/ECDSA.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>{</span><span class=n>ERC20</span><span class=p>}</span> <span class=k>from</span> <span class=s>&#34;openzeppelin-contracts-08/token/ERC20/ERC20.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>EllipticToken</span> <span class=k>is</span> <span class=n>Ownable</span><span class=p>,</span> <span class=n>ERC20</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>error</span> <span class=n>HashAlreadyUsed</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>error</span> <span class=n>InvalidOwner</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>error</span> <span class=n>InvalidReceiver</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=n>error</span> <span class=n>InvalidSpender</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>constructor</span><span class=p>()</span> <span class=n>ERC20</span><span class=p>(</span><span class=s>&#34;EllipticToken&#34;</span><span class=p>,</span> <span class=s>&#34;ETK&#34;</span><span class=p>)</span> <span class=p>{}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>mapping</span><span class=p>(</span><span class=kt>bytes32</span> <span class=o>=&gt;</span> <span class=kt>bool</span><span class=p>)</span> <span class=k>public</span> <span class=n>usedHashes</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nf>redeemVoucher</span><span class=p>(</span>
+</span></span><span class=line><span class=cl>        <span class=kt>uint256</span> <span class=n>amount</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=kt>address</span> <span class=n>receiver</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=kt>bytes32</span> <span class=n>salt</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=kt>bytes</span> <span class=k>memory</span> <span class=n>ownerSignature</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>        <span class=kt>bytes</span> <span class=k>memory</span> <span class=n>receiverSignature</span>
+</span></span><span class=line><span class=cl>    <span class=p>)</span> <span class=k>external</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kt>bytes32</span> <span class=n>voucherHash</span> <span class=o>=</span> <span class=nb>keccak256</span><span class=p>(</span><span class=nb>abi</span><span class=p>.</span><span class=nb>encodePacked</span><span class=p>(</span><span class=n>amount</span><span class=p>,</span> <span class=n>receiver</span><span class=p>,</span> <span class=n>salt</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=nb>require</span><span class=p>(</span><span class=o>!</span><span class=n>usedHashes</span><span class=p>[</span><span class=n>voucherHash</span><span class=p>],</span> <span class=n>HashAlreadyUsed</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Verify that the owner emitted the voucher
+</span></span></span><span class=line><span class=cl>        <span class=nb>require</span><span class=p>(</span><span class=n>ECDSA</span><span class=p>.</span><span class=n>recover</span><span class=p>(</span><span class=n>voucherHash</span><span class=p>,</span> <span class=n>ownerSignature</span><span class=p>)</span> <span class=o>==</span> <span class=n>owner</span><span class=p>(),</span> <span class=n>InvalidOwner</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Verify that the receiver accepted the voucher
+</span></span></span><span class=line><span class=cl>        <span class=nb>require</span><span class=p>(</span><span class=n>ECDSA</span><span class=p>.</span><span class=n>recover</span><span class=p>(</span><span class=n>voucherHash</span><span class=p>,</span> <span class=n>receiverSignature</span><span class=p>)</span> <span class=o>==</span> <span class=n>receiver</span><span class=p>,</span> <span class=n>InvalidReceiver</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Nullify the voucher
+</span></span></span><span class=line><span class=cl>        <span class=n>usedHashes</span><span class=p>[</span><span class=n>voucherHash</span><span class=p>]</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Mint the tokens
+</span></span></span><span class=line><span class=cl>        <span class=n>_mint</span><span class=p>(</span><span class=n>receiver</span><span class=p>,</span> <span class=n>amount</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nf>permit</span><span class=p>(</span><span class=kt>uint256</span> <span class=n>amount</span><span class=p>,</span> <span class=kt>address</span> <span class=n>spender</span><span class=p>,</span> <span class=kt>bytes</span> <span class=k>memory</span> <span class=n>tokenOwnerSignature</span><span class=p>,</span> <span class=kt>bytes</span> <span class=k>memory</span> <span class=n>spenderSignature</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=k>external</span>
+</span></span><span class=line><span class=cl>    <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=kt>bytes32</span> <span class=n>permitHash</span> <span class=o>=</span> <span class=nb>keccak256</span><span class=p>(</span><span class=nb>abi</span><span class=p>.</span><span class=nb>encode</span><span class=p>(</span><span class=n>amount</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=nb>require</span><span class=p>(</span><span class=o>!</span><span class=n>usedHashes</span><span class=p>[</span><span class=n>permitHash</span><span class=p>],</span> <span class=n>HashAlreadyUsed</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>        <span class=nb>require</span><span class=p>(</span><span class=o>!</span><span class=n>usedHashes</span><span class=p>[</span><span class=kt>bytes32</span><span class=p>(</span><span class=n>amount</span><span class=p>)],</span> <span class=n>HashAlreadyUsed</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Recover the token owner that emitted the permit
+</span></span></span><span class=line><span class=cl>        <span class=kt>address</span> <span class=n>tokenOwner</span> <span class=o>=</span> <span class=n>ECDSA</span><span class=p>.</span><span class=n>recover</span><span class=p>(</span><span class=kt>bytes32</span><span class=p>(</span><span class=n>amount</span><span class=p>),</span> <span class=n>tokenOwnerSignature</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Verify that the spender accepted the permit
+</span></span></span><span class=line><span class=cl>        <span class=kt>bytes32</span> <span class=n>permitAcceptHash</span> <span class=o>=</span> <span class=nb>keccak256</span><span class=p>(</span><span class=nb>abi</span><span class=p>.</span><span class=nb>encodePacked</span><span class=p>(</span><span class=n>tokenOwner</span><span class=p>,</span> <span class=n>spender</span><span class=p>,</span> <span class=n>amount</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>        <span class=nb>require</span><span class=p>(</span><span class=n>ECDSA</span><span class=p>.</span><span class=n>recover</span><span class=p>(</span><span class=n>permitAcceptHash</span><span class=p>,</span> <span class=n>spenderSignature</span><span class=p>)</span> <span class=o>==</span> <span class=n>spender</span><span class=p>,</span> <span class=n>InvalidSpender</span><span class=p>());</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Nullify the permit
+</span></span></span><span class=line><span class=cl>        <span class=n>usedHashes</span><span class=p>[</span><span class=n>permitHash</span><span class=p>]</span> <span class=o>=</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        <span class=c1>// Approve the spender
+</span></span></span><span class=line><span class=cl>        <span class=n>_approve</span><span class=p>(</span><span class=n>tokenOwner</span><span class=p>,</span> <span class=n>spender</span><span class=p>,</span> <span class=n>amount</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>so the first thing the challenge description tells us is that Bob creates vouchers off-chain for a receiver (Alice in this case) and then Alice redeems the voucher, by looking at the challenge code we notice that the function <code>redeemVoucher</code> is the one used for the redeeming process</p><p>the challenge description tells us that our goal is to steal the tokens that Alice <strong>just redeemed</strong> by using the fact that Bob skipped parts of the <code>ECDSA algorithm</code></p><p>to solve the challenge, lets start by looking in the contract for any logic that allows us to steal Alice&rsquo;s tokens. After analyzing the code we can notice that the only line that actually does that is <code>_approve(tokenOwner, spender, amount);</code> located at the end of the <code>permit</code> function, and this will only work if <code>tokenOwner</code> is Alice&rsquo;s address and <code>amount > 0</code></p><p>so <code>tokenOwner</code> is computed in this line :</p><p><strong><code>address tokenOwner = ECDSA.recover(bytes32(amount), tokenOwnerSignature);</code></strong></p><p>this means in order to make it equal to Alice&rsquo;s address we should craft a pair amount,signature that gets verified into Alice&rsquo;s address</p><p>if you notice, recover is using the amount directly without hashing it, this is actually a vulnerability in <em>ecdsa</em> verification, the message should be hashed before verification, so we can say/assume that this is the missing step the challenge description talked about</p><p>for now we have 2 useful information :
 1- we should make <code>tokenOwner</code> equal to Alice&rsquo;s address
-2- the message isn&rsquo;t hashed, this should be the thing we will abuse</p>
-<p>from now i will be talking about my attempts :</p>
-<p><em><strong>1- use the same hash and signature used in the redemption</strong></em></p>
-<p>we stated before that Alice just redeemed the voucher, so the function <code>redeemVoucher</code> should have been called and executed after we deployed that challenge, and since <em>Ethereum</em> is a public Blockchain, we can read the exact parameters values used in the call</p>
-<p>ethernaut challenges are deployed in sepolia testnet, lets go and find the contract challenge there :</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png, http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/contract-on-sepolia.png" /></p>
-<p>now by our previous assumption, there should be a transaction that called the redeem function, but where is it ??</p>
-<p>well the explanation for this is that the initial transaction that started the challenge instance is the one that called the redeem function, so the call we are looking for will be found inside an internal transaction</p>
-<p>so we check the internal transactions :</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png, http://localhost:1313/ethernaut/elliptictoken/internal-txns.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/internal-txns.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/internal-txns.png" /></p>
-<p>we go more deep and click on the parent transaction hash :</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png, http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/parent-tx-hash.png" /></p>
-<p>the call type for the function should be <code>call</code>, by checking the calls <code>calldata</code> the 4th is the one we are looking for</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png, http://localhost:1313/ethernaut/elliptictoken/calldata-call.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/calldata-call.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/calldata-call.png" /></p>
-<p>this is the bytecode</p>
-<p>now to get the values of the parameters we execute this commend :</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/decode-command.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/decode-command.png, http://localhost:1313/ethernaut/elliptictoken/decode-command.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/decode-command.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/decode-command.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/decode-command.png" /></p>
-<p>this will match each argument with the input value</p>
-<p>the output will be :</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png, http://localhost:1313/ethernaut/elliptictoken/decoded-output.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/decoded-output.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/decoded-output.png" /></p>
-<p>this is actually a good advancement, we now have the value of :</p>
-<ul>
-<li>amount in the voucher</li>
-<li>the salt used for hashing</li>
-<li>Alice and Bob signatures</li>
-</ul>
-<p>what we can do by these is : compute the same exact voucher hash that was used in the redeeming process, and since we know Alice&rsquo;s signature for this hash, we actually have a valid pair that verifies to Alice&rsquo;s public address</p>
-<p>while i was doing this work, i thought it would work because in the permit function when they are not hashing, was an implementation typo, so they would only check if the hashed value of amount is used, but they are actually checking that in this line :</p>
-<pre tabindex="0"><code>require(!usedHashes[bytes32(amount)], HashAlreadyUsed());
-</code></pre><p>(yup i didn&rsquo;t read all the code carefully :/)</p>
-<p>now my plan will not work!! because the idea was to cast the hash value we computed before into <code>uint256</code> and then use it as the amount, and they would check its hashed value only</p>
-<p>well, hopefully there is a save for this!</p>
-<p>lets take a look at <code>ECDSA.recover</code> to see how it works</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png, http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/ecrecover-code.png" /></p>
-<p>without digging into all the code details, all we need to know is that this line is the one responsible for recovering the signer address (Alice&rsquo;s public address)</p>
-<p><code>ecrecover</code> is a built-in solidity function that implements the <code>ecdsa</code> verification algorithm, the curve used is <code>secp256k1</code> :</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png, http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/ecrecover-params.png" /></p>
-<p>lets go one step deeper and look at how the recovery is done (this is my favorite part ^-^) :</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png, http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/recovery-drawing.png" /></p>
-<p>so this some of my writing while i was solving the challenge (sorry for the ugly drawing haha)</p>
-<p>as we can see this is how the public point of the verifier is computed (and then from it they compute the address)</p>
-<p>notice that i wrote <code>m*r^-1</code>, generally it is <code>z*r^-1</code> where z is the hash message, but since they are not hashing in the challenge, i will use <code>m</code></p>
-<p>here we are doing <code>u1*R + u2*R</code> right?! (u1 and u2 are just shortcuts)</p>
-<p>the scalars <code>u1</code> and <code>u2</code> are <code>mod n</code>, that is because we are working in the elliptic curves group</p>
-<p>more precisely <code>u1*R</code> is actually an abbreviation for <code>R+R+R...</code> u1 times, and point addition is done modulo the order of the finite cyclic group of the elliptic curves</p>
-<p>with this in mind, it is important to notice that this will open a way for collisions !!</p>
-<p>because since we are not hashing, the amount we pass is directly used as <code>m</code> in the verification, and when working mod n, both m and m + n are the same number, but they are different hashes/numbers in the require check</p>
-<p><em><strong>2- use the same hash + n and signature used in the redemption</strong></em></p>
-<p>now since we proved that m and m+n will be equal inside <code>ECDSA.recover</code>, we can <code>uint256(hash) + n</code> instead of <code>uint256(hash)</code> (notice that by hash i mean the voucher hash for Alice they used in the redeem function) and it will pass the require check because it is actually a different value outside the verification</p>
-<p>this should solve the challenge, right :) ?</p>
-<p>well, i did hit a bad luck :// ,  hash + n overflowed (&gt;256 bits)  and hash - n is negative</p>
-<p>the whole work didn&rsquo;t work at the end</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png"
-        data-srcset="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png, http://localhost:1313/ethernaut/elliptictoken/overflow-error.png 1.5x, http://localhost:1313/ethernaut/elliptictoken/overflow-error.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png"
-        title="http://localhost:1313/ethernaut/elliptictoken/overflow-error.png" /></p>
-<p><em><strong>3- i found another solution</strong></em></p>
-<p>remember the previous verification equation, we will use that.</p>
-<p>lets forget about trying to use the same signature of Alice, and forge a different signature that recovers Alice&rsquo;s public address (public point)</p>
-<p>this is actually possible because they are not hashing :)</p>
-<p>assume we take m = 0 (this wouldn&rsquo;t be possible in case they were hashing because a hash can&rsquo;t be zero)</p>
-<p>the equation will become : <code>P = u1*R</code>, where <code>u1</code> is <code>r^-1 * s</code></p>
-<p>what would happen if we choose <code>r = Px</code> (the goal is  to make R = P) , and <code>s=r</code>, in this case <code>u1*R</code> will be equal to P, where P is the public point of Alice, This is the solution for the challenge for sure !!</p>
-<p>well for m=0, we will steal zero tokens, but we can take m = n which is equivalent to 0</p>
-<p>now there is something missing to fully craft this exploit, which is the x coordinate of P</p>
-<p>we can&rsquo;t get it directly from Alice&rsquo;s address, that is just a part of the hash of P</p>
-<p><strong>recovering the x coordinate of Alice&rsquo;s public point</strong></p>
-<p>we stated before that we have a valid pair the verifies to Alice&rsquo;s public point, which is the signature and  voucher hash</p>
-<p><em>first we compute R</em></p>
-<p>we are still missing the y value for R, we compute it like this :</p>
-<pre tabindex="0"><code>from sage.all import *
+2- the message isn&rsquo;t hashed, this should be the thing we will abuse</p><p>from now i will be talking about my attempts :</p><p><em><strong>1- use the same hash and signature used in the redemption</strong></em></p><p>we stated before that Alice just redeemed the voucher, so the function <code>redeemVoucher</code> should have been called and executed after we deployed that challenge, and since <em>Ethereum</em> is a public Blockchain, we can read the exact parameters values used in the call</p><p>ethernaut challenges are deployed in sepolia testnet, lets go and find the contract challenge there :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/contract-on-sepolia.png></p><p>now by our previous assumption, there should be a transaction that called the redeem function, but where is it ??</p><p>well the explanation for this is that the initial transaction that started the challenge instance is the one that called the redeem function, so the call we are looking for will be found inside an internal transaction</p><p>so we check the internal transactions :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/internal-txns.png></p><p>we go more deep and click on the parent transaction hash :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/parent-tx-hash.png></p><p>the call type for the function should be <code>call</code>, by checking the calls <code>calldata</code> the 4th is the one we are looking for</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/calldata-call.png></p><p>this is the bytecode</p><p>now to get the values of the parameters we execute this commend :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/decode-command.png></p><p>this will match each argument with the input value</p><p>the output will be :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/decoded-output.png></p><p>this is actually a good advancement, we now have the value of :</p><ul><li>amount in the voucher</li><li>the salt used for hashing</li><li>Alice and Bob signatures</li></ul><p>what we can do by these is : compute the same exact voucher hash that was used in the redeeming process, and since we know Alice&rsquo;s signature for this hash, we actually have a valid pair that verifies to Alice&rsquo;s public address</p><p>while i was doing this work, i thought it would work because in the permit function when they are not hashing, was an implementation typo, so they would only check if the hashed value of amount is used, but they are actually checking that in this line :</p><pre tabindex=0><code>require(!usedHashes[bytes32(amount)], HashAlreadyUsed());
+</code></pre><p>(yup i didn&rsquo;t read all the code carefully :/)</p><p>now my plan will not work!! because the idea was to cast the hash value we computed before into <code>uint256</code> and then use it as the amount, and they would check its hashed value only</p><p>well, hopefully there is a save for this!</p><p>lets take a look at <code>ECDSA.recover</code> to see how it works</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-code.png></p><p>without digging into all the code details, all we need to know is that this line is the one responsible for recovering the signer address (Alice&rsquo;s public address)</p><p><code>ecrecover</code> is a built-in solidity function that implements the <code>ecdsa</code> verification algorithm, the curve used is <code>secp256k1</code> :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/ecrecover-params.png></p><p>lets go one step deeper and look at how the recovery is done (this is my favorite part ^-^) :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/recovery-drawing.png></p><p>so this some of my writing while i was solving the challenge (sorry for the ugly drawing haha)</p><p>as we can see this is how the public point of the verifier is computed (and then from it they compute the address)</p><p>notice that i wrote <code>m*r^-1</code>, generally it is <code>z*r^-1</code> where z is the hash message, but since they are not hashing in the challenge, i will use <code>m</code></p><p>here we are doing <code>u1*R + u2*R</code> right?! (u1 and u2 are just shortcuts)</p><p>the scalars <code>u1</code> and <code>u2</code> are <code>mod n</code>, that is because we are working in the elliptic curves group</p><p>more precisely <code>u1*R</code> is actually an abbreviation for <code>R+R+R...</code> u1 times, and point addition is done modulo the order of the finite cyclic group of the elliptic curves</p><p>with this in mind, it is important to notice that this will open a way for collisions !!</p><p>because since we are not hashing, the amount we pass is directly used as <code>m</code> in the verification, and when working mod n, both m and m + n are the same number, but they are different hashes/numbers in the require check</p><p><em><strong>2- use the same hash + n and signature used in the redemption</strong></em></p><p>now since we proved that m and m+n will be equal inside <code>ECDSA.recover</code>, we can <code>uint256(hash) + n</code> instead of <code>uint256(hash)</code> (notice that by hash i mean the voucher hash for Alice they used in the redeem function) and it will pass the require check because it is actually a different value outside the verification</p><p>this should solve the challenge, right :) ?</p><p>well, i did hit a bad luck :// , hash + n overflowed (>256 bits) and hash - n is negative</p><p>the whole work didn&rsquo;t work at the end</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png data-srcset="https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png, https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png 1.5x, https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png title=https://lanaceryasser.github.io/ethernaut/elliptictoken/overflow-error.png></p><p><em><strong>3- i found another solution</strong></em></p><p>remember the previous verification equation, we will use that.</p><p>lets forget about trying to use the same signature of Alice, and forge a different signature that recovers Alice&rsquo;s public address (public point)</p><p>this is actually possible because they are not hashing :)</p><p>assume we take m = 0 (this wouldn&rsquo;t be possible in case they were hashing because a hash can&rsquo;t be zero)</p><p>the equation will become : <code>P = u1*R</code>, where <code>u1</code> is <code>r^-1 * s</code></p><p>what would happen if we choose <code>r = Px</code> (the goal is to make R = P) , and <code>s=r</code>, in this case <code>u1*R</code> will be equal to P, where P is the public point of Alice, This is the solution for the challenge for sure !!</p><p>well for m=0, we will steal zero tokens, but we can take m = n which is equivalent to 0</p><p>now there is something missing to fully craft this exploit, which is the x coordinate of P</p><p>we can&rsquo;t get it directly from Alice&rsquo;s address, that is just a part of the hash of P</p><p><strong>recovering the x coordinate of Alice&rsquo;s public point</strong></p><p>we stated before that we have a valid pair the verifies to Alice&rsquo;s public point, which is the signature and voucher hash</p><p><em>first we compute R</em></p><p>we are still missing the y value for R, we compute it like this :</p><pre tabindex=0><code>from sage.all import *
 p = 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2f
 a = 0
 b = 7
@@ -424,12 +150,8 @@ yy = pow(r,3,p) + 7
 y = modular_sqrt(yy,p)
 if y%2 == 1 :
     R = E(r,y)
-</code></pre><p>Alice&rsquo;s signature is (r,s,v) where v tells us which y we take (modular_sqrt returns 2)</p>
-<p>v was 28 which means y should be odd (we take the even value if v=27)</p>
-<p>after recovering R we compute P by : (python code)</p>
-<pre tabindex="0"><code>P = r_inv * s * R - z * r_inv * G
-</code></pre><p>and this is the solidity code i used to extract r,s,v from Alice&rsquo;s signature:</p>
-<pre tabindex="0"><code> bytes memory signature = hex&#34;ab1dcd2a2a1c697715a62eb6522b7999d04aa952ffa2619988737ee675d9494f2b50ecce40040bcb29b5a8ca1da875968085f22b7c0a50f29a4851396251de121c&#34;;
+</code></pre><p>Alice&rsquo;s signature is (r,s,v) where v tells us which y we take (modular_sqrt returns 2)</p><p>v was 28 which means y should be odd (we take the even value if v=27)</p><p>after recovering R we compute P by : (python code)</p><pre tabindex=0><code>P = r_inv * s * R - z * r_inv * G
+</code></pre><p>and this is the solidity code i used to extract r,s,v from Alice&rsquo;s signature:</p><pre tabindex=0><code> bytes memory signature = hex&#34;ab1dcd2a2a1c697715a62eb6522b7999d04aa952ffa2619988737ee675d9494f2b50ecce40040bcb29b5a8ca1da875968085f22b7c0a50f29a4851396251de121c&#34;;
 
     bytes32 r;
     bytes32 s;
@@ -444,186 +166,116 @@ assembly (&#34;memory-safe&#34;) {
     console.logBytes32(s);
     console.log(v);
 </code></pre><p>this is the x value we recovered :
-<code>23454111434303081435929071042469611746672141632665808216069109536628528697239</code></p>
-<p>now we craft our signature by setting r = s = x and v = 27</p>
-<p>there is an extra security alert that forbids values of s &gt; n/2, in our case s was smaller, but if it weren&rsquo;t, can simply replace s by n - s and set v = 28</p>
-<pre tabindex="0"><code>     bytes memory tokenOwnerSignature= hex&#39;33da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf9733da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf971b&#39;;
+<code>23454111434303081435929071042469611746672141632665808216069109536628528697239</code></p><p>now we craft our signature by setting r = s = x and v = 27</p><p>there is an extra security alert that forbids values of s > n/2, in our case s was smaller, but if it weren&rsquo;t, can simply replace s by n - s and set v = 28</p><pre tabindex=0><code>     bytes memory tokenOwnerSignature= hex&#39;33da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf9733da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf971b&#39;;
      
      uint256 amount = 115792089237316195423570985008687907852837564279074904382605163141518161494337;
      
      bytes32 permitAcceptHash = keccak256(abi.encodePacked(0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e,0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb, amount));
-</code></pre><p>these are the values we will be passing to the permit function, last thing is we compute the signature for <code>permitAcceptHash</code> using our private key, this is straight forward</p>
-<p>we can check that they recover to Alice&rsquo;s public point by running :</p>
-<p><code>address tokenOwner = ECDSA.recover(bytes32(amount), tokenOwnerSignature);</code></p>
-<p>and print the address</p>
-<p>after checking that we are correct, we execute :
-<code>instance.permit(amount,0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb,tokenOwnerSignature,spenderSignature);</code></p>
-<p>where <code>0x28...</code> is the address i will transferring tokens to</p>
-<p>and we solve the challenge by stealing the tokens using :</p>
-<p><code>_approve(tokenOwner, spender, amount);</code></p>
-<p>this is the full solidity code :</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="c1">// SPDX-License-Identifier: MIT
-</span></span></span><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;../src/EllipticToken.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="p">{</span><span class="n">Script</span><span class="p">}</span> <span class="k">from</span> <span class="s">&#34;forge-std/Script.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;../forge-std/console.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">Solver</span> <span class="k">is</span> <span class="n">Script</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">EllipticToken</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">EllipticToken</span><span class="p">(</span><span class="mh">0x54056d5f90Fa1352602167405A91c6071BaB9096</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nf">run</span><span class="p">()</span> <span class="k">external</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="n">vm</span><span class="p">.</span><span class="n">startBroadcast</span><span class="p">(</span><span class="n">vm</span><span class="p">.</span><span class="n">envUint</span><span class="p">(</span><span class="s">&#34;PRIVATE_KEY&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">     <span class="kt">address</span> <span class="n">Alice</span> <span class="o">=</span> <span class="mh">0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">     <span class="kt">bytes32</span> <span class="n">salt</span> <span class="o">=</span> <span class="mh">0x04a078de06d9d2ebd86ab2ae9c2b872b26e345d33f988d6d5d875f94e9c8ee1e</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">signature</span> <span class="o">=</span> <span class="s">hex&#34;ab1dcd2a2a1c697715a62eb6522b7999d04aa952ffa2619988737ee675d9494f2b50ecce40040bcb29b5a8ca1da875968085f22b7c0a50f29a4851396251de121c&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kt">bytes32</span> <span class="n">r</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bytes32</span> <span class="n">s</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">uint8</span> <span class="n">v</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="k">assembly</span> (<span class="s">&#34;memory-safe&#34;</span>) {
-</span></span><span class="line"><span class="cl">    <span class="n">r</span> <span class="o">:=</span> <span class="nf">mload</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="mh">0x20</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="n">s</span> <span class="o">:=</span> <span class="nf">mload</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="mh">0x40</span><span class="p">))</span>
-</span></span><span class="line"><span class="cl">    <span class="n">v</span> <span class="o">:=</span> <span class="nf">byte</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nf">mload</span><span class="p">(</span><span class="nf">add</span><span class="p">(</span><span class="n">signature</span><span class="p">,</span> <span class="mh">0x60</span><span class="p">)))</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="p">.</span><span class="n">logBytes32</span><span class="p">(</span><span class="n">r</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="p">.</span><span class="n">logBytes32</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">bytes32</span> <span class="n">voucherHash</span> <span class="o">=</span> <span class="nb">keccak256</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="kt">uint256</span><span class="p">(</span><span class="mi">10000000000000000000</span><span class="p">),</span> <span class="n">Alice</span><span class="p">,</span> <span class="n">salt</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">uint256</span> <span class="n">voucherHashInt</span> <span class="o">=</span> <span class="kt">uint256</span><span class="p">(</span><span class="n">voucherHash</span><span class="p">)</span> <span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="p">.</span><span class="n">logBytes32</span><span class="p">(</span><span class="n">voucherHash</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">     <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">tokenOwnerSignature</span><span class="o">=</span> <span class="s">hex&#39;33da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf9733da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf971b&#39;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">     <span class="kt">uint256</span> <span class="n">amount</span> <span class="o">=</span> <span class="mi">115792089237316195423570985008687907852837564279074904382605163141518161494337</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">     <span class="kt">bytes32</span> <span class="n">permitAcceptHash</span> <span class="o">=</span> <span class="nb">keccak256</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodePacked</span><span class="p">(</span><span class="mh">0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e</span><span class="p">,</span><span class="mh">0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class="p">,</span> <span class="n">amount</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">     
-</span></span><span class="line"><span class="cl">     <span class="n">console</span><span class="p">.</span><span class="n">logBytes32</span><span class="p">(</span><span class="n">permitAcceptHash</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">     <span class="kt">bytes</span> <span class="k">memory</span> <span class="n">spenderSignature</span> <span class="o">=</span> <span class="s">hex&#34;48cbfa3546c0aa10fae491e66c3c76e2aeb3db53943e77e0ceedcf449d90ec96455a1f4143982b6aebd28805ca9055b277978ebabe0cd17b02754557d80260721b&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">     <span class="kt">address</span> <span class="n">tokenOwner</span> <span class="o">=</span> <span class="n">ECDSA</span><span class="p">.</span><span class="n">recover</span><span class="p">(</span><span class="kt">bytes32</span><span class="p">(</span><span class="n">amount</span><span class="p">),</span> <span class="n">tokenOwnerSignature</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">tokenOwner</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">     <span class="n">instance</span><span class="p">.</span><span class="n">permit</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span><span class="mh">0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class="p">,</span><span class="n">tokenOwnerSignature</span><span class="p">,</span><span class="n">spenderSignature</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">     <span class="n">instance</span><span class="p">.</span><span class="n">transferFrom</span><span class="p">(</span><span class="n">Alice</span><span class="p">,</span><span class="mh">0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class="p">,</span><span class="kt">uint256</span><span class="p">(</span><span class="mi">10000000000000000000</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>**resources :</p>
-<p>for elliptic curves, i would recommend :</p>
-<p><a href="https://rareskills.io/zk-book" target="_blank" rel="noopener noreffer">https://rareskills.io/zk-book</a> module 1, chapter 4 to 9, it has one of the best explanations i found about groups and elliptic curves, looking at elliptic curves as a group and finite field is actually really helpful</p>
-<p><a href="https://github.com/elikaski/ECC_Attacks" target="_blank" rel="noopener noreffer">https://github.com/elikaski/ECC_Attacks</a> this repo is also good, i like the explanation</p>
-<p><a href="https://cryptohack.org/challenges/ecc/" target="_blank" rel="noopener noreffer">https://cryptohack.org/challenges/ecc/</a> this challenges can help you understand and apply more</p>
-<p><a href="https://hackropole.fr/fr/crypto/" target="_blank" rel="noopener noreffer">https://hackropole.fr/fr/crypto/</a> you can find more difficult challenges here</p>
-<p>THANK YOU !!! IF YOU READ THIS I REALLY REALLY APPRECIATE YOUR TIME</p></div><div class="post-footer" id="post-footer">
-    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/ethernaut/">Ethernaut</a>
-                </span><span><a href="/tags/solidity/">Solidity</a>
-                </span><span><a href="/tags/ecdsa/">Ecdsa</a>
-                </span><span><a href="/tags/elliptic-curves/">Elliptic-Curves</a>
-                </span><span><a href="/tags/signature-forgery/">Signature-Forgery</a>
-                </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 2026-07-04</span>
-            </div><div class="post-info-mod"></div>
-        </div><div class="post-info-share">
-            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/ethernaut/elliptictoken/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ethernaut/elliptictoken/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
-        </div></div><div class="related-content">
-            <h3 class="related-title">See Also</h3>
-            <div class="related-posts"><a class="related-post" href="/ethernaut/elevator/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Elevator</span>
-                        </div>
-                    </a><a class="related-post" href="/ethernaut/delegation/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Delegation</span>
-                        </div>
-                    </a><a class="related-post" href="/posts/ethernaut/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Ethernaut</span>
-                        </div>
-                    </a><a class="related-post" href="/ethernaut/force/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Force</span>
-                        </div>
-                    </a><a class="related-post" href="/ethernaut/gatekeeper-one/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Gatekeeper One</span>
-                        </div>
-                    </a></div>
-        </div><div class="post-nav"><a href="/ethernaut/elevator/" class="prev" rel="prev" title="Elevator"><i class="fa-solid fa-angle-left fa-fw"></i>Previous Post</a></div></div>
-</div></article></div>
-            </main>
-            <footer class="footer"><div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.164.0 (ce2470e7012b5ab5fc4e10ebe4027e9f8d9e00dc)">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a>
-        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">Koyphshi</a></span></div>
-</div>
-</footer>
-        </div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fa-solid fa-chevron-up fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/css/custom.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js"></script></body></html>
+</code></pre><p>these are the values we will be passing to the permit function, last thing is we compute the signature for <code>permitAcceptHash</code> using our private key, this is straight forward</p><p>we can check that they recover to Alice&rsquo;s public point by running :</p><p><code>address tokenOwner = ECDSA.recover(bytes32(amount), tokenOwnerSignature);</code></p><p>and print the address</p><p>after checking that we are correct, we execute :
+<code>instance.permit(amount,0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb,tokenOwnerSignature,spenderSignature);</code></p><p>where <code>0x28...</code> is the address i will transferring tokens to</p><p>and we solve the challenge by stealing the tokens using :</p><p><code>_approve(tokenOwner, spender, amount);</code></p><p>this is the full solidity code :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=c1>// SPDX-License-Identifier: MIT
+</span></span></span><span class=line><span class=cl><span class=k>pragma solidity</span> <span class=o>^</span><span class=mi>0</span><span class=p>.</span><span class=mi>8</span><span class=p>.</span><span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;../src/EllipticToken.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=p>{</span><span class=n>Script</span><span class=p>}</span> <span class=k>from</span> <span class=s>&#34;forge-std/Script.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;../forge-std/console.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>Solver</span> <span class=k>is</span> <span class=n>Script</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>EllipticToken</span> <span class=n>instance</span> <span class=o>=</span> <span class=n>EllipticToken</span><span class=p>(</span><span class=mh>0x54056d5f90Fa1352602167405A91c6071BaB9096</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kd>function</span> <span class=nf>run</span><span class=p>()</span> <span class=k>external</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>     <span class=n>vm</span><span class=p>.</span><span class=n>startBroadcast</span><span class=p>(</span><span class=n>vm</span><span class=p>.</span><span class=n>envUint</span><span class=p>(</span><span class=s>&#34;PRIVATE_KEY&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>     <span class=kt>address</span> <span class=n>Alice</span> <span class=o>=</span> <span class=mh>0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>     <span class=kt>bytes32</span> <span class=n>salt</span> <span class=o>=</span> <span class=mh>0x04a078de06d9d2ebd86ab2ae9c2b872b26e345d33f988d6d5d875f94e9c8ee1e</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>bytes</span> <span class=k>memory</span> <span class=n>signature</span> <span class=o>=</span> <span class=s>hex&#34;ab1dcd2a2a1c697715a62eb6522b7999d04aa952ffa2619988737ee675d9494f2b50ecce40040bcb29b5a8ca1da875968085f22b7c0a50f29a4851396251de121c&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>bytes32</span> <span class=n>r</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>bytes32</span> <span class=n>s</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>uint8</span> <span class=n>v</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>assembly</span> (<span class=s>&#34;memory-safe&#34;</span>) {
+</span></span><span class=line><span class=cl>    <span class=n>r</span> <span class=o>:=</span> <span class=nf>mload</span><span class=p>(</span><span class=nf>add</span><span class=p>(</span><span class=n>signature</span><span class=p>,</span> <span class=mh>0x20</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=n>s</span> <span class=o>:=</span> <span class=nf>mload</span><span class=p>(</span><span class=nf>add</span><span class=p>(</span><span class=n>signature</span><span class=p>,</span> <span class=mh>0x40</span><span class=p>))</span>
+</span></span><span class=line><span class=cl>    <span class=n>v</span> <span class=o>:=</span> <span class=nf>byte</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=nf>mload</span><span class=p>(</span><span class=nf>add</span><span class=p>(</span><span class=n>signature</span><span class=p>,</span> <span class=mh>0x60</span><span class=p>)))</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>console</span><span class=p>.</span><span class=n>logBytes32</span><span class=p>(</span><span class=n>r</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>console</span><span class=p>.</span><span class=n>logBytes32</span><span class=p>(</span><span class=n>s</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>console</span><span class=p>.</span><span class=n>log</span><span class=p>(</span><span class=n>v</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=kt>bytes32</span> <span class=n>voucherHash</span> <span class=o>=</span> <span class=nb>keccak256</span><span class=p>(</span><span class=nb>abi</span><span class=p>.</span><span class=nb>encodePacked</span><span class=p>(</span><span class=kt>uint256</span><span class=p>(</span><span class=mi>10000000000000000000</span><span class=p>),</span> <span class=n>Alice</span><span class=p>,</span> <span class=n>salt</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>    <span class=kt>uint256</span> <span class=n>voucherHashInt</span> <span class=o>=</span> <span class=kt>uint256</span><span class=p>(</span><span class=n>voucherHash</span><span class=p>)</span> <span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>console</span><span class=p>.</span><span class=n>logBytes32</span><span class=p>(</span><span class=n>voucherHash</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     <span class=kt>bytes</span> <span class=k>memory</span> <span class=n>tokenOwnerSignature</span><span class=o>=</span> <span class=s>hex&#39;33da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf9733da8e7fe906411e4fc12842632ec77c2aee6a4324a4a3ca554b56667e4ccf971b&#39;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>     <span class=kt>uint256</span> <span class=n>amount</span> <span class=o>=</span> <span class=mi>115792089237316195423570985008687907852837564279074904382605163141518161494337</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>     <span class=kt>bytes32</span> <span class=n>permitAcceptHash</span> <span class=o>=</span> <span class=nb>keccak256</span><span class=p>(</span><span class=nb>abi</span><span class=p>.</span><span class=nb>encodePacked</span><span class=p>(</span><span class=mh>0xA11CE84AcB91Ac59B0A4E2945C9157eF3Ab17D4e</span><span class=p>,</span><span class=mh>0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class=p>,</span> <span class=n>amount</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>     
+</span></span><span class=line><span class=cl>     <span class=n>console</span><span class=p>.</span><span class=n>logBytes32</span><span class=p>(</span><span class=n>permitAcceptHash</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     <span class=kt>bytes</span> <span class=k>memory</span> <span class=n>spenderSignature</span> <span class=o>=</span> <span class=s>hex&#34;48cbfa3546c0aa10fae491e66c3c76e2aeb3db53943e77e0ceedcf449d90ec96455a1f4143982b6aebd28805ca9055b277978ebabe0cd17b02754557d80260721b&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     <span class=kt>address</span> <span class=n>tokenOwner</span> <span class=o>=</span> <span class=n>ECDSA</span><span class=p>.</span><span class=n>recover</span><span class=p>(</span><span class=kt>bytes32</span><span class=p>(</span><span class=n>amount</span><span class=p>),</span> <span class=n>tokenOwnerSignature</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>     <span class=n>console</span><span class=p>.</span><span class=n>log</span><span class=p>(</span><span class=n>tokenOwner</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>     <span class=n>instance</span><span class=p>.</span><span class=n>permit</span><span class=p>(</span><span class=n>amount</span><span class=p>,</span><span class=mh>0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class=p>,</span><span class=n>tokenOwnerSignature</span><span class=p>,</span><span class=n>spenderSignature</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>     <span class=n>instance</span><span class=p>.</span><span class=n>transferFrom</span><span class=p>(</span><span class=n>Alice</span><span class=p>,</span><span class=mh>0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class=p>,</span><span class=kt>uint256</span><span class=p>(</span><span class=mi>10000000000000000000</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>**resources :</p><p>for elliptic curves, i would recommend :</p><p><a href=https://rareskills.io/zk-book target=_blank rel="noopener noreffer">https://rareskills.io/zk-book</a> module 1, chapter 4 to 9, it has one of the best explanations i found about groups and elliptic curves, looking at elliptic curves as a group and finite field is actually really helpful</p><p><a href=https://github.com/elikaski/ECC_Attacks target=_blank rel="noopener noreffer">https://github.com/elikaski/ECC_Attacks</a> this repo is also good, i like the explanation</p><p><a href=https://cryptohack.org/challenges/ecc/ target=_blank rel="noopener noreffer">https://cryptohack.org/challenges/ecc/</a> this challenges can help you understand and apply more</p><p><a href=https://hackropole.fr/fr/crypto/ target=_blank rel="noopener noreffer">https://hackropole.fr/fr/crypto/</a> you can find more difficult challenges here</p><p>THANK YOU !!! IF YOU READ THIS I REALLY REALLY APPRECIATE YOUR TIME</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/ethernaut/>Ethernaut</a>
+</span><span><a href=/tags/solidity/>Solidity</a>
+</span><span><a href=/tags/ecdsa/>Ecdsa</a>
+</span><span><a href=/tags/elliptic-curves/>Elliptic-Curves</a>
+</span><span><a href=/tags/signature-forgery/>Signature-Forgery</a></span></div><div class=post-info-line><div class=post-info-mod><span>Updated on 2026-07-04</span></div><div class=post-info-mod></div></div><div class=post-info-share><span><a href=# onclick=return!1 title="Share on Facebook" data-sharer=facebook data-url=https://lanaceryasser.github.io/ethernaut/elliptictoken/ data-hashtag=ethernaut><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href=# onclick=return!1 title="Share on Linkedin" data-sharer=linkedin data-url=https://lanaceryasser.github.io/ethernaut/elliptictoken/><i class="fa-brands fa-linkedin fa-fw"></i></a></span></div></div><div class=related-content><h3 class=related-title>See Also</h3><div class=related-posts><a class=related-post href=/ethernaut/elevator/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Elevator</span></div></a><a class=related-post href=/ethernaut/delegation/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Delegation</span></div></a><a class=related-post href=/posts/ethernaut/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Ethernaut</span></div></a><a class=related-post href=/ethernaut/force/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Force</span></div></a><a class=related-post href=/ethernaut/gatekeeper-one/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Gatekeeper One</span></div></a></div></div><div class=post-nav><a href=/ethernaut/elevator/ class=prev rel=prev title=Elevator><i class="fa-solid fa-angle-left fa-fw"></i>Previous Post</a></div></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>Powered by <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.164.0 (ce2470e7012b5ab5fc4e10ebe4027e9f8d9e00dc)">Hugo</a> | Theme - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw"></i><span itemprop=copyrightYear>2024 - 2026</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>Koyphshi</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fa-solid fa-chevron-up fa-fw"></i></a></div><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><link rel=stylesheet href=/css/custom.css><script src=/lib/autocomplete/autocomplete.min.js></script><script src=/lib/lunr/lunr.min.js></script><script src=/lib/lazysizes/lazysizes.min.js></script><script src=/lib/clipboard/clipboard.min.js></script><script src=/lib/sharer/sharer.min.js></script><script src=/lib/katex/katex.min.js></script><script src=/lib/katex/auto-render.min.js></script><script src=/lib/katex/copy-tex.min.js></script><script src=/lib/katex/mhchem.min.js></script><script>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",maxResultLength:10,noResultsFound:"No results found",snippetLength:30,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>

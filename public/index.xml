@@ -1,1 +1,45 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Koyphshi</title><link>https://lanaceryasser.github.io/</link><description>Koyphshi - My Personal Blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 11 Jul 2026 14:10:00 +0100</lastBuildDate><atom:link href="https://lanaceryasser.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Ethernaut</title><link>https://lanaceryasser.github.io/posts/ethernaut/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/ethernaut/</guid><description>Collection of Ethernaut challenge writeups</description></item><item><title>Only-invited party</title><link>https://lanaceryasser.github.io/posts/indit/</link><pubDate>Wed, 24 Dec 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/indit/</guid><description>Exploiting unchecked ecrecover return values and dirty memory in inline assembly to bypass signature verification and steal golden tickets.</description></item><item><title>Geni</title><link>https://lanaceryasser.github.io/posts/geni/</link><pubDate>Mon, 22 Dec 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/geni/</guid><description>Exploiting a CSI-FiSh variant by tracking torsion points through a sequence of leaked generator images.</description></item><item><title>Vrai Sahl</title><link>https://lanaceryasser.github.io/posts/ingeneer/</link><pubDate>Mon, 26 May 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/ingeneer/</guid><description>&lt;p>Breaking a hybrid RSA-ECC cryptosystem through weak prime generation.&lt;/p></description></item><item><title>XORSA</title><link>https://lanaceryasser.github.io/posts/umass/</link><pubDate>Mon, 21 Apr 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/umass/</guid><description>Exploiting RSA with leaked XOR bits</description></item><item><title>TDS</title><link>https://lanaceryasser.github.io/posts/black-hat/</link><pubDate>Thu, 16 Jan 2025 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/posts/black-hat/</guid><description></description></item></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Koyphshi</title>
+        <link>http://localhost:1313/</link>
+        <description>Koyphshi - My Personal Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 11 Jul 2026 14:10:00 &#43;0100</lastBuildDate>
+            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+        <item>
+    <title>Ethernaut</title>
+    <link>http://localhost:1313/posts/ethernaut/</link>
+    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/ethernaut/</guid>
+    <description><![CDATA[Collection of Ethernaut challenge writeups]]></description>
+</item>
+<item>
+    <title>Only-invited party</title>
+    <link>http://localhost:1313/posts/indit/</link>
+    <pubDate>Wed, 24 Dec 2025 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/indit/</guid>
+    <description><![CDATA[Exploiting unchecked ecrecover return values and dirty memory in inline assembly to bypass signature verification and steal golden tickets.]]></description>
+</item>
+<item>
+    <title>Geni</title>
+    <link>http://localhost:1313/posts/geni/</link>
+    <pubDate>Mon, 22 Dec 2025 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/geni/</guid>
+    <description><![CDATA[Exploiting a CSI-FiSh variant by tracking torsion points through a sequence of leaked generator images.]]></description>
+</item>
+<item>
+    <title>Vrai Sahl</title>
+    <link>http://localhost:1313/posts/ingeneer/</link>
+    <pubDate>Mon, 26 May 2025 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/ingeneer/</guid>
+    <description><![CDATA[<p>Breaking a hybrid RSA-ECC cryptosystem through weak prime generation.</p>]]></description>
+</item>
+<item>
+    <title>XORSA</title>
+    <link>http://localhost:1313/posts/umass/</link>
+    <pubDate>Mon, 21 Apr 2025 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/umass/</guid>
+    <description><![CDATA[Exploiting RSA with leaked XOR bits]]></description>
+</item>
+<item>
+    <title>TDS</title>
+    <link>http://localhost:1313/posts/black-hat/</link>
+    <pubDate>Thu, 16 Jan 2025 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/posts/black-hat/</guid>
+    <description><![CDATA[]]></description>
+</item>
+</channel>
+</rss>

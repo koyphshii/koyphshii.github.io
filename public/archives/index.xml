@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>Archives on Koyphshi</title>
-		<link>http://localhost:1313/archives/</link>
-		<description>Recent content in Archives on Koyphshi</description>
-		<generator>Hugo</generator>
-		<language>en</language>
-		
-		
-		
-		
-			<atom:link href="http://localhost:1313/archives/index.xml" rel="self" type="application/rss+xml" />
-	</channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Archives on Koyphshi</title><link>https://lanaceryasser.github.io/archives/</link><description>Recent content in Archives on Koyphshi</description><generator>Hugo</generator><language>en</language><atom:link href="https://lanaceryasser.github.io/archives/index.xml" rel="self" type="application/rss+xml"/></channel></rss>

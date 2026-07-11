@@ -1,0 +1,144 @@
+/* === SCORCHED-EARTH TEXT COLOR OVERRIDES === */
+
+/* 1. All Markdown Content Headings — force pure white */
+.single .content h1,
+.single .content h2,
+.single .content h3,
+.single .content h4,
+.single .content h5,
+.single .content h6,
+.single .content > h1,
+.single .content > h2,
+.single .content > h3,
+.single .content > h4,
+.single .content > h5,
+.single .content > h6 {
+    color: #ffffff !important;
+}
+
+/* 2. Heading Anchor Marks & Links (hash symbol, header anchors) */
+.single .content h1 .header-mark::before,
+.single .content h2 .header-mark::before,
+.single .content h3 .header-mark::before,
+.single .content h4 .header-mark::before,
+.single .content h5 .header-mark::before,
+.single .content h6 .header-mark::before,
+.single .content > h1 .header-mark::before,
+.single .content > h2 .header-mark::before,
+.single .content > h3 .header-mark::before,
+.single .content > h4 .header-mark::before,
+.single .content > h5 .header-mark::before,
+.single .content > h6 .header-mark::before,
+.header-mark::before {
+    color: rgba(188, 0, 0, 0.6) !important;
+}
+
+/* 3. All Content Paragraphs, List Items, and General Text */
+.single .content p,
+.single .content li,
+.single .content ul,
+.single .content ol,
+.single .content span,
+.single .content div:not(.highlight):not(.chroma) {
+    color: #e8e8ec !important;
+}
+
+/* 4. Content Inline Links */
+.single .content a,
+.single .content a:link,
+.single .content a:visited {
+    color: #ffffff !important;
+    text-decoration-color: rgba(188, 0, 0, 0.4) !important;
+}
+
+.single .content a:hover,
+.single .content a:focus,
+.single .content a:active {
+    color: #ff6b6b !important;
+}
+
+/* 5. Strong / Bold Text */
+.single .content strong,
+.single .content b {
+    color: #ffffff !important;
+}
+
+/* 6. Sidebar TOC — force links & titles to light silver */
+#toc-auto,
+#toc-auto .toc-title,
+#toc-auto .toc-content,
+#toc-auto .toc-content a,
+#toc-auto .toc-content a:link,
+#toc-auto .toc-content a:visited,
+#toc-auto .toc-content nav ul li a,
+.toc,
+.toc .toc-title,
+.toc .toc-content,
+.toc .toc-content a,
+.toc .toc-content a:link,
+.toc .toc-content a:visited,
+.toc .toc-content nav ul li a,
+#toc-static,
+#toc-static .toc-title,
+#toc-static .toc-content,
+#toc-static .toc-content a,
+#toc-static .toc-content a:link,
+#toc-static .toc-content a:visited {
+    color: #e0e0e5 !important;
+}
+
+#toc-auto .toc-content a:hover,
+#toc-auto .toc-content a:focus,
+#toc-auto .toc-content a.active,
+.toc .toc-content a:hover,
+.toc .toc-content a:focus,
+.toc .toc-content a.active,
+#toc-static .toc-content a:hover,
+#toc-static .toc-content a:focus,
+#toc-static .toc-content a.active {
+    color: var(--crimson-bright) !important;
+}
+
+/* TOC pipe-separator markers */
+#toc-auto .toc-content a:first-child::before,
+.toc .toc-content a:first-child::before,
+#toc-static .toc-content a:first-child::before {
+    color: rgba(188, 0, 0, 0.5) !important;
+}
+
+/* 7. Post Meta (date, author, categories) */
+.single .post-meta,
+.single .post-meta span,
+.single .post-meta a,
+.single .post-meta a:link,
+.single .post-meta a:visited {
+    color: #c0c0c8 !important;
+}
+
+.single .post-meta a:hover,
+.single .post-meta a:focus {
+    color: var(--crimson-bright) !important;
+}
+
+/* 8. Post Title (page-level, not content) */
+.single .single-title {
+    color: var(--text-primary) !important;
+}
+
+/* 9. Blockquote Text */
+.single .content blockquote,
+.single .content blockquote p {
+    color: #d0d0d8 !important;
+}
+
+/* 10. Table Text */
+.single .content table,
+.single .content th,
+.single .content td {
+    color: #e0e0e5 !important;
+}
+
+/* 11. Horizontal Rule — keep red as accent */
+.single .content hr {
+    border-color: rgba(188, 0, 0, 0.2) !important;
+}

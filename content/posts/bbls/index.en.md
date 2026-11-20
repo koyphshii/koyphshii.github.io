@@ -27,7 +27,7 @@ Writeup for the BBLS crypto challenge, exploiting a modified BLS signature schem
 
 If you want to solve the challenge locally you will find the challenge full source and connection files in the event public repo [`mini-ingehack2026/challenges/crypto/bbls`](https://github.com/Ingeniums/mini-ingehack2026/tree/main/challenges/crypto/bbls)
 
-This is my writeup for a CTF challenge I worked on in the previous Mini IngeHack online event that ran weeks ago, the goal from this writeup is to guide participants or people interested in the subjects presented in this challenge. So let's get started ! <img src="darker.jpg" width="48" style="display:inline; vertical-align:middle;" />
+This is my writeup for a CTF challenge I worked on in the previous Mini IngeHack online event that ran weeks ago, the goal from this writeup is to guide participants or people interested in the subjects presented in this challenge. So let's get started ! <img src="darker.jpg" width="48" style="display:inline; vertical-align:middle; border-radius:50%; border:2px solid rgba(188,0,0,0.4);" />
 
 The players were given the challenge source file that was running on a tcp connection with the command to interact with it : `ncat --ssl --ssl-verify bbls.challs.ingeniums.club 9450`
 
@@ -234,4 +234,4 @@ The correct elliptic curve addition subtracts $x_2$, but here we added it up.
 
 This confirms that the intended solution is for the player to provide equal $x_2$ and $x_1$ to force $x_3$ into 0 (which means $M$ is 0).
 
-This challenge was kind of guided for the participants to end up in one solution. There are so many other solutions besides this, see you in part 2 ! <img src="wave-emoji.png" width="44" style="display:inline; vertical-align:middle;" />
+This challenge was kind of guided for the participants to end up in one solution. There are so many other solutions besides this, see you in part 2 ! <img src="wave-emoji.png" width="44" style="display:inline; vertical-align:middle; border-radius:50%; border:2px solid rgba(188,0,0,0.4);" />

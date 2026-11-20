@@ -35,7 +35,7 @@ The challenge gives us 3 options to use :
 
 ## Challenge Source
 
-### 1 — `get_Q`
+### 1 - `get_Q`
 
 This generates a random point $Q = (x \bmod p,\ y \bmod p)$ where $p$ is the preset modulus :
 
@@ -50,7 +50,7 @@ def mint_Q(self):
 
 and then prints the generated $Q$
 
-### 2 — `update_M`
+### 2 - `update_M`
 
 ```python
 def update_M(self, P):
@@ -65,7 +65,7 @@ Here the coordinates of $P$ are set by the player where no condition is set on t
 
 At the end the value of `self.M` is updated.
 
-### 3 — `check`
+### 3 - `check`
 
 Here a BLS verification is done :
 
@@ -85,7 +85,7 @@ def bls_verify(self, hsh, G):
     return l == r
 ```
 
-This implementation is different than the standard one — **OH YES**
+This implementation is different than the standard one, **OH YES**
 
 This challenge is intended to be a basic one about BLS signatures which are based on bilinear pairings so I will take the chance to give a brief explanation about these pairings.
 
@@ -97,7 +97,7 @@ This challenge is intended to be a basic one about BLS signatures which are base
 
 ## Explaining Bilinear Pairings
 
-### 1 — What a bilinear function is
+### 1 - What a bilinear function is
 
 In its simplest form, a bilinear function is a function that takes 2 arguments where if you fix one and the other varies, the output will vary with that input that is not fixed.
 
@@ -117,7 +117,7 @@ A linear function is a function where the input and output behave in the same wa
 
 And from these, we can conclude that bilinear functions also have these 2 properties.
 
-### 2 — Bilinear functions in the context of cryptography
+### 2 - Bilinear functions in the context of cryptography
 
 Here the headaches may start, but hopefully it is simple if we look at it from a good angle.
 

@@ -97,6 +97,8 @@ This challenge is intended to be a basic one about BLS signatures which are base
 
 ## Explaining Bilinear Pairings
 
+> Before we start, I made a [YouTube video](https://www.youtube.com/watch?v=8IoWof4ZbFI) that explains group theory and elliptic curves in a beginner friendly way, so if you are not familiar with them and want to learn about pairings, it is a nice place to start.
+
 ### 1 - What a bilinear function is
 
 In its simplest form, a bilinear function is a function that takes 2 arguments where if you fix one and the other varies, the output will vary with that input that is not fixed.
@@ -235,3 +237,5 @@ The correct elliptic curve addition subtracts $x_2$, but here we added it up.
 This confirms that the intended solution is for the player to provide equal $x_2$ and $x_1$ to force $x_3$ into 0 (which means $M$ is 0).
 
 This challenge was kind of guided for the participants to end up in one solution. There are so many other solutions besides this, see you in part 2 ! <img src="wave-emoji.png" width="44" style="display:inline; vertical-align:middle; border-radius:4px; border:2px solid #000;" />
+
+In case you are interested to learn about BLS signatures check this out : [The Versatility of BLS Signatures](https://www.zellic.io/blog/bls-signature-versatility)

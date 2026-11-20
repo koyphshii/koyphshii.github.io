@@ -1,13 +1,1 @@
-<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
-    <channel>
-        <title>Overflow - Tag - Koyphshi</title>
-        <link>http://localhost:1313/tags/overflow/</link>
-        <description>Overflow - Tag - Koyphshi</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</lastBuildDate><atom:link href="http://localhost:1313/tags/overflow/" rel="self" type="application/rss+xml" /><item>
-    <title>Token</title>
-    <link>http://localhost:1313/ethernaut/token/</link>
-    <pubDate>Wed, 07 Jan 2026 00:00:00 &#43;0000</pubDate><guid>http://localhost:1313/ethernaut/token/</guid>
-    <description><![CDATA[<p>in this challenge we are given a simple token contract, we start with 20 tokens and our goal is to find a bug that allows us to get a large amount of tokens</p>]]></description>
-</item>
-</channel>
-</rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Overflow - Tag - Koyphshi</title><link>https://lanaceryasser.github.io/tags/overflow/</link><description>Overflow - Tag - Koyphshi</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://lanaceryasser.github.io/tags/overflow/" rel="self" type="application/rss+xml"/><item><title>Token</title><link>https://lanaceryasser.github.io/ethernaut/token/</link><pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate><guid>https://lanaceryasser.github.io/ethernaut/token/</guid><description>&lt;p>in this challenge we are given a simple token contract, we start with 20 tokens and our goal is to find a bug that allows us to get a large amount of tokens&lt;/p></description></item></channel></rss>

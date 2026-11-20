@@ -1,9 +1,9 @@
 ---
-title: "BBLS - Mini IngeHack 2026"
+title: "BBLS"
 date: 2026-11-20T00:00:00+01:00
 draft: false
 author: "Koyphshi"
-description: "Writeup for the BBLS crypto challenge from Mini IngeHack 2026 — exploiting a modified BLS signature scheme through bilinear pairings."
+description: "Writeup for the BBLS crypto challenge, exploiting a modified BLS signature scheme through bilinear pairings."
 categories: ["Cryptography"]
 tags: ["bls", "bilinear-pairings", "elliptic-curves", "ctf", "ingehack"]
 math: true
@@ -15,9 +15,15 @@ code:
   maxShownLines: 50
 ---
 
-Writeup for the BBLS crypto challenge — exploiting a modified BLS signature scheme through bilinear pairings.
+Writeup for the BBLS crypto challenge, exploiting a modified BLS signature scheme through bilinear pairings.
 
 <!--more-->
+
+{{< admonition type="info" title="Challenge Info" open="true" >}}
+- **Event**: Mini IngeHack
+- **Challenge**: BBLS
+- **Category**: Crypto
+{{< /admonition >}}
 
 If you want to solve the challenge locally you will find the challenge full source and connection files in the event public repo [`mini-ingehack2026/challenges/crypto/bbls`](https://github.com/Ingeniums/mini-ingehack2026/tree/main/challenges/crypto/bbls)
 

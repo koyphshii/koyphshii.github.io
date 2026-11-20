@@ -238,4 +238,4 @@ This confirms that the intended solution is for the player to provide equal $x_2
 
 This challenge was kind of guided for the participants to end up in one solution. There are so many other solutions besides this, see you in part 2 ! <img src="wave-emoji.png" width="44" style="display:inline; vertical-align:middle; border-radius:4px; border:2px solid #000;" />
 
-In case you are interested to learn about BLS signatures check this out : [The Versatility of BLS Signatures](https://www.zellic.io/blog/bls-signature-versatility)
+In case you are interested to learn about BLS signatures check this out : [The Versatility of BLS Signatures](https://www.zellic.io/blog/bls-signature-versatility), they have a great pairings explanation too if you don't like very formal math (i am referring to the book zkdl), you can find it inside

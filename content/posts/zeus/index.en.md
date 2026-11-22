@@ -50,7 +50,9 @@ $s_0$ and $s_1$ : these 2 signals are the original message split into 2 states (
 
 $D_0 \cdot 1 = A \cdot Q_0 + C_0$ : this is the interesting part because if you notice this is equivalent to saying that $C_0 = D_0 \bmod A$
 
-$(2 \cdot C_0 + C_1) \cdot 1 = \text{out}_0$ : later we use $C_0$ for the final check
+Later in $(2 \cdot C_0 + C_1) \cdot 1 = \text{out}_0$ we use $C_0$ for the final check.
+
+## Some Modulus Tweaking
 
 Now lets explain the reason behind that modulus reduction :
 
@@ -58,11 +60,15 @@ Numbers in R1CS are defined under a modulus, the modulus getting used depends en
 
 For example Groth16, which is the most deployed SNARK implementation, uses BN254 (`alt_bn128`).
 
-Later in this writeup when we learn what to do with this circuit you will find out that this curve order is the one that was used.
+Later in this writeup when we learn what to do with this circuit you will find out that this curve order is the one that was used in this circuit.
 
 Poseidon operations by default are defined under BN254 (`alt_bn128`) order making its construction compatible with Groth16 circuits.
 
-But our case is different, Zeus's idea was about using a bigger modulus than what BN254 (`alt_bn128`) order is for better security, which means we should do the modulus reduction manually inside the circuit. You might have noticed that the modulus is actually smaller which contradicts what I was saying, and even has a lesser number of rounds and states, so our Zeus in this case doesn't have anything to offer over Poseidon. Like actually nothing.
+But our case is different, Zeus's idea was about using a bigger modulus than what BN254 (`alt_bn128`) order is for better security, which means we should do the modulus reduction manually inside the circuit.
+
+> **NOTE** : the circuit's default modulus BN254 (`alt_bn128`) is always forced for each signal, but we can define bigger numbers (aka numbers with a bigger field) by splitting that number into 2 signals or more.
+
+You might have noticed that the modulus is actually smaller which contradicts what I was saying, and even has a lesser number of rounds and states, so our Zeus in this case doesn't have anything to offer over Poseidon. Like actually nothing.
 
 <img src="haruhi-meme.png" width="420" />
 

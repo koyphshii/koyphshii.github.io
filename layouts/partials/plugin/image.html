@@ -1,0 +1,41 @@
+{{- /* Native browser image loading (replaces JS-delayed lazysizes spinner) */ -}}
+{{- $scratch := newScratch -}}
+{{- range $key, $path := dict "src" .Src "small" .SrcSmall "large" .SrcLarge -}}
+    {{- if $path -}}
+        {{- $url := $path -}}
+        {{- with dict "Path" $path "Resources" $.Resources | partial "function/resource.html" -}}
+            {{- $url = .Permalink -}}
+        {{- else -}}
+            {{- if not (urls.Parse $path).IsAbs -}}
+                {{- $url = $path | relURL -}}
+            {{- end -}}
+        {{- end -}}
+        {{- $scratch.Set $key $url -}}
+    {{- end -}}
+{{- end -}}
+
+{{- $src := $scratch.Get "src" -}}
+{{- $small := $scratch.Get "small" | default $src -}}
+{{- $large := $scratch.Get "large" | default $src -}}
+{{- $alt := .Alt | default $src -}}
+{{- $isAvatar := or (eq .Class "avatar") (strings.Contains $src "avatar") -}}
+{{- if .Linked -}}
+    <a class="lightgallery" href="{{ $large | safeURL }}" title="{{ .Title | default $alt }}" data-thumbnail="{{ $small | safeURL }}"{{ with .Caption }} data-sub-html="<h2>{{ . }}</h2>{{ with $.Title }}<p>{{ . }}</p>{{ end }}"{{ end }}{{ with .Rel }} rel="{{ . }}"{{ end }}>
+        <img
+            {{ with .Class }}class="{{ . }}" {{ end -}}
+            src="{{ $src | safeURL }}"
+            loading="{{ if $isAvatar }}eager{{ else }}lazy{{ end }}"
+            decoding="async"
+            {{ if $isAvatar }}fetchpriority="high" {{ end -}}
+            alt="{{ $alt }}"{{ with .Height }} height="{{ . }}"{{ end }}{{ with .Width }} width="{{ . }}"{{ end }} />
+    </a>
+{{- else -}}
+    <img
+        {{ with .Class }}class="{{ . }}" {{ end -}}
+        src="{{ $src | safeURL }}"
+        loading="{{ if $isAvatar }}eager{{ else }}lazy{{ end }}"
+        decoding="async"
+        {{ if $isAvatar }}fetchpriority="high" {{ end -}}
+        alt="{{ $alt }}"
+        title="{{ .Title | default $alt }}"{{ with .Height }} height="{{ . }}"{{ end }}{{ with .Width }} width="{{ . }}"{{ end }} />
+{{- end -}}

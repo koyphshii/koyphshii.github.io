@@ -115,7 +115,7 @@ we stated before that Alice just redeemed the voucher, so the function `redeemVo
 
 ethernaut challenges are deployed in sepolia testnet, lets go and find the contract challenge there :
 
-![](contract-on-sepolia.png)
+![](contract-on-sepolia.webp)
 
 now by our previous assumption, there should be a transaction that called the redeem function, but where is it ??
 
@@ -123,27 +123,27 @@ well the explanation for this is that the initial transaction that started the c
 
 so we check the internal transactions :
 
-![](internal-txns.png)
+![](internal-txns.webp)
 
 we go more deep and click on the parent transaction hash :
 
-![](parent-tx-hash.png)
+![](parent-tx-hash.webp)
 
 the call type for the function should be `call`, by checking the calls `calldata` the 4th is the one we are looking for
 
-![](calldata-call.png)
+![](calldata-call.webp)
 
 this is the bytecode
 
 now to get the values of the parameters we execute this commend :
 
-![](decode-command.png)
+![](decode-command.webp)
 
 this will match each argument with the input value
 
 the output will be :
 
-![](decoded-output.png)
+![](decoded-output.webp)
 
 this is actually a good advancement, we now have the value of :
 
@@ -168,17 +168,17 @@ well, hopefully there is a save for this!
 
 lets take a look at `ECDSA.recover` to see how it works
 
-![](ecrecover-code.png)
+![](ecrecover-code.webp)
 
 without digging into all the code details, all we need to know is that this line is the one responsible for recovering the signer address (Alice's public address)
 
 `ecrecover` is a built-in solidity function that implements the `ecdsa` verification algorithm, the curve used is `secp256k1` :
 
-![](ecrecover-params.png)
+![](ecrecover-params.webp)
 
 lets go one step deeper and look at how the recovery is done (this is my favorite part ^-^) :
 
-![](recovery-drawing.png)
+![](recovery-drawing.webp)
 
 so this some of my writing while i was solving the challenge (sorry for the ugly drawing haha)
 
@@ -206,7 +206,7 @@ well, i did hit a bad luck :// ,  hash + n overflowed (>256 bits)  and hash - n 
 
 the whole work didn't work at the end
 
-![](overflow-error.png)
+![](overflow-error.webp)
 
 ***3- i found another solution***
 

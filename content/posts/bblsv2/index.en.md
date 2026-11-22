@@ -31,13 +31,13 @@ This challenge comes as a harder (revenge) version for the previous [BBLS](/post
 
 The source for this challenge is similar to the previous one besides there were a few changes :
 
-![update_M zero check](update-m-check.png)
+![update_M zero check](update-m-check.webp)
 
 Here the returned $m$ is restricted from being equal to $0$, making the old trick unfeasible.
 
 And the elliptic curve addition was fixed :
 
-![Fixed ec_add](ec-add-fixed.png)
+![Fixed ec_add](ec-add-fixed.webp)
 
 ## The Vulnerability
 
@@ -69,7 +69,7 @@ This final value is the one used in the pairing.
 
 $n$ is smaller than $p$ ($n < p$) :
 
-![n is smaller than p](n-lt-p.png)
+![n is smaller than p](n-lt-p.webp)
 
 So if the output of `update_M` is equal to $n$, the value used in the pairing becomes :
 
@@ -79,7 +79,7 @@ which solves the challenge.
 
 Forcing $x_3$ to be equal to $n$ is quite easy :
 
-![ec_add full code](ec-add-full.png)
+![ec_add full code](ec-add-full.webp)
 
 $$\Large x_3 = (\lambda^2 - x_1 - x_2) \bmod p$$
 

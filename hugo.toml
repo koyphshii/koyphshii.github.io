@@ -21,7 +21,7 @@ enableRobotsTXT = true
   description = "Koyphshi - My Personal Blog"
   keywords = ["blog", "tech", "programming", "development"]
   defaultTheme = "dark"
-  avatar = "avatar.gif"
+  avatar = "avatar.webp"
   fingerprint = ""
   dateFormat = "2006-01-02"
   images = ["/images/og-preview.webp"]
@@ -48,7 +48,7 @@ enableRobotsTXT = true
     rss = 10
     [params.home.profile]
       enable = false
-      avatarURL = "/avatar/avatar.gif"
+      avatarURL = "/avatar/avatar.webp"
       title = "Koyphshi"
       subtitle = "have fun :3"
       typeit = true

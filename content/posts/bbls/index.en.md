@@ -27,7 +27,7 @@ Writeup for the BBLS crypto challenge, exploiting a modified BLS signature schem
 
 If you want to solve the challenge locally you will find the challenge full source and connection files in the event public repo [`mini-ingehack2026/challenges/crypto/bbls`](https://github.com/Ingeniums/mini-ingehack2026/tree/main/challenges/crypto/bbls)
 
-This is my writeup for a CTF challenge I worked on in the previous Mini IngeHack online event that ran weeks ago, the goal from this writeup is to guide participants or people interested in the subjects presented in this challenge. So let's get started ! <img src="darker.jpg" width="48" style="display:inline; vertical-align:middle; border-radius:4px; border:2px solid #000;" />
+This is my writeup for a CTF challenge I worked on in the previous Mini IngeHack online event that ran weeks ago, the goal from this writeup is to guide participants or people interested in the subjects presented in this challenge. So let's get started ! <img src="darker.webp" width="48" decoding="async" style="display:inline; vertical-align:middle; border-radius:4px; border:2px solid #000;" />
 
 The players were given the challenge source file that was running on a tcp connection with the command to interact with it : `ncat --ssl --ssl-verify bbls.challs.ingeniums.club 9450`
 
@@ -174,7 +174,7 @@ From this, all properties are easier to understand.
 
 For example we can say :
 
-![Pairing properties](pairing-properties.png)
+![Pairing properties](pairing-properties.webp)
 
 because they can all be written : $e(G_1, G_2)^{a \cdot b}$
 
@@ -182,7 +182,7 @@ Why is $G_t$ really complex? Well remember that the pairing is a function, it ta
 
 Trust me what I gave was just basics, check the book to confirm.
 
-![zkdl book](zkdl-book.jpg)
+![zkdl book](zkdl-book.webp)
 
 ---
 
@@ -192,7 +192,7 @@ Now we have a basic idea about bilinear pairings, we can solve the challenge eas
 
 Inside the BLS verification the thing that was added was these 2 lines :
 
-![Added lines](added-lines.png)
+![Added lines](added-lines.webp)
 
 Notice that without these 2 lines being added the equation we would have to forge was :
 
@@ -212,13 +212,13 @@ If $m$ is zero, the challenge is solved :>>>
 
 Remember this block :
 
-![update_M block](update-m-block.png)
+![update_M block](update-m-block.webp)
 
 (here the x coordinate of the `ec_add` is assigned to the new `M`)
 
 Checking the egcd that was used inside the elliptic curve addition :
 
-![egcd code](egcd-code.png)
+![egcd code](egcd-code.webp)
 
 The comment was a hint to spot that in case $a = 0$ it returns 0.
 
@@ -228,7 +228,7 @@ This means if $x_2$ and $x_1$ are equal $\lambda$ will be 0.
 
 Inside `ec_add` :
 
-![ec_add code](ec-add-code.png)
+![ec_add code](ec-add-code.webp)
 
 $$\Large x_3 = (\lambda^2 - x_1 + x_2) \bmod p$$
 
@@ -236,6 +236,6 @@ The correct elliptic curve addition subtracts $x_2$, but here we added it up.
 
 This confirms that the intended solution is for the player to provide equal $x_2$ and $x_1$ to force $x_3$ into 0 (which means $M$ is 0).
 
-This challenge was kind of guided for the participants to end up in one solution. There are so many other solutions besides this, see you in part 2 ! <img src="wave-emoji.png" width="44" style="display:inline; vertical-align:middle; border-radius:4px; border:2px solid #000;" />
+This challenge was kind of guided for the participants to end up in one solution. There are so many other solutions besides this, see you in part 2 ! <img src="wave-emoji.webp" width="44" loading="lazy" decoding="async" style="display:inline; vertical-align:middle; border-radius:4px; border:2px solid #000;" />
 
 In case you are interested to learn about BLS signatures check this out : [The Versatility of BLS Signatures](https://www.zellic.io/blog/bls-signature-versatility), they have a great pairings explanation too if you don't like very formal math (i am referring to the book zkdl), you can find it inside

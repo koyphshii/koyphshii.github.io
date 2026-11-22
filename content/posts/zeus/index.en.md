@@ -70,7 +70,7 @@ But our case is different, Zeus's idea was about using a bigger modulus than wha
 
 You might have noticed that the modulus is actually smaller which contradicts what I was saying, and even has a lesser number of rounds and states, so our Zeus in this case doesn't have anything to offer over Poseidon. Like actually nothing.
 
-<img src="haruhi-meme.png" width="420" />
+<img src="haruhi-meme.webp" width="420" loading="lazy" decoding="async" />
 
 Well there is a valid reason for me doing that, if I made it real like Poseidon the circuit would have grown very very big, which could make it non suitable for a CTF.
 
@@ -86,11 +86,11 @@ First to not get confused, by verification here I mean the server takes the witn
 
 By reading the file you will notice that the player is restricted with a fixed $(s_0, s_1)$ and their hash digest is registered :
 
-![get_id handler](get-id.png)
+![get_id handler](get-id.webp)
 
 The participant can for sure generate a valid hash for this given instance, the problem is :
 
-![digest check](digest-check.png)
+![digest check](digest-check.webp)
 
 The server is sort of blacklisting that specific hash digest.
 

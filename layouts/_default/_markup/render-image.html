@@ -1,0 +1,8 @@
+{{- $dest := .Destination -}}
+{{- $res := .Page.Resources.GetMatch $dest -}}
+<img src="{{ if $res }}{{ $res.RelPermalink }}{{ else }}{{ $dest | safeURL }}{{ end }}"
+     alt="{{ .Text }}"
+     {{- with .Title }} title="{{ . }}"{{ end -}}
+     {{- if $res }} width="{{ $res.Width }}" height="{{ $res.Height }}"{{ end }}
+     loading="lazy"
+     decoding="async" />

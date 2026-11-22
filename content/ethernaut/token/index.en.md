@@ -51,7 +51,7 @@ contract Token {
 
 first lets check the 20 tokens we have using `cast`:
 
-![](balance-check.png)
+![](balance-check.webp)
 
 what this command does is simply send an `eth_call` which allows us to execute the view function locally in the node without spending any gas
 
@@ -103,6 +103,6 @@ contract Solver is Script {
 
 executing it locally:
 
-![](exploit-result.png)
+![](exploit-result.webp)
 
 the exploit works fine, we just add the `--broadcast` flag to execute it remotely and gg the challenge is solved

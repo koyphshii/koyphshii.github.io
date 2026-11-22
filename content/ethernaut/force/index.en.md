@@ -45,7 +45,7 @@ when contract `A` executes **`SELFDESTRUCT(target_address)`**, the target addres
 
 now lets go and solve the challenge, first we check the balance of the contract that should be 0 :
 
-![](balance-check.png)
+![](balance-check.webp)
 
 perfect, now we write the solver script
 
@@ -81,6 +81,6 @@ contract Solver is Script {
 
 after running this we get :
 
-![](solution-result.png)
+![](solution-result.webp)
 
 so gg the challenge is solved !

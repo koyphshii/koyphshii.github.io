@@ -72,7 +72,7 @@ getting back to our challenge lets first determine which contract instance we ha
 
 this is the `bytecode` for the contract address we have :
 
-![](bytecode.png)
+![](bytecode.webp)
 
 now we check if the function selector for the function `pwn()` is in it or not
 
@@ -81,7 +81,7 @@ now we check if the function selector for the function `pwn()` is in it or not
 
 we check that using python :
 
-![](selector-check.png)
+![](selector-check.webp)
 
 since it returned False we can confirm that we have the address for the Delegation contract and we should claim ownership of this contract
 
@@ -109,7 +109,7 @@ Yes `owner` !!! , so we claim ownership
 
 now to make this exploit complete, lets recall when fallback is called
 
-![](fallback-flow.png)
+![](fallback-flow.webp)
 
 just add a note that in the case where `msg.data` is not empty
 fallback get executed only if the given selector don't match any function signature that exists in the contract code
@@ -148,6 +148,6 @@ contract Solver is Script {
 
 after running this locally :
 
-![](solution-success.png)
+![](solution-success.webp)
 
 we can see that we claimed ownership successfully so GG! the challenge is solved

@@ -53,11 +53,11 @@ this means by knowing the address of the contract we can read the value of any s
 
 we can confirm that using `cast storage`:
 
-![](storage-check.png)
+![](storage-check.webp)
 
 now we send this value to the contract to solve the challenge:
 
-![](unlock-result.png)
+![](unlock-result.webp)
 
 slot 0 became equal to 0 meaning the value of `locked` is `false`
 

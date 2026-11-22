@@ -6,7 +6,7 @@ images: ["/images/og-about.webp"]
 ---
 <!--more-->
 
-![Avatar](featured-image.jpg)
+![Avatar](featured-image.webp)
 
 Hello ^-^
 

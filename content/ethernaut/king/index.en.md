@@ -64,7 +64,7 @@ if our fallback function reverts, the whole execution of `receive` will revert b
 
 first lets check how much ether we should send to claim kingship:
 
-![](prize-check.png)
+![](prize-check.webp)
 
 this is equal to 0.001 ether, so we send 0.001 ether using a contract that has a fallback function that reverts, here is the script for that:
 

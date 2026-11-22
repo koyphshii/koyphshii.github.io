@@ -5,8 +5,8 @@
 {{- $showMenu = $params.sidebar.menu -}}
 {{- end -}}
 <div class="sidebar-author">
-    <img data-src="{{ " avatar/" | relURL }}{{ $params.avatar }}" data-sizes="auto" alt="{{ $params.author }}"
-        class="lazyload" />
+    <img src="{{ "avatar/" | relURL }}{{ $params.avatar }}" alt="{{ $params.author }}"
+        loading="eager" decoding="async" fetchpriority="high" />
     <div class="sidebar-author-name">{{ $params.author }}</div>
     <div class="sidebar-description">{{ $params.description }}</div>
 </div>

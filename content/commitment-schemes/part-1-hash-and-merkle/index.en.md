@@ -59,9 +59,24 @@ Preimage resistance means that given the hash digest $h = H(m_1)$, it should be 
 
 $$\Large H(m') = h$$
 
-($m'$ could be different or equal to $m_1$). Basically the concept is that we shouldn't be able to reverse the hash function, that is what it guarantees. For example if the message we are hashing comes from a small set that is guessable, preimage resistance will not protect it, and formally preimage resistance alone doesn't even stop a hash from leaking partial bits of $m$.
+($m'$ could be different or equal to $m_1$). Basically the concept is that we shouldn't be able to reverse the hash function, that is what it guarantees. For example if the message we are hashing comes from a small set that is guessable, preimage resistance will not protect it.
 
-Hiding shares the same idea besides it requires indistinguishability (given $c$, the verifier shouldn't be able to tell if it commits to $m_0$ or $m_1$ any better than random guessing), and it protects the message when it comes from a small guessable set by adding a salt (randomness) making the commitment non-deterministic across multiple sessions. This randomness is what we called $r$ before, and under the Random Oracle model for $H$, $H(m \parallel r)$ gives us hiding.
+Hiding is actually defined by a simple game (the **hiding game**) :
+
+1. The verifier (attacker) picks any two messages $m_0 \neq m_1$ of his choice and sends them to the committer.
+2. The committer flips a secret coin $b \in \{0, 1\}$, picks fresh randomness $r$, and sends back $c = \text{Commit}(m_b, r)$.
+3. The attacker inspects $c$ and outputs a guess $b' \in \{0, 1\}$.
+
+The scheme is **hiding** if no realistic attacker can guess right noticeably better than a blind coin flip ($\frac{1}{2}$). Notice two things this requires :
+
+- **We need randomness $r$** : without $r$, the attacker just computes $H(m_0)$, compares it with $c$, and wins with probability $1$. Adding a fresh random salt $r$ makes the commitment non-deterministic across sessions.
+- **Preimage resistance alone is still not enough** : imagine a hash function $H'(x) = \text{first\_bit}(x) \parallel \text{SHA256}(x)$. Even with a 256-bit salt $r$, $H'(m \parallel r)$ is still preimage-resistant (you still can't invert SHA256 to recover $m \parallel r$), yet it literally leaks the first bit of $m$, so the attacker picks $m_0$ starting with `0` and $m_1$ starting with `1` and wins the hiding game with probability $1$.
+
+So to prove $c = H(m \parallel r)$ passes the hiding game, we need a stronger assumption on $H$ : we model $H$ as a **Random Oracle** (this is called the **Random Oracle Model**, or **ROM**). In the ROM, we treat $H$ as an idealized hash that returns fresh uniform random bits for every unseen input (with zero leaked bits). Then if $r$ is $\lambda$ random bits (e.g. $256$) and the attacker makes $q$ calls to $H$, the only way they learn anything about $m_b$ is by guessing the exact $r$ and calling $H(m_b \parallel r)$, which happens with probability at most $\frac{q}{2^\lambda}$ :
+
+$$\Large \Pr[b' = b] \le \frac{1}{2} + \frac{q}{2^\lambda}$$
+
+> **NOTE** : to be completely honest about ROM, proving this doesn't mathematically prove `SHA256` itself has zero hidden flaws (nobody can prove that directly on `SHA256`'s internal operations). What it proves is that our commitment design $H(m \parallel r)$ has no structural bugs (for comparison, unsalted $H(m)$ still fails even in the ROM). In real code we plug in `SHA256` / `Keccak` and assume it behaves closely enough to a Random Oracle.
 
 ## Binding vs Collision Resistance
 

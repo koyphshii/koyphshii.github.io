@@ -35,11 +35,11 @@ The participants were given a minimal R1CS circuit for Zeus (the custom hash fun
 
 $$\Large
 \begin{gathered}
-(s_0 + rc_0) \cdot (s_0 + rc_0) = D_0 \\\\
-D_0 \cdot 1 = A \cdot Q_0 + C_0 \\\\[6pt]
-(s_1 + rc_1) \cdot (s_1 + rc_1) = D_1 \\\\
-D_1 \cdot 1 = A \cdot Q_1 + C_1 \\\\[6pt]
-(2 \cdot C_0 + C_1) \cdot 1 = \text{out}_0 \\\\
+(s_0 + rc_0) \cdot (s_0 + rc_0) = D_0 \\
+D_0 \cdot 1 = A \cdot Q_0 + C_0 \\[6pt]
+(s_1 + rc_1) \cdot (s_1 + rc_1) = D_1 \\
+D_1 \cdot 1 = A \cdot Q_1 + C_1 \\[6pt]
+(2 \cdot C_0 + C_1) \cdot 1 = \text{out}_0 \\
 (C_0 + 3 \cdot C_1) \cdot 1 = \text{out}_1
 \end{gathered}
 $$
@@ -104,11 +104,11 @@ Returning to the circuit constraints :
 
 $$\Large
 \begin{gathered}
-(s_0 + rc_0) \cdot (s_0 + rc_0) = D_0 \\\\
-D_0 \cdot 1 = A \cdot Q_0 + C_0 \\\\[6pt]
-(s_1 + rc_1) \cdot (s_1 + rc_1) = D_1 \\\\
-D_1 \cdot 1 = A \cdot Q_1 + C_1 \\\\[6pt]
-(2 \cdot C_0 + C_1) \cdot 1 = \text{out}_0 \\\\
+(s_0 + rc_0) \cdot (s_0 + rc_0) = D_0 \\
+D_0 \cdot 1 = A \cdot Q_0 + C_0 \\[6pt]
+(s_1 + rc_1) \cdot (s_1 + rc_1) = D_1 \\
+D_1 \cdot 1 = A \cdot Q_1 + C_1 \\[6pt]
+(2 \cdot C_0 + C_1) \cdot 1 = \text{out}_0 \\
 (C_0 + 3 \cdot C_1) \cdot 1 = \text{out}_1
 \end{gathered}
 $$

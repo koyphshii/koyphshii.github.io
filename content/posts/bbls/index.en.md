@@ -150,7 +150,7 @@ Lets talk a bit more about $G_t$ :
 
 $G_t$ is a subgroup of the multiplicative group of a finite field extension.
 
-As we know a finite field $\mathbb{F}_p$ is composed from 2 groups, one under addition and the other under multiplication excluding 0, an extension of the field can be $\mathbb{F}\_{p^{12}}$, so we work with elements of dimension 12 instead of 1 dimension elements following some rules.
+As we know a finite field $\mathbb{F}_p$ is composed from 2 groups, one under addition and the other under multiplication excluding 0, an extension of the field can be $\mathbb{F}_{p^{12}}$, so we work with elements of dimension 12 instead of 1 dimension elements following some rules.
 
 And the multiplicative group of the field is simply the group that is working with multiplication.
 

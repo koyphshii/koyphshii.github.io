@@ -7,7 +7,8 @@
         </div>
         {{- end -}}
         <div class="summary-card">
-            {{- $pages := where .Site.RegularPages "Section" "ethernaut" -}}
+            {{- $section := .Params.series_section | default "ethernaut" -}}
+            {{- $pages := where .Site.RegularPages "Section" $section -}}
             {{- $pinnedPages := where $pages "Params.pin" true -}}
             {{- $regularPages := where $pages "Params.pin" "ne" true -}}
             {{- $allPages := $pinnedPages.ByDate | append $regularPages.ByDate -}}

@@ -3,7 +3,7 @@ title: "BBLSv2"
 date: 2026-11-22T00:00:00+01:00
 draft: false
 author: "Koyphshi"
-description: "Writeup for the BBLSv2 crypto challenge, exploiting a field prime vs group order mismatch in a modified BLS signature scheme."
+description: "a challenge i made about bls signatures part2"
 categories: ["Cryptography"]
 tags: ["bls", "bilinear-pairings", "elliptic-curves", "ctf", "ingehack"]
 math: true
@@ -15,7 +15,7 @@ code:
   maxShownLines: 50
 ---
 
-Writeup for the BBLSv2 crypto challenge, exploiting a field prime vs group order mismatch in a modified BLS signature scheme.
+a challenge i made about bls signatures part2
 
 <!--more-->
 

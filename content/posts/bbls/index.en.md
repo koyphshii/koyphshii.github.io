@@ -3,7 +3,7 @@ title: "BBLS"
 date: 2026-11-20T00:00:00+01:00
 draft: false
 author: "Koyphshi"
-description: "Writeup for the BBLS crypto challenge, exploiting a modified BLS signature scheme through bilinear pairings."
+description: "a challenge i made about bls signatures"
 categories: ["Cryptography"]
 tags: ["bls", "bilinear-pairings", "elliptic-curves", "ctf", "ingehack"]
 math: true
@@ -15,7 +15,7 @@ code:
   maxShownLines: 50
 ---
 
-Writeup for the BBLS crypto challenge, exploiting a modified BLS signature scheme through bilinear pairings.
+a challenge i made about bls signatures
 
 <!--more-->
 

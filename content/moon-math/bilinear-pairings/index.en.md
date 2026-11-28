@@ -3,7 +3,7 @@ title: "Bilinear Pairings"
 date: 2026-11-28T00:00:00+01:00
 draft: false
 author: "Koyphshi"
-description: "My learning notes on bilinear pairings from the RareSkills ZK Book, covering bilinear functions, elliptic curve pairings, and Ethereum precompile 0x08 in Solidity."
+description: "rareskills zk book is great"
 categories: ["Cryptography"]
 tags: ["bilinear-pairings", "elliptic-curves", "zk", "solidity", "evm"]
 math: true
@@ -15,7 +15,7 @@ code:
   maxShownLines: 50
 ---
 
-My learning notes on bilinear pairings from the RareSkills ZK Book, covering bilinear functions, elliptic curve pairings, and Ethereum precompile `0x08` in Solidity.
+rareskills zk book is great
 
 <!--more-->
 
@@ -269,12 +269,3 @@ contract PairingsTest is Test {
 after running this code, this is the result :
 
 ![Solidity pairing test result](solidity-result.webp)
-
----
-
-### Related CTF Challenges
-
-If you want to see how bilinear pairings get used (and broken) in practice, check out the 2 challenges I built around BLS signatures and BN128 pairings :
-
-1 - [BBLS](/posts/bbls/)
-2 - [BBLSv2](/posts/bblsv2/)

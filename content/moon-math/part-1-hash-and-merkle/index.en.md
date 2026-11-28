@@ -1,6 +1,6 @@
 ---
 title: "Part 1 - Hash & Merkle Tree Commitments"
-date: 2026-11-26T00:00:00+01:00
+date: 2026-11-28T01:00:00+01:00
 draft: false
 author: "Koyphshi"
 description: "Understanding cryptographic commitment schemes, hiding vs preimage resistance, binding vs collision resistance, and Merkle tree vector commitments."
